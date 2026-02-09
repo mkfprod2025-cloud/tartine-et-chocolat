@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fond d'écran -->
+    <div class="background-image"></div>
+
+    <!-- Conteneur principal -->
+    <div class="container">
+        <!-- En-tête -->
+        <header>
+            <h1 class="main-title">Bienvenue chez Nous</h1>
+            <p class="description">Découvrez nos produits artisanaux préparés avec passion et des ingrédients de qualité. Une expérience gustative unique vous attend.</p>
+        </header>
+
+        <!-- Navigation par onglets -->
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="delices">Nos Délices</button>
+            <button class="tab-button" data-tab="boissons">Nos Boissons</button>
+            <button class="tab-button" data-tab="decouvertes">Nos Découvertes</button>
+            <button class="tab-button" data-tab="formules">Nos Formules</button>
+        </nav>
+
+        <!-- Contenu des onglets -->
+        <div class="tab-content">
+            <!-- Onglet Nos Délices (6 cases) -->
+            <div id="delices" class="tab-pane active">
+                <div class="grid grid-6">
+                    <div class="card" data-product="delice1">
+                        <img src="assets/delices/delice1.jpg" alt="Délice 1">
+                        <h3>Tarte aux Pommes</h3>
+                    </div>
+                    <div class="card" data-product="delice2">
+                        <img src="assets/delices/delice2.jpg" alt="Délice 2">
+                        <h3>Éclair au Chocolat</h3>
+                    </div>
+                    <div class="card" data-product="delice3">
+                        <img src="assets/delices/delice3.jpg" alt="Délice 3">
+                        <h3>Macaron Assortis</h3>
+                    </div>
+                    <div class="card" data-product="delice4">
+                        <img src="assets/delices/delice4.jpg" alt="Délice 4">
+                        <h3>Croissant Beurre</h3>
+                    </div>
+                    <div class="card" data-product="delice5">
+                        <img src="assets/delices/delice5.jpg" alt="Délice 5">
+                        <h3>Mille-feuille</h3>
+                    </div>
+                    <div class="card" data-product="delice6">
+                        <img src="assets/delices/delice6.jpg" alt="Délice 6">
+                        <h3>Fraisier</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Boissons (4 cases) -->
+            <div id="boissons" class="tab-pane">
+                <div class="grid grid-4">
+                    <div class="card" data-product="boisson1">
+                        <img src="assets/boissons/boisson1.jpg" alt="Boisson 1">
+                        <h3>Café Espresso</h3>
+                    </div>
+                    <div class="card" data-product="boisson2">
+                        <img src="assets/boissons/boisson2.jpg" alt="Boisson 2">
+                        <h3>Thé Glacé Maison</h3>
+                    </div>
+                    <div class="card" data-product="boisson3">
+                        <img src="assets/boissons/boisson3.jpg" alt="Boisson 3">
+                        <h3>Chocolat Chaud</h3>
+                    </div>
+                    <div class="card" data-product="boisson4">
+                        <img src="assets/boissons/boisson4.jpg" alt="Boisson 4">
+                        <h3>Smoothie Fruits Rouges</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Découvertes (4 cases) -->
+            <div id="decouvertes" class="tab-pane">
+                <div class="grid grid-4">
+                    <div class="card" data-product="decouverte1">
+                        <img src="assets/decouvertes/decouverte1.jpg" alt="Découverte 1">
+                        <h3>Paris-Brest</h3>
+                    </div>
+                    <div class="card" data-product="decouverte2">
+                        <img src="assets/decouvertes/decouverte2.jpg" alt="Découverte 2">
+                        <h3>Saint-Honoré</h3>
+                    </div>
+                    <div class="card" data-product="decouverte3">
+                        <img src="assets/decouvertes/decouverte3.jpg" alt="Découverte 3">
+                        <h3>Religieuse</h3>
+                    </div>
+                    <div class="card" data-product="decouverte4">
+                        <img src="assets/decouvertes/decouverte4.jpg" alt="Découverte 4">
+                        <h3>Opéra</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Formules (3 cases) -->
+            <div id="formules" class="tab-pane">
+                <div class="grid grid-3">
+                    <div class="card" data-product="formule1">
+                        <img src="assets/formules/formule1.jpg" alt="Formule 1">
+                        <h3>Formule Petit-Déjeuner</h3>
+                    </div>
+                    <div class="card" data-product="formule2">
+                        <img src="assets/formules/formule2.jpg" alt="Formule 2">
+                        <h3>Formule Gourmande</h3>
+                    </div>
+                    <div class="card" data-product="formule3">
+                        <img src="assets/formules/formule3.jpg" alt="Formule 3">
+                        <h3>Formule Découverte</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton Commander -->
+        <div class="order-section">
+            <button class="order-button" id="orderBtn">Commander</button>
+        </div>
+    </div>
+
+    <!-- Modal de choix de commande -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content order-modal">
+            <span class="close">&times;</span>
+            <h2>Choisissez votre mode de commande</h2>
+            <div class="order-options">
+                <div class="order-option" id="takeawayOption">
+                    <div class="option-icon">📦</div>
+                    <h3>À Emporter</h3>
+                    <p>Appelez-nous pour passer commande</p>
+                </div>
+                <div class="order-option" id="deliveryOption">
+                    <div class="option-icon">🚴</div>
+                    <h3>À Domicile</h3>
+                    <p>Commandez via Uber Eats</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal À Emporter -->
+    <div id="takeawayModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>À Emporter</h2>
+            <div class="contact-info">
+                <p><strong>Emplacement :</strong></p>
+                <p>123 Rue de la Gourmandise<br>75001 Paris</p>
+                <p><strong>Numéro de téléphone :</strong></p>
+                <p class="phone-number">01 23 45 67 89</p>
+                <p class="info-text">Appelez-nous pour passer votre commande</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Produit -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal">
+            <span class="close">&times;</span>
+            <div class="product-details">
+                <img id="modalImage" src="" alt="">
+                <div class="product-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <p class="price" id="modalPrice"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
