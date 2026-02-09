@@ -19,7 +19,7 @@ const productsData = {
         title: "Tarte Tatin",
         description:"la celebre tarte des soeur Tatin avec sa pipiette de crème fraiche",
         price: "13.00€",
-        image: "assets/tatinvid.jpg",
+        image: "assets/tatinvid.mp4",
         media_type: "video"
     },
     delice4: {
