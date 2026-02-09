@@ -2,9 +2,9 @@
 const productsData = {
     // Délices
     delice1: {
-        title: "Tarte aux Pommes",
-        description: "Une délicieuse tarte aux pommes préparée avec des pommes fraîches et une pâte croustillante maison. Servie tiède avec une boule de glace vanille.",
-        price: "4.50€",
+        title: "crumble pomme et Cannelle",
+        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pates craquante maison.",
+        price: "10€",
         image: "assets/delices/delice1.jpg"
     },
     delice2: {
