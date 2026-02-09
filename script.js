@@ -9,7 +9,7 @@ const productsData = {
         media_type: "video" // ou "video"
     },
     delice2: {
-        title: "Éclair au Chocolat",
+        title: "gateau au chocolat",
         description: " gateau au chocolat moelleux au coeur tendre.",
         price: "11€",
         image: "assets/fondantchovid.mp4",
