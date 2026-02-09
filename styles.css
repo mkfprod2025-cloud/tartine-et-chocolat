@@ -75,11 +75,11 @@ header {
 }
 
 .tagline {
-    font-size: 1.3rem;
+    font-size: 2.5rem;
     color: #666;
     margin-top: 10px;
     font-weight: 400;
-    font-style: italic;
+    font-style: park avenue;
 }
 
 .main-title {
@@ -92,7 +92,7 @@ header {
 }
 
 .description {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
     color: #666;
     max-width: 800px;
     margin: 0 auto;
