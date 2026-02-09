@@ -5,7 +5,7 @@ const productsData = {
         title: "crumble pomme et Cannelle",
         description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pates craquante maison.",
         price: "10€",
-        image: "assets/delices/delice1.jpg"
+        image: "assets/crumblecouv.jpg"
     },
     delice2: {
         title: "Éclair au Chocolat",
