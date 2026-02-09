@@ -2,40 +2,46 @@
 const productsData = {
     // Délices
     delice1: {
-        title: "crumble pomme et Cannelle",
-        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pates craquante maison.",
+        title: "Crumble Pomme et Cannelle",
+        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
         price: "10€",
-        image: "assets/crumblecouv.jpg"
+        image: "assets/crumblecouv.jpg",
+        media_type: "image" // ou "video"
     },
     delice2: {
         title: "Éclair au Chocolat",
         description: "Éclair traditionnel garni d'une onctueuse crème pâtissière au chocolat noir et recouvert d'un glaçage brillant au cacao.",
         price: "3.80€",
-        image: "assets/crumblecouv.jpg"
+        image: "assets/delices/delice2.jpg",
+        media_type: "image"
     },
     delice3: {
         title: "Macaron Assortis",
         description: "Boîte de 6 macarons aux saveurs variées : framboise, pistache, chocolat, vanille, citron et caramel. Croquants à l'extérieur, moelleux à l'intérieur.",
         price: "12.00€",
-        image: "assets/delices/delice3.jpg"
+        image: "assets/delices/delice3.jpg",
+        media_type: "image"
     },
     delice4: {
         title: "Croissant Beurre",
         description: "Croissant pur beurre croustillant et feuilleté, cuit au four chaque matin. La perfection à la française pour votre petit-déjeuner.",
         price: "1.50€",
-        image: "assets/delices/delice4.jpg"
+        image: "assets/delices/delice4.jpg",
+        media_type: "image"
     },
     delice5: {
         title: "Mille-feuille",
         description: "Trois couches de pâte feuilletée croustillante intercalées de crème pâtissière vanille, le tout surmonté d'un glaçage fondant.",
         price: "5.20€",
-        image: "assets/delices/delice5.jpg"
+        image: "assets/delices/delice5.jpg",
+        media_type: "image"
     },
     delice6: {
         title: "Fraisier",
         description: "Génoise moelleuse garnie de crème mousseline et de fraises fraîches, recouverte d'une fine couche de pâte d'amande verte.",
         price: "6.00€",
-        image: "assets/delices/delice6.jpg"
+        image: "assets/delices/delice6.jpg",
+        media_type: "image"
     },
 
     // Boissons
@@ -139,6 +145,12 @@ const takeawayModal = document.getElementById('takeawayModal');
 const closeButtons = document.querySelectorAll('.close');
 closeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        // Pause vidéo si elle existe
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+        
         productModal.style.display = 'none';
         orderModal.style.display = 'none';
         takeawayModal.style.display = 'none';
@@ -148,6 +160,12 @@ closeButtons.forEach(btn => {
 // Fermer en cliquant à l'extérieur
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {
+        // Pause vidéo si elle existe
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+        
         e.target.style.display = 'none';
     }
 });
@@ -160,7 +178,29 @@ cards.forEach(card => {
         const product = productsData[productId];
 
         if (product) {
-            document.getElementById('modalImage').src = product.image;
+            const modalMediaContainer = document.getElementById('modalMediaContainer');
+            
+            // Vider le conteneur
+            modalMediaContainer.innerHTML = '';
+            
+            // Créer l'élément approprié selon le type de média
+            if (product.media_type === 'video') {
+                const video = document.createElement('video');
+                video.src = product.image;
+                video.controls = true;
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.id = 'modalMedia';
+                modalMediaContainer.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = product.image;
+                img.alt = product.title;
+                img.id = 'modalMedia';
+                modalMediaContainer.appendChild(img);
+            }
+            
             document.getElementById('modalTitle').textContent = product.title;
             document.getElementById('modalDescription').textContent = product.description;
             document.getElementById('modalPrice').textContent = product.price;
