@@ -59,16 +59,16 @@ body {
 header {
     text-align: center;
     margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 15px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: none;
 }
 
 .logo {
-    max-width: 50%;
+    max-width: 70%;
     height: auto;
-    max-height: 150px;
+    max-height: 200px;
     margin: 0 auto;
     display: block;
     object-fit: contain;
@@ -406,7 +406,8 @@ header {
 /* Responsive */
 @media (max-width: 768px) {
     .logo {
-        max-height: 120px;
+        max-width: 80%;
+        max-height: 150px;
     }
 
     .tagline {
