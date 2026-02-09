@@ -12,7 +12,7 @@ const productsData = {
         title: "Éclair au Chocolat",
         description: " gateau au chocolat moelleux au coeur tendre.",
         price: "11€",
-        image: "assets/fondantchovid.jpg",
+        image: "assets/fondantchovid.mp4",
         media_type: "video"
     },
     delice3: {
