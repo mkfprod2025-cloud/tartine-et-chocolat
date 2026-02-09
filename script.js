@@ -11,7 +11,7 @@ const productsData = {
         title: "Éclair au Chocolat",
         description: "Éclair traditionnel garni d'une onctueuse crème pâtissière au chocolat noir et recouvert d'un glaçage brillant au cacao.",
         price: "3.80€",
-        image: "assets/delices/delice2.jpg"
+        image: "assets/crumblecouv.jpg"
     },
     delice3: {
         title: "Macaron Assortis",
