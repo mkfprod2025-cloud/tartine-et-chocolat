@@ -16,11 +16,11 @@ const productsData = {
         media_type: "video"
     },
     delice3: {
-        title: "Macaron Assortis",
-        description: "Boîte de 6 macarons aux saveurs variées : framboise, pistache, chocolat, vanille, citron et caramel. Croquants à l'extérieur, moelleux à l'intérieur.",
-        price: "12.00€",
-        image: "assets/delices/delice3.jpg",
-        media_type: "image"
+        title: "Tarte Tatin",
+        description:"la celebre tarte des soeur Tatin avec sa pipiette de crème fraiche",
+        price: "13.00€",
+        image: "assets/tatinvid.jpg",
+        media_type: "video"
     },
     delice4: {
         title: "Croissant Beurre",
