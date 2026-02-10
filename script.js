@@ -76,11 +76,11 @@ const productsData = {
 
     // Découvertes
     decouverte1: {
-        title: "Paris-Brest",
-        description: "Pâte à choux en couronne garnie d'une délicate crème mousseline pralinée aux noisettes, parsemée d'amandes effilées.",
-        price: "5.80€",
-        image: "assets/decouvertes/decouverte1.jpg",
-          media_type: "image"
+        title: "La Tarte aux myrtilles",
+        description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
+        price: "11€",
+        image: "assets/myrtvid.jpg",
+          media_type: "video"
     },
     decouverte2: {
         title: "Saint-Honoré",
