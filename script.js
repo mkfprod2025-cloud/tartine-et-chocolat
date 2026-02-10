@@ -49,28 +49,28 @@ const productsData = {
         title: "Café Espresso",
         description: "Espresso italien corsé préparé avec des grains 100% Arabica torréfiés artisanalement. Court, intense et aromatique.",
         price: "2.50€",
-        image: "assets/boissons/boisson1.jpg"
-              media_type: "image"
+        image: "assets/boissons/boisson1.jpg",
+             media_type: "image"
     },
     boisson2: {
         title: "Thé Glacé Maison",
         description: "Thé glacé fait maison infusé avec du thé vert bio, menthe fraîche et une touche de citron. Rafraîchissant et désaltérant.",
         price: "3.50€",
-        image: "assets/boissons/boisson2.jpg"
+        image: "assets/boissons/boisson2.jpg",
          media_type: "image"
     },
     boisson3: {
         title: "Chocolat Chaud",
         description: "Chocolat chaud onctueux préparé avec du chocolat noir 70% de cacao, lait entier et une pointe de chantilly maison.",
         price: "4.00€", 
-        image "assets/boissons/boisson3.jpg"
+        image "assets/boissons/boisson3.jpg",
           media_type: "image"
     },
     boisson4: {
         title: "nos smoothies au fruit ",
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
         price: "9.50",
-        image: "assets/smootvid.mp4"
+        image: "assets/smootvid.mp4",
         media_type: "video"
     },
 
@@ -79,28 +79,28 @@ const productsData = {
         title: "Paris-Brest",
         description: "Pâte à choux en couronne garnie d'une délicate crème mousseline pralinée aux noisettes, parsemée d'amandes effilées.",
         price: "5.80€",
-        image: "assets/decouvertes/decouverte1.jpg"
+        image: "assets/decouvertes/decouverte1.jpg",
           media_type: "image"
     },
     decouverte2: {
         title: "Saint-Honoré",
         description: "Pâtisserie classique composée d'une base de pâte feuilletée, choux caramélisés et crème chiboust vanillée. Un grand classique revisité.",
         price: "6.50€",
-        image: "assets/decouvertes/decouverte2.jpg"
+        image: "assets/decouvertes/decouverte2.jpg",
         media_type: "image"
     },
     decouverte3: {
         title: "Religieuse",
         description: "Deux choux superposés garnis de crème pâtissière au café, nappés de fondant et décorés d'une rose en crème au beurre.",
         price: "4.80€",
-        image: "assets/decouvertes/decouverte3.jpg"
+        image: "assets/decouvertes/decouverte3.jpg",
         media_type: "image"
     },
     decouverte4: {
         title: "Opéra",
         description: "Entremets raffiné composé de biscuit Joconde imbibé de sirop café, crème au beurre café et ganache chocolat. Un chef-d'œuvre.",
         price: "6.80€",
-        image: "assets/decouvertes/decouverte4.jpg"
+        image: "assets/decouvertes/decouverte4.jpg",
         media_type: "image"     
     },
 
@@ -109,21 +109,21 @@ const productsData = {
         title: "Formule Petit-Déjeuner",
         description: "Formule complète comprenant : 1 croissant ou 1 pain au chocolat + 1 boisson chaude au choix + 1 jus d'orange frais pressé.",
         price: "8.50€",
-        image: "assets/formules/formule1.jpg"
+        image: "assets/formules/formule1.jpg",
         media_type: "image"
     },
     formule2: {
         title: "Formule Gourmande",
         description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 1 boisson chaude ou froide + 1 macaron offert.",
         price: "14.00€",
-        image: "assets/formules/formule2.jpg"
+        image: "assets/formules/formule2.jpg",
         media_type: "image"
     },
     formule3: {
         title: "Formule Découverte",
         description: "Formule dégustation : 1 pâtisserie de la semaine + 1 boisson signature du chef + 1 mini viennoiserie. Parfait pour découvrir nos créations.",
         price: "11.50€",
-        image: "assets/formules/formule3.jpg"
+        image: "assets/formules/formule3.jpg",
         media_type: "image"
     }
 };
