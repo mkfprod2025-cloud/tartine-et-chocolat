@@ -67,7 +67,7 @@ const productsData = {
           media_type: "video"
     },
     boisson4: {
-        title: "nos smoothies au fruit ",
+        title: "nos smoothies aux fruits ",
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
         price: "9.50€",
         image: "assets/smootvid.mp4",
