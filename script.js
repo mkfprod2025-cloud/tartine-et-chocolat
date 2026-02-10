@@ -60,11 +60,11 @@ const productsData = {
          media_type: "video"
     },
     boisson3: {
-        title: "Chocolat Chaud",
-        description: "Chocolat chaud onctueux préparé avec du chocolat noir 70% de cacao, lait entier et une pointe de chantilly maison.",
+        title: "les jus de fruits centrifugés ",
+        description: "pommes, carottes, oranges pressées à la commande ",
         price: "4.00€", 
-        image: "assets/boissons/boisson3.jpg",
-          media_type: "image"
+        image: "assets/centrivid.mp4",
+          media_type: "video"
     },
     boisson4: {
         title: "nos smoothies au fruit ",
