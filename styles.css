@@ -245,6 +245,36 @@ header {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
+.secondary-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.secondary-order-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    min-width: 260px;
+}
+
+.info-pane {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.info-pane h2 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.info-pane p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
 /* Modals */
 .modal {
     display: none;
@@ -459,6 +489,11 @@ header {
     .order-button {
         padding: 15px 40px;
         font-size: 1.2rem;
+    }
+
+    .secondary-order-button {
+        width: min(100%, 320px);
+        font-size: 0.95rem;
     }
 
     .grid-6,
