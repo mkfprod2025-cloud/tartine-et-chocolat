@@ -63,7 +63,7 @@ const productsData = {
         title: "Chocolat Chaud",
         description: "Chocolat chaud onctueux préparé avec du chocolat noir 70% de cacao, lait entier et une pointe de chantilly maison.",
         price: "4.00€", 
-        image "assets/boissons/boisson3.jpg",
+        image: "assets/boissons/boisson3.jpg",
           media_type: "image"
     },
     boisson4: {
