@@ -132,18 +132,33 @@ const productsData = {
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabPanes = document.querySelectorAll('.tab-pane');
 
+const openTab = (tabId) => {
+    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
+
+    tabButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+    });
+};
+
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Retirer la classe active de tous les boutons et panneaux
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabPanes.forEach(pane => pane.classList.remove('active'));
-
-        // Ajouter la classe active au bouton cliqué
-        button.classList.add('active');
-
-        // Afficher le panneau correspondant
         const tabId = button.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
+        openTab(tabId);
+    });
+});
+
+const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
+secondaryTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-target-tab');
+        openTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 
@@ -151,32 +166,123 @@ tabButtons.forEach(button => {
 const productModal = document.getElementById('productModal');
 const orderModal = document.getElementById('orderModal');
 const takeawayModal = document.getElementById('takeawayModal');
+const cartModal = document.getElementById('cartModal');
+
+const addToCartBtn = document.getElementById('addToCartBtn');
+const cartItemsContainer = document.getElementById('cartItems');
+const orderTypeInput = document.getElementById('orderType');
+const customerNameInput = document.getElementById('customerName');
+const customerNotesInput = document.getElementById('customerNotes');
+
+const cartOption = document.getElementById('cartOption');
+const deliveryOption = document.getElementById('deliveryOption');
+const whatsappOption = document.getElementById('whatsappOption');
+const telegramOption = document.getElementById('telegramOption');
+
+const sendRestaurantBtn = document.getElementById('sendRestaurantBtn');
+const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
+const sendTelegramBtn = document.getElementById('sendTelegramBtn');
+const openUberBtn = document.getElementById('openUberBtn');
+
+const WHATSAPP_PHONE = '33123456789';
+const TELEGRAM_USER = 'tartineetchocolat';
+const UBER_EATS_URL = 'https://www.ubereats.com/';
+
+let selectedProductId = null;
+let cart = [];
+
+const formatCartMessage = () => {
+    if (!cart.length) {
+        return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
+    }
+
+    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';
+    const customerNotes = customerNotesInput.value.trim() || 'Aucune';
+
+    return [
+        'Bonjour Tartine et Chocolat,',
+        'Voici ma commande :',
+        ...lines,
+        '',
+        `Mode: ${orderType}`,
+        `Nom: ${customerName}`,
+        `Notes: ${customerNotes}`
+    ].join('\n');
+};
+
+const updateCartView = () => {
+    if (!cart.length) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart">Votre panier est vide. Ajoutez un article depuis une fiche produit.</p>';
+        return;
+    }
+
+    cartItemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item-row">
+            <div>
+                <strong>${item.title}</strong><br>
+                <small>${item.price}</small>
+            </div>
+            <div class="cart-item-actions">
+                <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
+                <span>${item.qty}</span>
+                <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
+            </div>
+        </div>
+    `).join('');
+};
+
+cartItemsContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.qty-button');
+    if (!button) {
+        return;
+    }
+
+    const itemId = button.getAttribute('data-id');
+    const action = button.getAttribute('data-action');
+    const item = cart.find(entry => entry.id === itemId);
+
+    if (!item) {
+        return;
+    }
+
+    if (action === 'increase') {
+        item.qty += 1;
+    } else if (action === 'decrease') {
+        item.qty -= 1;
+        if (item.qty <= 0) {
+            cart = cart.filter(entry => entry.id !== itemId);
+        }
+    }
+
+    updateCartView();
+});
 
 // Boutons de fermeture
 const closeButtons = document.querySelectorAll('.close');
 closeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Pause vidéo si elle existe
         const video = document.querySelector('#modalMediaContainer video');
         if (video) {
             video.pause();
         }
-        
+
         productModal.style.display = 'none';
         orderModal.style.display = 'none';
         takeawayModal.style.display = 'none';
+        cartModal.style.display = 'none';
     });
 });
 
 // Fermer en cliquant à l'extérieur
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {
-        // Pause vidéo si elle existe
         const video = document.querySelector('#modalMediaContainer video');
         if (video) {
             video.pause();
         }
-        
+
         e.target.style.display = 'none';
     }
 });
@@ -189,12 +295,10 @@ cards.forEach(card => {
         const product = productsData[productId];
 
         if (product) {
+            selectedProductId = productId;
             const modalMediaContainer = document.getElementById('modalMediaContainer');
-            
-            // Vider le conteneur
             modalMediaContainer.innerHTML = '';
-            
-            // Créer l'élément approprié selon le type de média
+
             if (product.media_type === 'video') {
                 const video = document.createElement('video');
                 video.src = product.image;
@@ -211,7 +315,7 @@ cards.forEach(card => {
                 img.id = 'modalMedia';
                 modalMediaContainer.appendChild(img);
             }
-            
+
             document.getElementById('modalTitle').textContent = product.title;
             document.getElementById('modalDescription').textContent = product.description;
             document.getElementById('modalPrice').textContent = product.price;
@@ -221,6 +325,29 @@ cards.forEach(card => {
     });
 });
 
+addToCartBtn.addEventListener('click', () => {
+    if (!selectedProductId) {
+        return;
+    }
+
+    const product = productsData[selectedProductId];
+    const existing = cart.find(item => item.id === selectedProductId);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({
+            id: selectedProductId,
+            title: product.title,
+            price: product.price,
+            qty: 1
+        });
+    }
+
+    updateCartView();
+    productModal.style.display = 'none';
+});
+
 // Bouton Commander
 const orderBtn = document.getElementById('orderBtn');
 orderBtn.addEventListener('click', () => {
@@ -228,19 +355,44 @@ orderBtn.addEventListener('click', () => {
 });
 
 // Options de commande
-const takeawayOption = document.getElementById('takeawayOption');
-const deliveryOption = document.getElementById('deliveryOption');
-
-takeawayOption.addEventListener('click', () => {
+cartOption.addEventListener('click', () => {
     orderModal.style.display = 'none';
-    takeawayModal.style.display = 'block';
+    updateCartView();
+    cartModal.style.display = 'block';
 });
 
 deliveryOption.addEventListener('click', () => {
-    // Redirection vers Uber Eats
-    // Remplacer l'URL par votre véritable lien Uber Eats
-    window.open('https://www.ubereats.com/', '_blank');
+    window.open(UBER_EATS_URL, '_blank');
     orderModal.style.display = 'none';
+});
+
+whatsappOption.addEventListener('click', () => {
+    window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
+    orderModal.style.display = 'none';
+});
+
+telegramOption.addEventListener('click', () => {
+    window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
+    orderModal.style.display = 'none';
+});
+
+sendRestaurantBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendWhatsappBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendTelegramBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
+});
+
+openUberBtn.addEventListener('click', () => {
+    window.open(UBER_EATS_URL, '_blank');
 });
 
 // Animation au scroll (optionnel)
