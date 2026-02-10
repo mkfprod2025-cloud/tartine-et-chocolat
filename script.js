@@ -132,18 +132,33 @@ const productsData = {
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabPanes = document.querySelectorAll('.tab-pane');
 
+const openTab = (tabId) => {
+    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
+
+    tabButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+    });
+};
+
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Retirer la classe active de tous les boutons et panneaux
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabPanes.forEach(pane => pane.classList.remove('active'));
-
-        // Ajouter la classe active au bouton cliqué
-        button.classList.add('active');
-
-        // Afficher le panneau correspondant
         const tabId = button.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
+        openTab(tabId);
+    });
+});
+
+const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
+secondaryTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-target-tab');
+        openTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 
