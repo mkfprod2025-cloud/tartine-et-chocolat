@@ -86,7 +86,7 @@ const productsData = {
         title: "La soupe de saison",
         description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
         price: "10.50€",
-        image: "assets/soupvid.jpg",
+        image: "assets/soupvid.mp4",
         media_type: "video"
     },
     decouverte3: {
@@ -100,7 +100,7 @@ const productsData = {
         title: "notre jus star du moment ",
         description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
         price: "9.50€",
-        image: "assets/jusmoisvid",
+        image: "assets/jusmoisvid.mp4",
         media_type: "video"     
     },
 
