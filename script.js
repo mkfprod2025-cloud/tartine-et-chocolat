@@ -30,18 +30,18 @@ const productsData = {
         media_type: "video"
     },
     delice5: {
-        title: "La Tartine Maraichère",
+        title: "La Tartine Méditerranéenne",
         description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
-        price: "15€",
+        price: "16€",
         image: "assets/maraivid.mp4",
         media_type: "video"
     },
     delice6: {
-        title: "Fraisier",
-        description: "Génoise moelleuse garnie de crème mousseline et de fraises fraîches, recouverte d'une fine couche de pâte d'amande verte.",
-        price: "6.00€",
-        image: "assets/delices/delice6.jpg",
-        media_type: "image"
+        title: "La Maraichère",
+        description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
+        price: "12€",
+        image: "assets/vrgivid.mp4",
+        media_type: "video"
     },
 
     // Boissons
