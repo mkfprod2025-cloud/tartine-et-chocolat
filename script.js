@@ -93,7 +93,6 @@ const productsData = {
         description: "Deux choux superposés garnis de crème pâtissière au café, nappés de fondant et décorés d'une rose en crème au beurre.",
         price: "4.80€",
         image: "assets/decouvertes/decouverte3.jpg"
-          "
     },
     decouverte4: {
         title: "Opéra",
