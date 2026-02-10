@@ -116,15 +116,15 @@ const productsData = {
         title: "Formule Gouté à deux",
         description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
         price: "24€",
-        image: "assets/form2couv.jpg",
-        media_type: "image"
+        image: "assets/form2couv.mp4",
+        media_type: "video"
     },
     formule3: {
         title: "Formule Brunch Club",
         description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
         price: "55€",
-        image: "assets/formules/formule3.jpg",
-        media_type: "image"
+        image: "assets/formules/formule3.mp4",
+        media_type: "video"
     }
 };
 
