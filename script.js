@@ -79,7 +79,7 @@ const productsData = {
         title: "La Tarte aux myrtilles",
         description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
         price: "11€",
-        image: "assets/myrtvid.jpg",
+        image: "assets/myrtvid.mp4",
           media_type: "video"
     },
     decouverte2: {
