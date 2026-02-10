@@ -23,11 +23,11 @@ const productsData = {
         media_type: "video"
     },
     delice4: {
-        title: "Croissant Beurre",
-        description: "Croissant pur beurre croustillant et feuilleté, cuit au four chaque matin. La perfection à la française pour votre petit-déjeuner.",
-        price: "1.50€",
-        image: "assets/delices/delice4.jpg",
-        media_type: "image"
+        title: "la Tartine Campagnarde",
+        description: "la grosse tartine qui tient au corp , pain campagnard fromage frais ,herbes fines, jambon blanc ou de poulet , pistache.",
+        price: "13€",
+        image: "assets/campavid.mp4",
+        media_type: "video"
     },
     delice5: {
         title: "Mille-feuille",
