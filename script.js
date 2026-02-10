@@ -71,7 +71,7 @@ const productsData = {
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
         price: "9.50",
         image: "assets/smootvid.mp4"
-        media_type: "video"
+        
     },
 
     // Découvertes
