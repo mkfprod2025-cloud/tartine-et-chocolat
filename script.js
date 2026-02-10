@@ -40,7 +40,7 @@ const productsData = {
         title: "La Maraichère",
         description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
         price: "12€",
-        image: "assets/vrgivid.mp4",
+        image: "assets/vegivid.mp4",
         media_type: "video"
     },
 
