@@ -106,23 +106,23 @@ const productsData = {
 
     // Formules
     formule1: {
-        title: "Formule Petit-Déjeuner",
-        description: "Formule complète comprenant : 1 croissant ou 1 pain au chocolat + 1 boisson chaude au choix + 1 jus d'orange frais pressé.",
-        price: "8.50€",
-        image: "assets/formules/formule1.jpg",
+        title: "Formuleéquilibré",
+        description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
+        price: "17€",
+        image: "assets/form1couv.jpg",
         media_type: "image"
     },
     formule2: {
-        title: "Formule Gourmande",
-        description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 1 boisson chaude ou froide + 1 macaron offert.",
-        price: "14.00€",
-        image: "assets/formules/formule2.jpg",
+        title: "Formule Gouté à deux",
+        description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
+        price: "24€",
+        image: "assets/form2couv.jpg",
         media_type: "image"
     },
     formule3: {
-        title: "Formule Découverte",
-        description: "Formule dégustation : 1 pâtisserie de la semaine + 1 boisson signature du chef + 1 mini viennoiserie. Parfait pour découvrir nos créations.",
-        price: "11.50€",
+        title: "Formule Brunch Club",
+        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
+        price: "55€",
         image: "assets/formules/formule3.jpg",
         media_type: "image"
     }
