@@ -54,10 +54,10 @@ const productsData = {
     },
     boisson2: {
         title: "Thé Glacé Maison",
-        description: "Thé glacé fait maison infusé avec du thé vert bio, menthe fraîche et une touche de citron. Rafraîchissant et désaltérant.",
-        price: "3.50€",
-        image: "assets/boissons/boisson2.jpg",
-         media_type: "image"
+        description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
+        price: "8.50€",
+        image: "assets/icetvid.mp4",
+         media_type: "video"
     },
     boisson3: {
         title: "Chocolat Chaud",
@@ -69,7 +69,7 @@ const productsData = {
     boisson4: {
         title: "nos smoothies au fruit ",
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
-        price: "9.50",
+        price: "9.50€",
         image: "assets/smootvid.mp4",
         media_type: "video"
     },
