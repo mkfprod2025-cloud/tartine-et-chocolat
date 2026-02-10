@@ -123,7 +123,7 @@ const productsData = {
         title: "Formule Brunch Club",
         description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
         price: "55€",
-        image: "assets/formvid.mp4",
+        image: "assets/form3vid.mp4",
         media_type: "video"
     }
 };
