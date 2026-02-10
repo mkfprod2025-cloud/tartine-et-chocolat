@@ -50,24 +50,28 @@ const productsData = {
         description: "Espresso italien corsé préparé avec des grains 100% Arabica torréfiés artisanalement. Court, intense et aromatique.",
         price: "2.50€",
         image: "assets/boissons/boisson1.jpg"
+          media_type: "video"
     },
     boisson2: {
         title: "Thé Glacé Maison",
         description: "Thé glacé fait maison infusé avec du thé vert bio, menthe fraîche et une touche de citron. Rafraîchissant et désaltérant.",
         price: "3.50€",
         image: "assets/boissons/boisson2.jpg"
+          media_type: "video"
     },
     boisson3: {
         title: "Chocolat Chaud",
         description: "Chocolat chaud onctueux préparé avec du chocolat noir 70% de cacao, lait entier et une pointe de chantilly maison.",
         price: "4.00€",
         image: "assets/boissons/boisson3.jpg"
+          media_type: "video"
     },
     boisson4: {
-        title: "Smoothie Fruits Rouges",
-        description: "Smoothie vitaminé aux fruits rouges frais : fraises, framboises et myrtilles, mixés avec du yaourt nature et une touche de miel.",
-        price: "5.50€",
-        image: "assets/boissons/boisson4.jpg"
+        title: "nos smoothies au fruit ",
+        description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
+        price: "9.50",
+        image: "assets/smootvid.mp4"
+        media_type: "video"
     },
 
     // Découvertes
@@ -76,6 +80,7 @@ const productsData = {
         description: "Pâte à choux en couronne garnie d'une délicate crème mousseline pralinée aux noisettes, parsemée d'amandes effilées.",
         price: "5.80€",
         image: "assets/decouvertes/decouverte1.jpg"
+          media_type: "video"
     },
     decouverte2: {
         title: "Saint-Honoré",
@@ -88,12 +93,14 @@ const productsData = {
         description: "Deux choux superposés garnis de crème pâtissière au café, nappés de fondant et décorés d'une rose en crème au beurre.",
         price: "4.80€",
         image: "assets/decouvertes/decouverte3.jpg"
+          media_type: "video"
     },
     decouverte4: {
         title: "Opéra",
         description: "Entremets raffiné composé de biscuit Joconde imbibé de sirop café, crème au beurre café et ganache chocolat. Un chef-d'œuvre.",
         price: "6.80€",
         image: "assets/decouvertes/decouverte4.jpg"
+          media_type: "video"
     },
 
     // Formules
