@@ -83,11 +83,11 @@ const productsData = {
           media_type: "video"
     },
     decouverte2: {
-        title: "Saint-Honoré",
-        description: "Pâtisserie classique composée d'une base de pâte feuilletée, choux caramélisés et crème chiboust vanillée. Un grand classique revisité.",
+        title: "La soupe de saison",
+        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
         price: "6.50€",
-        image: "assets/decouvertes/decouverte2.jpg",
-        media_type: "image"
+        image: "assets/soupvid.jpg",
+        media_type: "video"
     },
     decouverte3: {
         title: "Religieuse",
