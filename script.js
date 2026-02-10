@@ -5,36 +5,36 @@ const productsData = {
         title: "Crumble Pomme et Cannelle",
         description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
         price: "10€",
-        image: "assets/crumblevid.mp4",
+        image: "assets/Crumblevid.mp4",
         media_type: "video" // ou "video"
     },
     delice2: {
         title: "gateau au chocolat",
-        description: " gateau au chocolat moelleux au coeur tendre.",
+        description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.",
         price: "11€",
         image: "assets/fondantchovid.mp4",
         media_type: "video"
     },
     delice3: {
         title: "Tarte Tatin",
-        description:"la celebre tarte des soeur Tatin avec sa pipiette de crème fraiche",
+        description:"la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
         price: "13.00€",
         image: "assets/tatinvid.mp4",
         media_type: "video"
     },
     delice4: {
-        title: "la Tartine Campagnarde",
-        description: "la grosse tartine qui tient au corp , pain campagnard fromage frais ,herbes fines, jambon blanc ou de poulet , pistache.",
+        title: "La Tartine Campagnarde",
+        description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.",
         price: "13€",
         image: "assets/campavid.mp4",
         media_type: "video"
     },
     delice5: {
-        title: "Mille-feuille",
-        description: "Trois couches de pâte feuilletée croustillante intercalées de crème pâtissière vanille, le tout surmonté d'un glaçage fondant.",
-        price: "5.20€",
-        image: "assets/delices/delice5.jpg",
-        media_type: "image"
+        title: "La Tartine Maraichère",
+        description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
+        price: "15€",
+        image: "assets/maraivid.mp4",
+        media_type: "video"
     },
     delice6: {
         title: "Fraisier",
