@@ -94,10 +94,10 @@ header {
 
 .description {
     font-size: 2rem;
-    color: #666;
+    color: #475569;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 2;
 }
 
 /* Navigation par onglets */
