@@ -46,11 +46,11 @@ const productsData = {
 
     // Boissons
     boisson1: {
-        title: "Café Espresso",
-        description: "Espresso italien corsé préparé avec des grains 100% Arabica torréfiés artisanalement. Court, intense et aromatique.",
-        price: "2.50€",
+        title: "Nos spécialité de café glacé ",
+        description: "ice coffee, latté, frappé sucré celon votre convenance ",
+        price: "de 7€ a 12€",
         image: "assets/boissons/boisson1.jpg",
-             media_type: "image"
+             media_type: "video"
     },
     boisson2: {
         title: "Thé Glacé Maison",
@@ -62,7 +62,7 @@ const productsData = {
     boisson3: {
         title: "les jus de fruits centrifugés ",
         description: "pommes, carottes, oranges pressées à la commande ",
-        price: "4.00€", 
+        price: "8.5€", 
         image: "assets/centrivid.mp4",
           media_type: "video"
     },
