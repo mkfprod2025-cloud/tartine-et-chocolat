@@ -49,7 +49,7 @@ const productsData = {
         title: "Nos spécialité de café glacé ",
         description: "ice coffee, latté, frappé sucré celon votre convenance ",
         price: "de 7€ a 12€",
-        image: "assets/centrivid.mp4",
+        image: "assets/coffeevid.mp4",
              media_type: "video"
     },
     boisson2: {
