@@ -85,23 +85,23 @@ const productsData = {
     decouverte2: {
         title: "La soupe de saison",
         description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
-        price: "6.50€",
+        price: "10.50€",
         image: "assets/soupvid.jpg",
         media_type: "video"
     },
     decouverte3: {
-        title: "Religieuse",
-        description: "Deux choux superposés garnis de crème pâtissière au café, nappés de fondant et décorés d'une rose en crème au beurre.",
-        price: "4.80€",
-        image: "assets/decouvertes/decouverte3.jpg",
-        media_type: "image"
+        title: "matcha latte",
+        description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples",
+        price: "9.50€",
+        image: "assets/matchavid.mp4",
+        media_type: "video"
     },
     decouverte4: {
-        title: "Opéra",
-        description: "Entremets raffiné composé de biscuit Joconde imbibé de sirop café, crème au beurre café et ganache chocolat. Un chef-d'œuvre.",
-        price: "6.80€",
-        image: "assets/decouvertes/decouverte4.jpg",
-        media_type: "image"     
+        title: "notre jus star du moment ",
+        description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
+        price: "9.50€",
+        image: "assets/jusmoisvid",
+        media_type: "video"     
     },
 
     // Formules
