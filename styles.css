@@ -542,7 +542,9 @@ header {
     text-align: center;
     padding: 10px;
 }
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
 
 .supplements-pane {
     text-align: left;
@@ -611,6 +613,8 @@ header {
     color: #3f7fb8;
     font-weight: 600;
 }
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+> main
 > main
 /* Responsive */
 @media (max-width: 768px) {
