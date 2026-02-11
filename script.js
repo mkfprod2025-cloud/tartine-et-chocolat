@@ -216,14 +216,14 @@ const productOptionsCatalog = {
             { name: "mediterrané"},
             { name: "veggan"},
             ],
-     
+     formule1ingredients2:{
          label: "1 dessert",
      type: "multi",
     max: 1,
     choices: [
         {name: "crumble"},
         {name: "gateau choco"},
-        {name: "tarte tatin"}, ],
+        {name: "tarte tatin"}, ]
 };
 const categoryLabels = {
     sales: "Suppléments salés",
