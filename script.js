@@ -232,7 +232,45 @@ const productOptionsCatalog = {
            {name: "coffee ou latte(froid) x2"},
         {name: "thé glacéx2"},
         {name: "jus de fruit x2"}, ]
-    }};
+   } ,
+        formule3ingredients: {
+        label: "2 tartine salée",
+        type: "multi",
+    max: 2,
+        choices: [
+            { name: "campagnarde"},
+            { name: "méditerranéenne"},
+            { name: "veggan"},
+            { name: "campagnarde x2"},
+            { name: "méditerranéenne x2"},
+            { name: "veggan x2"},
+            ]
+    },
+      formule3ingredients2:{
+         label: "2 dessert",
+     type: "multi",
+    max: 2,
+    choices: [
+        {name: "crumble"},
+        {name: "gateau choco"},
+        {name: "tarte tatin"},
+        {name: "crumble x2"},
+        {name: "gateau choco x2"},
+        {name: "tarte tatin x2"}, ]
+},
+    formule3ingredients3:{
+         label: "2 boisson",
+     type: "multi",
+    max: 2,
+    choices: [
+        {name: "coffee ou latte(froid)"},
+        {name: "thé glacé"},
+        {name: "jus de fruit"},
+           {name: "coffee ou latte(froid) x2"},
+        {name: "thé glacéx2"},
+        {name: "jus de fruit x2"}, ]
+   } 
+};
 const categoryLabels = {
     sales: "Suppléments salés",
     sucres: "Suppléments sucrés",
@@ -261,8 +299,9 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','sales','formule1ingredients2','formule1ingredients3'],
+    formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
+    formule3: ['fomule3ingredients','formule3ingredients2','formule3ingredients3'],
 };
 
 const supplementsCatalog = {
