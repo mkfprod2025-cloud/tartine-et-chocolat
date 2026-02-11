@@ -1,4 +1,3 @@
-/* Reset et variables */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +21,6 @@ body {
     position: relative;
 }
 
-/* Fond d'écran */
 .background-image {
     position: fixed;
     top: 0;
@@ -34,19 +32,18 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-    /* Overlay pour améliorer la lisibilité */
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.15);
-    }
 }
 
-/* Conteneur principal */
+.background-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -55,7 +52,6 @@ body {
     z-index: 1;
 }
 
-/* En-tête */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -76,11 +72,14 @@ header {
 
 .tagline {
     font-size: 2.8rem;
-    color: #ffff00
- ;
     margin-top: 10px;
-    font-weight: 300;
-    font-style: Pirata One ;
+    font-weight: 400;
+    font-family: 'Parkplace', 'Times New Roman', serif;
+    background: linear-gradient(180deg, #d7ecff 0%, #7cb7ff 40%, #1f5fae 70%, #c2d5ec 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(20, 66, 122, 0.45);
 }
 
 .main-title {
@@ -100,7 +99,6 @@ header {
     line-height: 1.8;
 }
 
-/* Navigation par onglets */
 .tabs {
     display: flex;
     justify-content: center;
@@ -138,7 +136,6 @@ header {
     border-color: var(--secondary-color);
 }
 
-/* Contenu des onglets */
 .tab-content {
     background: rgba(255, 255, 255, 0.75);
     padding: 30px;
@@ -167,7 +164,6 @@ header {
     }
 }
 
-/* Grilles */
 .grid {
     display: grid;
     gap: 25px;
@@ -186,7 +182,6 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-/* Cartes produits */
 .card {
     background: white;
     border-radius: 12px;
@@ -218,7 +213,6 @@ header {
     font-weight: 600;
 }
 
-/* Section Commander */
 .order-section {
     text-align: center;
     margin-top: 50px;
@@ -245,6 +239,12 @@ header {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
+.order-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .secondary-actions {
     margin-top: 20px;
     display: flex;
@@ -261,7 +261,7 @@ header {
 
 .info-pane {
     text-align: center;
-    padding: 80px 20px;
+    padding: 30px 20px;
 }
 
 .info-pane h2 {
@@ -275,7 +275,43 @@ header {
     color: #666;
 }
 
-/* Modals */
+.supplements-note {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.supplements-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    text-align: left;
+}
+
+.supplements-group {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 16px;
+}
+
+.supplements-group h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.supplements-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.supplements-group li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -312,11 +348,15 @@ header {
 }
 
 .product-modal {
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .order-modal {
     max-width: 700px;
+}
+
+.takeaway-modal {
+    max-width: 760px;
 }
 
 .close {
@@ -333,7 +373,6 @@ header {
     color: var(--secondary-color);
 }
 
-/* Modal Options de commande */
 .order-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -373,32 +412,69 @@ header {
     font-size: 1rem;
 }
 
-/* Modal À Emporter */
 .contact-info {
-    text-align: center;
-    margin-top: 30px;
+    text-align: left;
+    margin: 18px 0;
+    background: #f7f4ef;
+    border-radius: 12px;
+    padding: 14px;
 }
 
 .contact-info p {
-    margin: 15px 0;
+    margin: 6px 0;
     color: #555;
-    font-size: 1.1rem;
 }
 
-.phone-number {
-    font-size: 2rem !important;
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.cart-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.remove-cart-item {
+    border: none;
+    border-radius: 8px;
+    background: #fce7e7;
+    color: #8f1f1f;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.empty-cart {
+    color: #777;
+    margin-top: 10px;
+}
+
+.cart-total {
+    margin-top: 14px;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: var(--secondary-color) !important;
-    margin: 25px 0 !important;
+    color: var(--secondary-color);
 }
 
-.info-text {
-    font-style: italic;
-    color: #888 !important;
-    margin-top: 20px !important;
+.whatsapp-button {
+    margin-top: 15px;
+    width: 100%;
+    font-size: 1rem;
+    background: #1d8f3a;
 }
 
-/* Modal Produit */
+.whatsapp-button:hover {
+    background: #23a846;
+}
+
 .product-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -422,14 +498,6 @@ header {
     border-radius: 10px;
 }
 
-.product-details img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
 .product-info h2 {
     color: var(--secondary-color);
     margin-bottom: 20px;
@@ -438,19 +506,47 @@ header {
 
 .product-info p {
     color: #666;
-    line-height: 1.8;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
 }
 
 .price {
     font-size: 1.8rem !important;
     font-weight: 700;
     color: var(--primary-color) !important;
-    margin-top: 25px !important;
+    margin-top: 20px !important;
 }
 
-/* Responsive */
+.supplement-selectors {
+    margin-top: 12px;
+}
+
+.add-line {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.add-line label {
+    color: #4f3f2d;
+    font-weight: 600;
+}
+
+.add-line select,
+.add-line input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+.add-cart-button {
+    margin-top: 16px;
+    width: 100%;
+    font-size: 1rem;
+}
+
 @media (max-width: 768px) {
     .logo {
         max-width: 80%;
@@ -458,15 +554,7 @@ header {
     }
 
     .tagline {
-        font-size: 1.1rem;
-    }
-
-    .main-title {
-        font-size: 2rem;
-    }
-
-    .description {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     .tab-button {
@@ -482,13 +570,9 @@ header {
         height: 250px;
     }
 
-    .product-details img {
-        height: 250px;
-    }
-
     .order-button {
-        padding: 15px 40px;
-        font-size: 1.2rem;
+        padding: 15px 35px;
+        font-size: 1.1rem;
     }
 
     .secondary-order-button {

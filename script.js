@@ -1,12 +1,10 @@
-// Données des produits
 const productsData = {
-    // Délices
     delice1: {
         title: "Crumble Pomme et Cannelle",
         description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
         price: "10€",
         image: "assets/crumblevid.mp4",
-        media_type: "video" // ou "video"
+        media_type: "video"
     },
     delice2: {
         title: "gateau au chocolat",
@@ -17,7 +15,7 @@ const productsData = {
     },
     delice3: {
         title: "Tarte Tatin",
-        description:"la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
+        description: "la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
         price: "13.00€",
         image: "assets/tatinvid.mp4",
         media_type: "video"
@@ -43,44 +41,40 @@ const productsData = {
         image: "assets/vegivid.mp4",
         media_type: "video"
     },
-
-    // Boissons
     boisson1: {
-        title: "Nos spécialité de café glacé ",
-        description: "ice coffee, latté, frappé sucré celon votre convenance ",
+        title: "Nos spécialité de café glacé",
+        description: "ice coffee, latté, frappé sucré celon votre convenance",
         price: "de 7€ a 12€",
         image: "assets/coffeevid.mp4",
-             media_type: "video"
+        media_type: "video"
     },
     boisson2: {
         title: "Thé Glacé Maison",
         description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
         price: "8.50€",
         image: "assets/icetvid.mp4",
-         media_type: "video"
+        media_type: "video"
     },
     boisson3: {
-        title: "les jus de fruits centrifugés ",
-        description: "pommes, carottes, oranges pressées à la commande ",
-        price: "8.5€", 
+        title: "les jus de fruits centrifugés",
+        description: "pommes, carottes, oranges pressées à la commande",
+        price: "8.5€",
         image: "assets/centrivid.mp4",
-          media_type: "video"
+        media_type: "video"
     },
     boisson4: {
-        title: "nos smoothies aux fruits ",
+        title: "nos smoothies aux fruits",
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
         price: "9.50€",
         image: "assets/smootvid.mp4",
         media_type: "video"
     },
-
-    // Découvertes
     decouverte1: {
         title: "La Tarte aux myrtilles",
         description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
         price: "11€",
         image: "assets/myrtvid.mp4",
-          media_type: "video"
+        media_type: "video"
     },
     decouverte2: {
         title: "La soupe de saison",
@@ -97,14 +91,12 @@ const productsData = {
         media_type: "video"
     },
     decouverte4: {
-        title: "notre jus star du moment ",
+        title: "notre jus star du moment",
         description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
         price: "9.50€",
         image: "assets/jusmoisvid.mp4",
-        media_type: "video"     
+        media_type: "video"
     },
-
-    // Formules
     formule1: {
         title: "Formule équilibré",
         description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
@@ -121,95 +113,209 @@ const productsData = {
     },
     formule3: {
         title: "Formule Brunch Club",
-        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
+        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise",
         price: "55€",
         image: "assets/form3vid.mp4",
         media_type: "video"
     }
 };
 
-// Gestion des onglets
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabPanes = document.querySelectorAll('.tab-pane');
+const supplementsCatalog = {
+    sales: [
+        { name: "Avocat", price: 1.5 },
+        { name: "Oeuf mollet", price: 1.8 },
+        { name: "Saumon fumé", price: 3.5 },
+        { name: "Fromage frais", price: 1.2 }
+    ],
+    sucres: [
+        { name: "Chantilly", price: 1.2 },
+        { name: "Coulis chocolat", price: 1.5 },
+        { name: "Fruits rouges", price: 2.5 },
+        { name: "Caramel beurre salé", price: 1.8 }
+    ],
+    boissons: [
+        { name: "Lait végétal", price: 0.8 },
+        { name: "Sirop maison", price: 0.9 },
+        { name: "Shot expresso", price: 1.3 },
+        { name: "Perles de fruits", price: 1.7 }
+    ]
+};
+
+const categoryLabels = {
+    sales: "Suppléments salés",
+    sucres: "Suppléments sucrés",
+    boissons: "Suppléments boissons"
+};
+
+const whatsappNumber = "33123456789";
+let currentProductId = null;
+let cart = [];
+
+const parsePrice = (priceText) => {
+    const matches = priceText.match(/\d+(?:[.,]\d+)?/g);
+    if (!matches || matches.length === 0) {
+        return 0;
+    }
+    return Number.parseFloat(matches[0].replace(',', '.'));
+};
+
+const formatPrice = (value) => `${value.toFixed(2).replace('.', ',')}€`;
 
 const openTab = (tabId) => {
-    tabPanes.forEach(pane => pane.classList.remove('active'));
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    const tabButtons = document.querySelectorAll('.tab-button');
 
+    tabPanes.forEach((pane) => pane.classList.remove('active'));
     const targetPane = document.getElementById(tabId);
     if (targetPane) {
         targetPane.classList.add('active');
     }
 
-    tabButtons.forEach(btn => {
+    tabButtons.forEach((btn) => {
         const isActive = btn.getAttribute('data-tab') === tabId;
         btn.classList.toggle('active', isActive);
     });
 };
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-tab');
-        openTab(tabId);
-    });
-});
-
-const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
-secondaryTabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-target-tab');
-        openTab(tabId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
-
-// Gestion des modals
-const productModal = document.getElementById('productModal');
-const orderModal = document.getElementById('orderModal');
-const takeawayModal = document.getElementById('takeawayModal');
-
-// Boutons de fermeture
-const closeButtons = document.querySelectorAll('.close');
-closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Pause vidéo si elle existe
-        const video = document.querySelector('#modalMediaContainer video');
-        if (video) {
-            video.pause();
-        }
-        
-        productModal.style.display = 'none';
-        orderModal.style.display = 'none';
-        takeawayModal.style.display = 'none';
-    });
-});
-
-// Fermer en cliquant à l'extérieur
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-        // Pause vidéo si elle existe
-        const video = document.querySelector('#modalMediaContainer video');
-        if (video) {
-            video.pause();
-        }
-        
-        e.target.style.display = 'none';
+const renderSupplementsListing = () => {
+    const listing = document.getElementById('supplementsListing');
+    if (!listing) {
+        return;
     }
-});
 
-// Gestion des cartes produits
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const productId = card.getAttribute('data-product');
-        const product = productsData[productId];
+    const sections = Object.entries(supplementsCatalog).map(([key, values]) => {
+        const items = values.map((item) => `<li><span>${item.name}</span><strong>${formatPrice(item.price)}</strong></li>`).join('');
+        return `
+            <div class="supplements-group">
+                <h3>${categoryLabels[key]}</h3>
+                <ul>${items}</ul>
+            </div>
+        `;
+    }).join('');
 
-        if (product) {
+    listing.innerHTML = `
+        <p class="supplements-note">Listing complet des suppléments et tarifs (modifiable facilement dans le fichier script).</p>
+        <div class="supplements-groups">${sections}</div>
+    `;
+};
+
+const buildSupplementSelectors = () => {
+    const selectorHost = document.getElementById('supplementSelectors');
+    selectorHost.innerHTML = '';
+
+    Object.entries(supplementsCatalog).forEach(([key, values]) => {
+        const row = document.createElement('div');
+        row.className = 'add-line';
+
+        const label = document.createElement('label');
+        label.textContent = categoryLabels[key];
+        label.setAttribute('for', `supplement-${key}`);
+
+        const select = document.createElement('select');
+        select.id = `supplement-${key}`;
+        select.dataset.category = key;
+
+        const noOption = document.createElement('option');
+        noOption.value = '';
+        noOption.textContent = 'Aucun';
+        select.appendChild(noOption);
+
+        values.forEach((item) => {
+            const option = document.createElement('option');
+            option.value = JSON.stringify(item);
+            option.textContent = `${item.name} (+${formatPrice(item.price)})`;
+            select.appendChild(option);
+        });
+
+        row.appendChild(label);
+        row.appendChild(select);
+        selectorHost.appendChild(row);
+    });
+};
+
+const renderCart = () => {
+    const cartItems = document.getElementById('cartItems');
+    const emptyState = document.getElementById('cartEmptyState');
+    const totalNode = document.getElementById('cartTotal');
+    const sendButton = document.getElementById('sendWhatsAppBtn');
+
+    cartItems.innerHTML = '';
+
+    if (cart.length === 0) {
+        emptyState.style.display = 'block';
+        totalNode.textContent = 'Total : 0,00€';
+        sendButton.disabled = true;
+        return;
+    }
+
+    emptyState.style.display = 'none';
+
+    cart.forEach((line, index) => {
+        const lineNode = document.createElement('div');
+        lineNode.className = 'cart-line';
+
+        const supplementsText = line.supplements.length > 0
+            ? `Suppléments : ${line.supplements.map((item) => item.name).join(', ')}`
+            : 'Sans supplément';
+
+        lineNode.innerHTML = `
+            <div>
+                <p><strong>${line.quantity} × ${line.title}</strong></p>
+                <p>${supplementsText}</p>
+                <p>${formatPrice(line.total)}</p>
+            </div>
+            <button data-index="${index}" class="remove-cart-item">Retirer</button>
+        `;
+
+        cartItems.appendChild(lineNode);
+    });
+
+    const total = cart.reduce((sum, line) => sum + line.total, 0);
+    totalNode.textContent = `Total : ${formatPrice(total)}`;
+    sendButton.disabled = false;
+
+    document.querySelectorAll('.remove-cart-item').forEach((button) => {
+        button.addEventListener('click', () => {
+            const index = Number.parseInt(button.dataset.index, 10);
+            cart.splice(index, 1);
+            renderCart();
+        });
+    });
+};
+
+const closeAllModals = () => {
+    const modalIds = ['productModal', 'orderModal', 'takeawayModal'];
+    modalIds.forEach((id) => {
+        const node = document.getElementById(id);
+        if (node) {
+            node.style.display = 'none';
+        }
+    });
+
+    const video = document.querySelector('#modalMediaContainer video');
+    if (video) {
+        video.pause();
+    }
+};
+
+const setupProductCards = () => {
+    const productModal = document.getElementById('productModal');
+
+    document.querySelectorAll('.card').forEach((card) => {
+        card.addEventListener('click', () => {
+            const productId = card.getAttribute('data-product');
+            const product = productsData[productId];
+            if (!product) {
+                return;
+            }
+
+            currentProductId = productId;
+            buildSupplementSelectors();
+            document.getElementById('modalQuantity').value = '1';
+
             const modalMediaContainer = document.getElementById('modalMediaContainer');
-            
-            // Vider le conteneur
             modalMediaContainer.innerHTML = '';
-            
-            // Créer l'élément approprié selon le type de média
+
             if (product.media_type === 'video') {
                 const video = document.createElement('video');
                 video.src = product.image;
@@ -217,65 +323,149 @@ cards.forEach(card => {
                 video.autoplay = true;
                 video.loop = true;
                 video.muted = true;
-                video.id = 'modalMedia';
                 modalMediaContainer.appendChild(video);
             } else {
                 const img = document.createElement('img');
                 img.src = product.image;
                 img.alt = product.title;
-                img.id = 'modalMedia';
                 modalMediaContainer.appendChild(img);
             }
-            
+
             document.getElementById('modalTitle').textContent = product.title;
             document.getElementById('modalDescription').textContent = product.description;
             document.getElementById('modalPrice').textContent = product.price;
-
             productModal.style.display = 'block';
-        }
+        });
     });
-});
-
-// Bouton Commander
-const orderBtn = document.getElementById('orderBtn');
-orderBtn.addEventListener('click', () => {
-    orderModal.style.display = 'block';
-});
-
-// Options de commande
-const takeawayOption = document.getElementById('takeawayOption');
-const deliveryOption = document.getElementById('deliveryOption');
-
-takeawayOption.addEventListener('click', () => {
-    orderModal.style.display = 'none';
-    takeawayModal.style.display = 'block';
-});
-
-deliveryOption.addEventListener('click', () => {
-    // Redirection vers Uber Eats
-    // Remplacer l'URL par votre véritable lien Uber Eats
-    window.open('https://www.ubereats.com/', '_blank');
-    orderModal.style.display = 'none';
-});
-
-// Animation au scroll (optionnel)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+const setupOrderFlow = () => {
+    const orderModal = document.getElementById('orderModal');
+    const takeawayModal = document.getElementById('takeawayModal');
+
+    document.getElementById('orderBtn').addEventListener('click', () => {
+        orderModal.style.display = 'block';
+    });
+
+    document.getElementById('takeawayOption').addEventListener('click', () => {
+        orderModal.style.display = 'none';
+        takeawayModal.style.display = 'block';
+        renderCart();
+    });
+
+    document.getElementById('deliveryOption').addEventListener('click', () => {
+        window.open('https://www.ubereats.com/', '_blank');
+        orderModal.style.display = 'none';
+    });
+};
+
+const setupAddToCart = () => {
+    document.getElementById('addToCartBtn').addEventListener('click', () => {
+        if (!currentProductId) {
+            return;
+        }
+
+        const product = productsData[currentProductId];
+        const quantity = Math.max(1, Number.parseInt(document.getElementById('modalQuantity').value, 10) || 1);
+        const basePrice = parsePrice(product.price);
+
+        const selectedSupplements = Array.from(document.querySelectorAll('#supplementSelectors select'))
+            .map((select) => select.value)
+            .filter((value) => value)
+            .map((value) => JSON.parse(value));
+
+        const supplementsTotal = selectedSupplements.reduce((sum, item) => sum + item.price, 0);
+        const lineTotal = (basePrice + supplementsTotal) * quantity;
+
+        cart.push({
+            title: product.title,
+            quantity,
+            supplements: selectedSupplements,
+            total: lineTotal
+        });
+
+        closeAllModals();
+        const takeawayModal = document.getElementById('takeawayModal');
+        takeawayModal.style.display = 'block';
+        renderCart();
+    });
+};
+
+const setupWhatsAppSend = () => {
+    document.getElementById('sendWhatsAppBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
+            return;
+        }
+
+        const total = cart.reduce((sum, line) => sum + line.total, 0);
+        const content = cart.map((line) => {
+            const extras = line.supplements.length > 0
+                ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
+                : '';
+            return `- ${line.quantity} x ${line.title}${extras} = ${formatPrice(line.total)}`;
+        }).join('\n');
+
+        const message = `Bonjour Tartine et Chocolat,%0AJe souhaite commander à emporter :%0A${content}%0A%0ATotal estimé : ${formatPrice(total)}%0AMerci !`;
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    });
+};
+
+const setupTabsAndButtons = () => {
+    document.querySelectorAll('.tab-button').forEach((button) => {
+        button.addEventListener('click', () => {
+            openTab(button.getAttribute('data-tab'));
+        });
+    });
+
+    document.querySelectorAll('[data-target-tab]').forEach((button) => {
+        button.addEventListener('click', () => {
+            openTab(button.getAttribute('data-target-tab'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+};
+
+const setupModalClosing = () => {
+    document.querySelectorAll('.close').forEach((btn) => {
+        btn.addEventListener('click', closeAllModals);
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
         }
     });
-}, observerOptions);
+};
 
-cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
-});
+const setupCardAnimation = () => {
+    const cards = document.querySelectorAll('.card');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    });
+};
+
+renderSupplementsListing();
+setupTabsAndButtons();
+setupModalClosing();
+setupProductCards();
+setupOrderFlow();
+setupAddToCart();
+setupWhatsAppSend();
+setupCardAnimation();
