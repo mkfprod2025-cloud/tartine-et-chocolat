@@ -292,7 +292,8 @@ const supplementsByProduct = {
  decouverte3: ['boissons'],
  decouverte4: ['boissons'],
     formule1: ['sales','sucres','boissons'],
-    formule2: ['sucres','boissons']
+    formule2: ['sucres','boissons'],
+    formule3: ['sales','sucres','boissons'],
 };
 const optionsByProduct = {
     boisson1: ['boisson1Ingredients'],
