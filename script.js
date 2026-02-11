@@ -1,222 +1,281 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tartine et Chocolat</title>
-    <meta property="og:type" content="website">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mkfprod2025-cloud.github.io/tartine-et-chocolat/">
-<meta property="og:title" content="Tartine et Chocolat">
-<meta property="og:description" content="Le craquant qui fond, le bonheur qui se tartine.">
+// Données des produits
+const productsData = {
+    // Délices
+    delice1: {
+        title: "Crumble Pomme et Cannelle",
+        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
+        price: "10€",
+        image: "assets/crumblevid.mp4",
+        media_type: "video" // ou "video"
+    },
+    delice2: {
+        title: "gateau au chocolat",
+        description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.",
+        price: "11€",
+        image: "assets/fondantchovid.mp4",
+        media_type: "video"
+    },
+    delice3: {
+        title: "Tarte Tatin",
+        description:"la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
+        price: "13.00€",
+        image: "assets/tatinvid.mp4",
+        media_type: "video"
+    },
+    delice4: {
+        title: "La Tartine Campagnarde",
+        description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.",
+        price: "13€",
+        image: "assets/campavid.mp4",
+        media_type: "video"
+    },
+    delice5: {
+        title: "La Tartine Méditerranéenne",
+        description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
+        price: "16€",
+        image: "assets/maraivid.mp4",
+        media_type: "video"
+    },
+    delice6: {
+        title: "La Maraichère",
+        description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
+        price: "12€",
+        image: "assets/vegivid.mp4",
+        media_type: "video"
+    },
 
-<meta property="og:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+    // Boissons
+    boisson1: {
+        title: "Nos spécialité de café glacé ",
+        description: "ice coffee, latté, frappé sucré celon votre convenance ",
+        price: "de 7€ a 12€",
+        image: "assets/coffeevid.mp4",
+             media_type: "video"
+    },
+    boisson2: {
+        title: "Thé Glacé Maison",
+        description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
+        price: "8.50€",
+        image: "assets/icetvid.mp4",
+         media_type: "video"
+    },
+    boisson3: {
+        title: "les jus de fruits centrifugés ",
+        description: "pommes, carottes, oranges pressées à la commande ",
+        price: "8.5€", 
+        image: "assets/centrivid.mp4",
+          media_type: "video"
+    },
+    boisson4: {
+        title: "nos smoothies aux fruits ",
+        description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
+        price: "9.50€",
+        image: "assets/smootvid.mp4",
+        media_type: "video"
+    },
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tartine et Chocolat">
-<meta name="twitter:description" content="Le craquant qui fond, le bonheur qui se tartine.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
+    // Découvertes
+    decouverte1: {
+        title: "La Tarte aux myrtilles",
+        description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
+        price: "11€",
+        image: "assets/myrtvid.mp4",
+          media_type: "video"
+    },
+    decouverte2: {
+        title: "La soupe de saison",
+        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
+        price: "10.50€",
+        image: "assets/soupvid.mp4",
+        media_type: "video"
+    },
+    decouverte3: {
+        title: "matcha latte",
+        description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples",
+        price: "9.50€",
+        image: "assets/matchavid.mp4",
+        media_type: "video"
+    },
+    decouverte4: {
+        title: "notre jus star du moment ",
+        description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
+        price: "9.50€",
+        image: "assets/jusmoisvid.mp4",
+        media_type: "video"     
+    },
 
-<link rel="icon" type="image/jpeg" href="assets/logoTc.jpg">
-<link rel="shortcut icon" type="image/jpeg" href="assets/logoTc.jpg">
-<link rel="apple-touch-icon" href="assets/logoTc.jpg">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/logoTc.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Fond d'écran -->
-    <div class="background-image"></div>
+    // Formules
+    formule1: {
+        title: "Formule équilibré",
+        description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
+        price: "17€",
+        image: "assets/form1couv.png",
+        media_type: "image"
+    },
+    formule2: {
+        title: "Formule Gouté à deux",
+        description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
+        price: "24€",
+        image: "assets/form2vid.mp4",
+        media_type: "video"
+    },
+    formule3: {
+        title: "Formule Brunch Club",
+        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
+        price: "55€",
+        image: "assets/form3vid.mp4",
+        media_type: "video"
+    }
+};
 
-    <!-- Conteneur principal -->
-    <div class="container">
-        <!-- En-tête -->
-        <header>
-            <img src="assets/logoTc.jpg" alt="Logo" class="logo">
-            <p class="tagline">Le craquant qui fond, le bonheur qui se tartine.</p>
-        </header>
+// Gestion des onglets
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabPanes = document.querySelectorAll('.tab-pane');
 
-        <!-- Navigation par onglets -->
-        <nav class="tabs">
-            <button class="tab-button active" data-tab="delices">Nos Délices</button>
-            <button class="tab-button" data-tab="boissons">Nos Boissons</button>
-            <button class="tab-button" data-tab="decouvertes">Nos Découvertes</button>
-            <button class="tab-button" data-tab="formules">Nos Formules</button>
-        </nav>
+const openTab = (tabId) => {
+    tabPanes.forEach(pane => pane.classList.remove('active'));
 
-        <!-- Contenu des onglets -->
-        <div class="tab-content">
-            <!-- Onglet Nos Délices (6 cases) -->
-            <div id="delices" class="tab-pane active">
-                <div class="grid grid-6">
-                    <div class="card" data-product="delice1">
-                        <img src="assets/crumblecouv.jpg" alt="Délice 1">
-                        <h3>Crumble Pommes Canelle</h3>
-                    </div>
-                    <div class="card" data-product="delice2">
-                        <img src="assets/fondantchoccouv.jpg" alt="Délice 2">
-                        <h3>gateaux au chocolat</h3>
-                    </div>
-                    <div class="card" data-product="delice3">
-                        <img src="assets/tatincouv.jpg" alt="Délice 3">
-                        <h3>Tarte Tatin </h3>
-                    </div>
-                    <div class="card" data-product="delice4">
-                        <img src="assets/campacouv.jpg" alt="Délice 4">
-                        <h3>La Tartine Campagnarde</h3>
-                    </div>
-                    <div class="card" data-product="delice5">
-                        <img src="assets/maraicouv.jpg" alt="Délice 5">
-                        <h3>La Tartine Méditeranéenne</h3>
-                    </div>
-                    <div class="card" data-product="delice6">
-                        <img src="assets/vegicouv.jpg" alt="Délice 6">
-                        <h3>la maraichère(végé)</h3>
-                    </div>
-                </div>
-            </div>
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
 
-            <!-- Onglet Nos Boissons (4 cases) -->
-            <div id="boissons" class="tab-pane">
-                <div class="grid grid-4">
-                    <div class="card" data-product="boisson1">
-                        <img src="assets/coffeecouv.jpg" alt="Boisson 1">
-                        <h3>coffee shop</h3>
-                    </div>
-                    <div class="card" data-product="boisson2">
-                        <img src="assets/icetcouv.jpg" alt="Boisson 2">
-                        <h3>Thé Glacé Maison</h3>
-                    </div>
-                    <div class="card" data-product="boisson3">
-                        <img src="assets/centricouv.jpg" alt="Boisson 3">
-                        <h3>jus de fruits et légumes pressés</h3>
-                    </div>
-                    <div class="card" data-product="boisson4">
-                        <img src="assets/smootcouv.jpg" alt="Boisson 4">
-                        <h3> Les Smoothies</h3>
-                    </div>
-                </div>
-            </div>
+    tabButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+    });
+};
 
-            <!-- Onglet Nos Découvertes (4 cases) -->
-            <div id="decouvertes" class="tab-pane">
-                <div class="grid grid-4">
-                    <div class="card" data-product="decouverte1">
-                        <img src="assets/myrtcouv.jpg" alt="Découverte 1">
-                        <h3>Tarte aux Myrtilles</h3>
-                    </div>
-                    <div class="card" data-product="decouverte2">
-                        <img src="assets/soupcouv.jpg" alt="Découverte 2">
-                        <h3>La soupe de saison</h3>
-                    </div>
-                    <div class="card" data-product="decouverte3">
-                        <img src="assets/matchacouv.jpg" alt="Découverte 3">
-                        <h3>Matcha latte</h3>
-                    </div>
-                    <div class="card" data-product="decouverte4">
-                        <img src="assets/jusmoiscouv.jpg" alt="Découverte 4">
-                        <h3>Le jus du moment</h3>
-                    </div>
-                </div>
-            </div>
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        openTab(tabId);
+    });
+});
 
-            <!-- Onglet Nos Formules (3 cases) -->
-            <div id="formules" class="tab-pane">
-                <div class="grid grid-3">
-                    <div class="card" data-product="formule1">
-                        <img src="assets/form1couv.png" alt="Formule 1">
-                        <h3>Formule equilibrée</h3>
-                    </div>
-                    <div class="card" data-product="formule2">
-                        <img src="assets/form2couv.jpg" alt="Formule 2">
-                        <h3>formule gouter a 2</h3>
-                    </div>
-                    <div class="card" data-product="formule3">
-                        <img src="assets/form3couv.jpg" alt="Formule 3">
-                        <h3>formule Brunch Club</h3>
-                    </div>
-                </div>
-            </div>
+const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
+secondaryTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-target-tab');
+        openTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
 
-            <div id="allergenes" class="tab-pane info-pane">
-                <h2>Allergènes</h2>
-                <p>Contenu à venir.</p>
-            </div>
+// Gestion des modals
+const productModal = document.getElementById('productModal');
+const orderModal = document.getElementById('orderModal');
+const takeawayModal = document.getElementById('takeawayModal');
 
-            <div id="tracabilite" class="tab-pane info-pane">
-                <h2>Traçabilité</h2>
-                <p>Contenu à venir.</p>
-            </div>
+// Boutons de fermeture
+const closeButtons = document.querySelectorAll('.close');
+closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Pause vidéo si elle existe
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+        
+        productModal.style.display = 'none';
+        orderModal.style.display = 'none';
+        takeawayModal.style.display = 'none';
+    });
+});
 
-            <div id="supplements" class="tab-pane info-pane">
-                <h2>Suppléments tarifaires</h2>
-                <p>Contenu à venir.</p>
-            </div>
-        </div>
+// Fermer en cliquant à l'extérieur
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        // Pause vidéo si elle existe
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+        
+        e.target.style.display = 'none';
+    }
+});
 
-        <!-- Bouton Commander -->
-        <div class="order-section">
-            <button class="order-button" id="orderBtn">Commander</button>
-            <div class="secondary-actions">
-                <button class="order-button secondary-order-button" data-target-tab="allergenes">Allergènes</button>
-                <button class="order-button secondary-order-button" data-target-tab="tracabilite">Traçabilité</button>
-                <button class="order-button secondary-order-button" data-target-tab="supplements">Suppléments tarifaires</button>
-            </div>
-        </div>
-    </div>
+// Gestion des cartes produits
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const productId = card.getAttribute('data-product');
+        const product = productsData[productId];
 
-    <!-- Modal de choix de commande -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content order-modal">
-            <span class="close">&times;</span>
-            <h2>Choisissez votre mode de commande</h2>
-            <div class="order-options">
-                <div class="order-option" id="takeawayOption">
-                    <div class="option-icon">📦</div>
-                    <h3>À Emporter</h3>
-                    <p>Appelez-nous pour passer commande</p>
-                </div>
-                <div class="order-option" id="deliveryOption">
-                    <div class="option-icon">🚴</div>
-                    <h3>À Domicile</h3>
-                    <p>Commandez via Uber Eats</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        if (product) {
+            const modalMediaContainer = document.getElementById('modalMediaContainer');
+            
+            // Vider le conteneur
+            modalMediaContainer.innerHTML = '';
+            
+            // Créer l'élément approprié selon le type de média
+            if (product.media_type === 'video') {
+                const video = document.createElement('video');
+                video.src = product.image;
+                video.controls = true;
+                video.autoplay = true;
+                video.loop = true;
+                video.muted = true;
+                video.id = 'modalMedia';
+                modalMediaContainer.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = product.image;
+                img.alt = product.title;
+                img.id = 'modalMedia';
+                modalMediaContainer.appendChild(img);
+            }
+            
+            document.getElementById('modalTitle').textContent = product.title;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalPrice').textContent = product.price;
 
-    <!-- Modal À Emporter -->
-    <div id="takeawayModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>À Emporter</h2>
-            <div class="contact-info">
-                <p><strong>Emplacement :</strong></p>
-                <p>123 Rue de la Gourmandise<br>75001 Paris</p>
-                <p><strong>Numéro de téléphone :</strong></p>
-                <p class="phone-number">01 23 45 67 89</p>
-                <p class="info-text">Appelez-nous pour passer votre commande</p>
-            </div>
-        </div>
-    </div>
+            productModal.style.display = 'block';
+        }
+    });
+});
 
-    <!-- Modal Produit -->
-    <div id="productModal" class="modal">
-        <div class="modal-content product-modal">
-            <span class="close">&times;</span>
-            <div class="product-details">
-                <div id="modalMediaContainer"></div>
-                <div class="product-info">
-                    <h2 id="modalTitle"></h2>
-                    <p id="modalDescription"></p>
-                    <p class="price" id="modalPrice"></p>
-                </div>
-            </div>
-        </div>
-    </div>
+// Bouton Commander
+const orderBtn = document.getElementById('orderBtn');
+orderBtn.addEventListener('click', () => {
+    orderModal.style.display = 'block';
+});
 
-    <script src="script.js"></script>
-</body>
-</html>
+// Options de commande
+const takeawayOption = document.getElementById('takeawayOption');
+const deliveryOption = document.getElementById('deliveryOption');
+
+takeawayOption.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+    takeawayModal.style.display = 'block';
+});
+
+deliveryOption.addEventListener('click', () => {
+    // Redirection vers Uber Eats
+    // Remplacer l'URL par votre véritable lien Uber Eats
+    window.open('https://www.ubereats.com/', '_blank');
+    orderModal.style.display = 'none';
+});
+
+// Animation au scroll (optionnel)
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+});
