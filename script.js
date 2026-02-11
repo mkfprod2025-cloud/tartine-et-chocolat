@@ -167,87 +167,51 @@ const categoryLabels = {
     boissons: "Suppléments boissons"
 };
 
-const supplementsByProduct = {
-    delice1: ['sucres'],
-    delice2: ['sucres'],
-    delice3: ['sucres'],
-    boisson1: ['boissons'],
-    decouverte1: ['sucres'],
-    decouverte2: ['sales'],
-    decouverte3: ['boissons']
-};
+
 
 const productOptionsCatalog = {
-    iceHotSwitch: {
-        label: 'Température',
-        type: 'switch',
-        choices: ['Ice', 'Hot']
-    },
-    teaFlavor: {
-        label: 'Saveur',
-        type: 'single',
+    defaultTemperature: {
+        label: "Température",
+        type: "single",
         choices: [
-            { name: 'Menthe / Jasmin', price: 0 },
-            { name: 'Rooibos Pêche', price: 0 },
-            { name: 'Fruits Rouges / Miel', price: 0 }
+            { name: "Chaud", price: 0 },
+            { name: "Froid", price: 0 }
         ]
     },
-    juiceIngredients: {
-        label: 'Ingrédients (3 max)',
-        type: 'multi',
+    boisson3Ingredients: {
+        label: "Ingrédients (3 max)",
+        type: "multi",
         max: 3,
         choices: [
-            { name: 'Pomme', price: 0 },
-            { name: 'Carotte', price: 0 },
-            { name: 'Orange', price: 0 },
-            { name: 'Concombre', price: 0 },
-            { name: 'Ananas', price: 0 },
-            { name: 'Gingembre', price: 0 },
-            { name: 'Citron', price: 0 },
-            { name: 'Menthe', price: 0 }
+            { name: "Pomme", price: 0 },
+            { name: "Carotte", price: 0 },
+            { name: "Orange", price: 0 },
+            { name: "Concombre", price: 0 },
+            { name: "Ananas", price: 0 },
+            { name: "Gingembre", price: 0 },
+            { name: "Citron", price: 0 },
+            { name: "Menthe", price: 0 }
         ]
     }
 };
 
+const supplementsByProduct = {
+    delice4: ['sales'],
+    delice5: ['sales'],
+    delice6: ['sales'],
+    decouverte2: ['sales', 'sucres']
+};
+
 const optionsByProduct = {
-    delice1: ['iceHotSwitch'],
-    delice2: ['iceHotSwitch'],
-    delice3: ['iceHotSwitch'],
-    delice6: ['iceHotSwitch'],
-    boisson1: ['iceHotSwitch'],
-    boisson2: ['teaFlavor'],
-    boisson3: ['juiceIngredients'],
-    decouverte1: ['iceHotSwitch'],
-    decouverte2: ['iceHotSwitch'],
-    decouverte3: ['iceHotSwitch'],
-    decouverte4: ['iceHotSwitch']
+    boisson1: ['defaultTemperature'],
+    boisson2: ['defaultTemperature'],
+    boisson3: ['defaultTemperature', 'boisson3Ingredients'],
+    boisson4: ['defaultTemperature'],
+    decouverte3: ['defaultTemperature'],
+    decouverte4: ['defaultTemperature']
 };
 
-const formulaConfig = {
-    formule1: [
-        { label: 'Choix salé', type: 'sale' },
-        { label: 'Choix sucré', type: 'sucre' },
-        { label: 'Choix boisson', type: 'boisson' }
-    ],
-    formule2: [
-        { label: 'Pâtisserie 1', type: 'sucre' },
-        { label: 'Pâtisserie 2', type: 'sucre' },
-        { label: 'Boisson froide 1', type: 'boisson' },
-        { label: 'Boisson froide 2', type: 'boisson' },
-        { label: "Petit plus à partager", type: 'sale' }
-    ],
-    formule3: [
-        { label: 'Tartine salée 1', type: 'sale' },
-        { label: 'Tartine salée 2', type: 'sale' },
-        { label: 'Dessert 1', type: 'sucre' },
-        { label: 'Dessert 2', type: 'sucre' },
-        { label: 'Boisson 1', type: 'boisson' },
-        { label: 'Boisson 2', type: 'boisson' },
-        { label: 'Découverte surprise', type: 'decouverte' }
-    ]
-};
-
-const whatsappNumber = '33123456789';
+const whatsappNumber = "33123456789";
 let currentProductId = null;
 let cart = [];
 
@@ -304,6 +268,10 @@ const buildSupplementSelectors = (productId) => {
     selectorHost.innerHTML = '';
 
     const allowedCategories = supplementsByProduct[productId] || [];
+    if (allowedCategories.length === 0) {
+        return;
+    }
+
     allowedCategories.forEach((key) => {
         const values = supplementsCatalog[key] || [];
         const row = document.createElement('div');
@@ -342,60 +310,9 @@ const enforceIngredientLimit = (container, max) => {
     });
 };
 
-const getProductsByType = (type) => {
-    if (type === 'decouverte') {
-        return Object.entries(productsData)
-            .filter(([id]) => id.startsWith('decouverte'))
-            .map(([id, product]) => ({ id, product }));
-    }
-
-    return Object.entries(productsData)
-        .filter(([id, product]) => !id.startsWith('formule') && product.productType === type)
-        .map(([id, product]) => ({ id, product }));
-};
-
-const buildFormulaSelectors = (productId) => {
-    const host = document.getElementById('productOptionSelectors');
-    host.innerHTML = '';
-
-    const config = formulaConfig[productId] || [];
-    config.forEach((group, index) => {
-        const row = document.createElement('div');
-        row.className = 'add-line';
-
-        const label = document.createElement('label');
-        label.textContent = group.label;
-
-        const select = document.createElement('select');
-        select.dataset.optionType = 'formula';
-        select.dataset.groupLabel = group.label;
-
-        const placeholder = document.createElement('option');
-        placeholder.value = '';
-        placeholder.textContent = 'Sélectionner';
-        select.appendChild(placeholder);
-
-        getProductsByType(group.type).forEach(({ id, product }) => {
-            const option = document.createElement('option');
-            option.value = JSON.stringify({ id, name: product.title });
-            option.textContent = product.title;
-            select.appendChild(option);
-        });
-
-        row.appendChild(label);
-        row.appendChild(select);
-        host.appendChild(row);
-    });
-};
-
 const buildProductOptionSelectors = (productId) => {
     const optionsHost = document.getElementById('productOptionSelectors');
     optionsHost.innerHTML = '';
-
-    if (formulaConfig[productId]) {
-        buildFormulaSelectors(productId);
-        return;
-    }
 
     const optionKeys = optionsByProduct[productId] || [];
     optionKeys.forEach((optionKey) => {
@@ -411,43 +328,23 @@ const buildProductOptionSelectors = (productId) => {
         label.textContent = optionConfig.label;
         row.appendChild(label);
 
-        if (optionConfig.type === 'switch') {
-            const switchGroup = document.createElement('div');
-            switchGroup.className = 'toggle-switch';
-            switchGroup.dataset.optionType = 'switch';
-            switchGroup.dataset.optionLabel = optionConfig.label;
-
-            optionConfig.choices.forEach((choice, index) => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = `toggle-choice ${index === 0 ? 'active' : ''}`;
-                btn.textContent = choice;
-                btn.dataset.value = choice;
-                btn.addEventListener('click', () => {
-                    switchGroup.querySelectorAll('.toggle-choice').forEach((node) => node.classList.remove('active'));
-                    btn.classList.add('active');
-                });
-                switchGroup.appendChild(btn);
-            });
-
-            row.appendChild(switchGroup);
-        }
-
         if (optionConfig.type === 'single') {
             const select = document.createElement('select');
             select.dataset.optionType = 'single';
-            select.dataset.optionLabel = optionConfig.label;
+            select.dataset.optionKey = optionKey;
 
-            const placeholder = document.createElement('option');
-            placeholder.value = '';
-            placeholder.textContent = 'Sélectionner';
-            select.appendChild(placeholder);
+            const noOption = document.createElement('option');
+            noOption.value = '';
+            noOption.textContent = 'Sélectionner';
+            select.appendChild(noOption);
 
             optionConfig.choices.forEach((choice) => {
-                const option = document.createElement('option');
-                option.value = JSON.stringify(choice);
-                option.textContent = choice.name;
-                select.appendChild(option);
+                const choiceOption = document.createElement('option');
+                choiceOption.value = JSON.stringify(choice);
+                choiceOption.textContent = choice.price > 0
+                    ? `${choice.name} (+${formatPrice(choice.price)})`
+                    : choice.name;
+                select.appendChild(choiceOption);
             });
 
             row.appendChild(select);
@@ -457,18 +354,19 @@ const buildProductOptionSelectors = (productId) => {
             const checkboxGroup = document.createElement('div');
             checkboxGroup.className = 'checkbox-group';
             checkboxGroup.dataset.optionType = 'multi';
-            checkboxGroup.dataset.optionLabel = optionConfig.label;
-            checkboxGroup.dataset.max = String(optionConfig.max);
+            checkboxGroup.dataset.optionKey = optionKey;
+            checkboxGroup.dataset.max = String(optionConfig.max || optionConfig.choices.length);
 
-            optionConfig.choices.forEach((choice) => {
+            optionConfig.choices.forEach((choice, index) => {
                 const wrapper = document.createElement('label');
                 wrapper.className = 'checkbox-item';
 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.value = JSON.stringify(choice);
+                checkbox.id = `${optionKey}-${index}`;
                 checkbox.addEventListener('change', () => {
-                    enforceIngredientLimit(checkboxGroup, optionConfig.max);
+                    enforceIngredientLimit(checkboxGroup, optionConfig.max || optionConfig.choices.length);
                 });
 
                 const text = document.createElement('span');
@@ -480,7 +378,7 @@ const buildProductOptionSelectors = (productId) => {
             });
 
             row.appendChild(checkboxGroup);
-            enforceIngredientLimit(checkboxGroup, optionConfig.max);
+            enforceIngredientLimit(checkboxGroup, optionConfig.max || optionConfig.choices.length);
         }
 
         optionsHost.appendChild(row);
@@ -490,35 +388,26 @@ const buildProductOptionSelectors = (productId) => {
 const collectProductOptions = () => {
     const options = [];
 
-    document.querySelectorAll('#productOptionSelectors .toggle-switch[data-option-type="switch"]').forEach((group) => {
-        const active = group.querySelector('.toggle-choice.active');
-        if (active) {
-            options.push({ name: `${group.dataset.optionLabel}: ${active.dataset.value}`, price: 0 });
-        }
-    });
-
     document.querySelectorAll('#productOptionSelectors select[data-option-type="single"]').forEach((select) => {
         if (!select.value) {
             return;
         }
         const selected = JSON.parse(select.value);
-        options.push({ name: `${select.dataset.optionLabel}: ${selected.name}`, price: selected.price || 0 });
+        options.push({
+            ...selected,
+            label: selected.name
+        });
     });
 
     document.querySelectorAll('#productOptionSelectors .checkbox-group[data-option-type="multi"]').forEach((group) => {
-        const selected = Array.from(group.querySelectorAll('input[type="checkbox"]:checked'))
-            .map((checkbox) => JSON.parse(checkbox.value).name);
-        if (selected.length > 0) {
-            options.push({ name: `${group.dataset.optionLabel}: ${selected.join(', ')}`, price: 0 });
-        }
-    });
-
-    document.querySelectorAll('#productOptionSelectors select[data-option-type="formula"]').forEach((select) => {
-        if (!select.value) {
-            return;
-        }
-        const selected = JSON.parse(select.value);
-        options.push({ name: `${select.dataset.groupLabel}: ${selected.name}`, price: 0 });
+        const checked = Array.from(group.querySelectorAll('input[type="checkbox"]:checked'));
+        checked.forEach((input) => {
+            const selected = JSON.parse(input.value);
+            options.push({
+                ...selected,
+                label: selected.name
+            });
+        });
     });
 
     return options;
@@ -549,8 +438,8 @@ const renderCart = () => {
             ? `Suppléments : ${line.supplements.map((item) => item.name).join(', ')}`
             : 'Sans supplément';
         const optionsText = line.options.length > 0
-            ? `Choix : ${line.options.map((item) => item.name).join(' | ')}`
-            : 'Sans choix spécifique';
+            ? `Options : ${line.options.map((item) => item.label).join(', ')}`
+            : 'Sans option';
 
         lineNode.innerHTML = `
             <div>
@@ -687,7 +576,7 @@ const setupAddToCart = () => {
 
         const selectedOptions = collectProductOptions();
         const supplementsTotal = selectedSupplements.reduce((sum, item) => sum + item.price, 0);
-        const optionsTotal = selectedOptions.reduce((sum, item) => sum + (item.price || 0), 0);
+        const optionsTotal = selectedOptions.reduce((sum, item) => sum + item.price, 0);
         const lineTotal = (basePrice + supplementsTotal + optionsTotal) * quantity;
 
         cart.push({
@@ -775,7 +664,7 @@ const setupWhatsAppSend = () => {
                 ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
                 : '';
             const options = line.options.length > 0
-                ? ` | choix: ${line.options.map((o) => o.name).join(', ')}`
+                ? ` | options: ${line.options.map((o) => o.label).join(', ')}`
                 : '';
             return `- ${line.quantity} x ${line.title}${supplements}${options} = ${formatPrice(line.total)}`;
         }).join('\n');
