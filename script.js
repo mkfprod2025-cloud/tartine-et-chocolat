@@ -287,7 +287,7 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','sales','formule1ingredients2','formule1ingredients3','],
+    formule1: ['formule1ingredients','sales','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
 };
 
