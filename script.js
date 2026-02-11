@@ -233,8 +233,8 @@ const productOptionsCatalog = {
         {name: "thé glacéx2"},
         {name: "jus de fruit x2"}, ]
    } ,
-        formule3ingredients1: {
-        label: "2 tartine salée",
+        formule3ingredients1:{
+        label: "2 tartines salées",
         type: "multi",
     max: 2,
         choices: [
@@ -247,7 +247,7 @@ const productOptionsCatalog = {
             ]
     },
       formule3ingredients2:{
-         label: "2 dessert",
+         label: "2 desserts",
      type: "multi",
     max: 2,
     choices: [
@@ -259,7 +259,7 @@ const productOptionsCatalog = {
         {name: "tarte tatin x2"}, ]
 },
     formule3ingredients3:{
-         label: "2 boisson",
+         label: "2 boissons",
      type: "multi",
     max: 2,
     choices: [
