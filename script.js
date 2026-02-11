@@ -252,6 +252,8 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
+    formule1: ['formule1ingredients','formule1ingredients2']]
+    
 };
 
 const whatsappNumber = "33123456789";
