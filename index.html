@@ -5,25 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tartine et Chocolat</title>
     <meta property="og:type" content="website">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mkfprod2025-cloud.github.io/tartine-et-chocolat/">
+<meta property="og:url" content="https://github.com/mkfprod2025-cloud/tartine-et-chocolat/assets/logoTc.jpg">
 <meta property="og:title" content="Tartine et Chocolat">
 <meta property="og:description" content="Le craquant qui fond, le bonheur qui se tartine.">
 
-<meta property="og:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
+<meta property="og:image" content="https://github.com/mkfprod2025-cloud/tartine-et-chocolat/assets/logoTc.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tartine et Chocolat">
-<meta name="twitter:description" content="Le craquant qui fond, le bonheur qui se tartine.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
-
+<meta name="twitter:image" content="">
 <link rel="icon" type="image/jpeg" href="assets/logoTc.jpg">
-<link rel="shortcut icon" type="image/jpeg" href="assets/logoTc.jpg">
-<link rel="apple-touch-icon" href="assets/logoTc.jpg">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/logoTc.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -139,67 +132,11 @@
                     </div>
                 </div>
             </div>
-
-            <div id="allergenes" class="tab-pane info-pane">
-                <h2>Allergènes</h2>
-                <p>Contenu à venir.</p>
-            </div>
-
-            <div id="tracabilite" class="tab-pane info-pane">
-                <h2>Traçabilité</h2>
-                <p>Contenu à venir.</p>
-            </div>
-
-            <div id="supplements" class="tab-pane info-pane supplements-pane">
-                <h2>Suppléments tarifaires</h2>
-                <p>Tarifs simplifiés pour le panier (version courte). La page complète pourra être enrichie ensuite.</p>
-                <div class="supplements-layout">
-                    <section>
-                        <h3>Produits (référence rapide)</h3>
-                        <ul>
-                            <li>Tartines salées : à partir de 12€</li>
-                            <li>Pâtisseries : à partir de 10€</li>
-                            <li>Boissons : de 7€ à 12€</li>
-                            <li>Formules : de 17€ à 55€</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Suppléments Salé</h3>
-                        <ul>
-                            <li>Avocat +2.00€</li>
-                            <li>Saumon fumé +3.50€</li>
-                            <li>Fromage frais +1.50€</li>
-                            <li>Œuf poché +1.80€</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Suppléments Sucré</h3>
-                        <ul>
-                            <li>Chantilly +1.20€</li>
-                            <li>Coulis chocolat +1.50€</li>
-                            <li>Boule glace vanille +2.00€</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Suppléments Boisson</h3>
-                        <ul>
-                            <li>Shot espresso +1.00€</li>
-                            <li>Lait végétal +0.80€</li>
-                            <li>Sirop maison +0.70€</li>
-                        </ul>
-                    </section>
-                </div>
-            </div>
         </div>
 
         <!-- Bouton Commander -->
         <div class="order-section">
             <button class="order-button" id="orderBtn">Commander</button>
-            <div class="secondary-actions">
-                <button class="order-button secondary-order-button" data-target-tab="allergenes">Allergènes</button>
-                <button class="order-button secondary-order-button" data-target-tab="tracabilite">Traçabilité</button>
-                <button class="order-button secondary-order-button" data-target-tab="supplements">Suppléments tarifaires</button>
-            </div>
         </div>
     </div>
 
@@ -209,28 +146,17 @@
             <span class="close">&times;</span>
             <h2>Choisissez votre mode de commande</h2>
             <div class="order-options">
-                <div class="order-option" id="cartOption">
-                    <div class="option-icon">🛒</div>
-                    <h3>Panier personnalisé</h3>
-                    <p>Composez votre commande avec plusieurs options</p>
+                <div class="order-option" id="takeawayOption">
+                    <div class="option-icon">📦</div>
+                    <h3>À Emporter</h3>
+                    <p>Appelez-nous pour passer commande</p>
                 </div>
                 <div class="order-option" id="deliveryOption">
                     <div class="option-icon">🚴</div>
-                    <h3>Commander sur Uber Eats</h3>
-                    <p>Rejoignez Uber Eats pour la livraison</p>
-                </div>
-                <div class="order-option" id="whatsappOption">
-                    <div class="option-icon">💬</div>
-                    <h3>WhatsApp officiel</h3>
-                    <p>Commande à emporter via WhatsApp</p>
-                </div>
-                <div class="order-option" id="telegramOption">
-                    <div class="option-icon">📨</div>
-                    <h3>Telegram</h3>
-                    <p>Envoyez votre commande via Telegram</p>
+                    <h3>À Domicile</h3>
+                    <p>Commandez via Uber Eats</p>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -259,83 +185,11 @@
                     <h2 id="modalTitle"></h2>
                     <p id="modalDescription"></p>
                     <p class="price" id="modalPrice"></p>
-                    <button class="add-cart-button" id="addToCartBtn">Ajouter au panier</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Panier -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content cart-modal">
-            <span class="close">&times;</span>
-            <h2>Votre panier</h2>
-            <p class="cart-subtitle">Choisissez les options d’envoi pour transmettre votre commande.</p>
-            <div id="cartItems" class="cart-items"></div>
-            <div class="cart-form">
-                <label for="orderType">Mode :</label>
-                <select id="orderType">
-                    <option value="a emporter">À emporter</option>
-                    <option value="livraison">Livraison</option>
-                </select>
-                <label for="customerName">Nom :</label>
-                <input type="text" id="customerName" placeholder="Votre nom">
-                <label for="customerPhone">Téléphone :</label>
-                <input type="tel" id="customerPhone" placeholder="06 12 34 56 78">
-                <label for="customerNotes">Notes :</label>
-                <textarea id="customerNotes" rows="3" placeholder="Allergies, suppléments, préférences..."></textarea>
-            </div>
-            <div class="cart-actions">
-                <button class="order-button cart-action-button" id="sendRestaurantBtn">Envoyer au restaurant</button>
-                <button class="order-button cart-action-button" id="sendWhatsappBtn">Envoyer via WhatsApp</button>
-                <button class="order-button cart-action-button" id="sendTelegramBtn">Envoyer via Telegram</button>
-                <button class="order-button cart-action-button" id="openUberBtn">Commander sur Uber Eats</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-(function () {
-    const sources = ['script.js?v=20260211c', 'app.js?v=20260211c'];
-
-    const loadFromSource = async (src) => {
-        const response = await fetch(src, { cache: 'no-store' });
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status} sur ${src}`);
-        }
-
-        const code = await response.text();
-        const firstChar = code.trimStart().charAt(0);
-        if (firstChar === '<') {
-            throw new Error(`Payload invalide reçu pour ${src} (HTML au lieu de JS)`);
-        }
-
-        const blobUrl = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
-        const script = document.createElement('script');
-        script.src = blobUrl;
-        script.onload = () => URL.revokeObjectURL(blobUrl);
-        script.onerror = () => URL.revokeObjectURL(blobUrl);
-        document.body.appendChild(script);
-    };
-
-    (async () => {
-        let lastError = null;
-        for (const src of sources) {
-            try {
-                await loadFromSource(src);
-                return;
-            } catch (error) {
-                lastError = error;
-                console.error(error);
-            }
-        }
-
-        const errorBanner = document.createElement('div');
-        errorBanner.style.cssText = 'position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:#7a1010;color:#fff;z-index:9999;font-family:Arial,sans-serif;font-size:14px;text-align:center;';
-        errorBanner.textContent = 'Erreur de chargement JavaScript. Videz le cache navigateur puis rechargez la page. Détail: ' + (lastError ? lastError.message : 'inconnu');
-        document.body.appendChild(errorBanner);
-    })();
-})();
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
