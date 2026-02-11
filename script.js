@@ -198,10 +198,16 @@ const productOptionsCatalog = {
 };
 
 const supplementsByProduct = {
+    delice1: ['sucres'],
+    delice2: ['sucres'],
+    delice3: ['sucres'],
     delice4: ['sales'],
     delice5: ['sales'],
     delice6: ['sales'],
-    decouverte2: ['sales', 'sucres']
+    decouverte:1 ['sucres'],
+     decouverte2: ['sales'],
+ decouverte3: ['boissons'],
+ decouverte4: ['boissons'],
 };
 
 const optionsByProduct = {
