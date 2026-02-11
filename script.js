@@ -144,7 +144,8 @@ const supplementsCatalog = {
         { name: "oeuf dur", price: 2 },
         { name: "Saumon fumé", price: 3.5 },
         { name: "Fromage frais", price: 1.5 },
-        { name: "pistache", price: 1 }
+        { name: "pistache", price: 1 },
+        { name: "pistache", price: 3 }
     ],
     sucres: [
         { name: "ananas", price: 2 },
