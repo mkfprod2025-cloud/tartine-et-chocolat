@@ -206,7 +206,23 @@ const productOptionsCatalog = {
             { name: "fruits rouges/miel" },
             { name: "pomme/banane" },
         ]
-    }
+    },
+    formule1ingredients: {
+        label: "1 tartine salée",
+        type: "multi",
+    max:1,
+        choices: [
+            { name: "campagnarde"},
+            { name: "mediterrané"},
+            { name: "veggan"},
+            },
+         label: "1 dessert",
+     type: "multi",
+    max: 1,
+    choices: [
+        {name: "crumble"},
+        {name: "gateau choco"},
+        {name: "tarte tatin"},
 };
 const categoryLabels = {
     sales: "Suppléments salés",
@@ -284,7 +300,7 @@ const renderSupplementsListing = () => {
     }).join('');
 
     listing.innerHTML = `
-        <p class="supplements-note">Listing complet des suppléments et tarifs (modifiable facilement dans le fichier script).</p>
+        <p class="supplements-note">Listing complet des suppléments et tarifs.</p>
         <div class="supplements-groups">${sections}</div>
     `;
 };
@@ -459,15 +475,13 @@ const renderCart = () => {
     cart.forEach((line, index) => {
         const lineNode = document.createElement('div');
         lineNode.className = 'cart-line';
-
+     const optionsText = line.options.length > 0
+            ? `Options : ${line.options.map((item) => item.label).join(', ')}`
+            : 'Sans option';
         const supplementsText = line.supplements.length > 0
             ? `Suppléments : ${line.supplements.map((item) => item.name).join(', ')}`
             : 'Sans supplément';
-        const optionsText = line.options.length > 0
-            ? `Options : ${line.options.map((item) => item.label).join(', ')}`
-            : 'Sans option';
-
-        lineNode.innerHTML = `
+      lineNode.innerHTML = `
             <div>
                 <p><strong>${line.quantity} × ${line.title}</strong></p>
                 <p>${supplementsText}</p>
