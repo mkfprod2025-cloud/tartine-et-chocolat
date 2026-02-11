@@ -223,7 +223,7 @@ const productOptionsCatalog = {
     choices: [
         {name: "crumble"},
         {name: "gateau choco"},
-        {name: "tarte tatin"}, ]
+        {name: "tarte tatin"}, ],
 };
 const categoryLabels = {
     sales: "Suppléments salés",
