@@ -1,4 +1,3 @@
-// JS build: 20260211b cache-bust
 // Données des produits
 const productsData = {
     delice1: { title: "Crumble Pomme et Cannelle", description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.", price: "10€", image: "assets/crumblevid.mp4", media_type: "video" },
