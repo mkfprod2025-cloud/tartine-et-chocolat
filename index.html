@@ -204,7 +204,11 @@
                     <div id="productOptionSelectors" class="product-option-selectors"></div>
                     <div class="add-line">
                         <label for="modalQuantity">Quantité</label>
-                        <input id="modalQuantity" type="number" min="1" value="1">
+                        <div class="quantity-controls">
+                            <button id="quantityMinusBtn" type="button" class="quantity-btn" aria-label="Diminuer">−</button>
+                            <input id="modalQuantity" type="number" min="1" value="1">
+                            <button id="quantityPlusBtn" type="button" class="quantity-btn" aria-label="Augmenter">+</button>
+                        </div>
                     </div>
                     <button id="addToCartBtn" class="order-button add-cart-button">Ajouter au panier emporter</button>
                 </div>
@@ -212,6 +216,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

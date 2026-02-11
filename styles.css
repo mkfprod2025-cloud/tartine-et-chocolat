@@ -611,6 +611,11 @@ header {
         font-size: 1.1rem;
     }
 
+    .quantity-btn {
+        width: 56px;
+        height: 56px;
+    }
+
     .secondary-order-button {
         width: min(100%, 320px);
         font-size: 0.95rem;
