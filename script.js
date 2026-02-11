@@ -4,119 +4,136 @@ const productsData = {
         description: "Crumble pommes cannelle, dessert à emporter au goût réconfortant. Pommes fondantes parfumées à la cannelle, recouvertes d’un crumble croustillant et doré.(pomme,cannelle,farine de blé, beurre, sucre.)",
         price: "10€",
         image: "assets/crumblevid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sucre"
     },
     delice2: {
         title: "gateau au chocolat",
         description: "Gâteau au chocolat à emporter, texture moelleuse et cœur fondant, goût chocolaté profond et généreux.(farine, œufs, sucre, beurre, chocolat).",
         price: "11€",
         image: "assets/fondantchovid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sucre"
     },
     delice3: {
         title: "Tarte Tatin",
         description: "La célèbre tarte des sœurs Tatin, recette mythique aux pommes fondantes et caramel doré, accompagnée de sa pipette de crème fraîche.(pommes, sucre, beurre, farine de blé, crème fraîche)",
         price: "13.00€",
         image: "assets/tatinvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sucre"
     },
     delice4: {
         title: "La Tartine Campagnarde",
         description: "La Tartine Campagnarde, rustique et nourrissante, sur pain campagnard, avec fromage frais aux herbes, jambon blanc ou poulet et touche de pistache.(pain campagnard, fromage frais, herbes fines, jambon blanc ou poulet, pistache)",
         price: "13€",
         image: "assets/campavid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sale"
     },
     delice5: {
         title: "La Tartine Méditerranéenne",
         description: "Un accord méditerranéen entre houmous savoureux et saumon fondant, déposé sur un pain tendre et léger.(pois chiches, purée de sésame, citron, ail, huile d’olive, cumin moulu, saumon, pain)",
         price: "16€",
         image: "assets/maraivid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sale"
     },
     delice6: {
         title: "La Maraichère",
         description: "La tartine végé, une garniture généreuse de légumes de saison sur un pain focaccia moelleux et aérien.(légumes melangé de saison, farine de blé, levure, huile d’olive)",
         price: "12€",
         image: "assets/vegivid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sale"
     },
     boisson1: {
         title: "Nos spécialité de café glacé",
         description: "ice coffee, latté, frappé sucré celon votre convenance",
         price: "de 7€ a 12€",
         image: "assets/coffeevid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     boisson2: {
         title: "Thé Glacé Maison",
         description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
         price: "8.50€",
         image: "assets/icetvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     boisson3: {
         title: "les jus de fruits centrifugés",
         description: "pommes, carottes, oranges pressées à la commande",
         price: "8.5€",
         image: "assets/centrivid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     boisson4: {
         title: "nos smoothies aux fruits",
         description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
         price: "9.50€",
         image: "assets/smootvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     decouverte1: {
         title: "La Tarte aux myrtilles",
         description: "Une belle part de tarte aux myrtilles façon grand-mère, à la pâte épaisse et gourmande, idéale pour rassurer les après-midi.(myrtilles, farine de blé, beurre, sucre, œufs)",
         price: "11€",
         image: "assets/myrtvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sucre"
     },
     decouverte2: {
         title: "La soupe de saison",
         description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saisons mijôté avec beaucoup d'amour et d'épices",
         price: "10.50€",
         image: "assets/soupvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "sale"
     },
     decouverte3: {
         title: "matcha latte",
         description: "Un doux matcha au lait de vache ou vegetal de votre choix, chaud ou froid, a agrémenter de sirops aux saveurs mutiples",
         price: "9.50€",
         image: "assets/matchavid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     decouverte4: {
         title: "notre jus star du moment",
         description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
         price: "9.50€",
         image: "assets/jusmoisvid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "boisson"
     },
     formule1: {
         title: "Formule équilibré",
         description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
         price: "17€",
         image: "assets/form1couv.png",
-        media_type: "image"
+        media_type: "image",
+        productType: "formule"
     },
     formule2: {
         title: "Formule Gouté à deux",
         description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
         price: "24€",
         image: "assets/form2vid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "formule"
     },
     formule3: {
         title: "Formule Brunch Club",
         description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise",
         price: "55€",
         image: "assets/form3vid.mp4",
-        media_type: "video"
+        media_type: "video",
+        productType: "formule"
     }
 };
 
@@ -130,17 +147,17 @@ const supplementsCatalog = {
         { name: "pistache", price: 1 }
     ],
     sucres: [
-         { name: "ananas", price:2  },
+        { name: "ananas", price: 2 },
         { name: "banane", price: 2 },
         { name: "gingembre", price: 1.5 },
         { name: "Fruits rouges", price: 2 },
-        { name: "crème fraiche", price: 1.5},
+        { name: "crème fraiche", price: 1.5 }
     ],
     boissons: [
-          { name: "sirop de vanille", price: 0.50 },
+        { name: "sirop de vanille", price: 0.5 },
         { name: "sirop de caramel", price: 0.5 },
         { name: "lait vegetal avoine", price: 1 },
-        { name: "lait vegetal coco", price: 1 },
+        { name: "lait vegetal coco", price: 1 }
     ]
 };
 
@@ -150,7 +167,87 @@ const categoryLabels = {
     boissons: "Suppléments boissons"
 };
 
-const whatsappNumber = "33123456789";
+const supplementsByProduct = {
+    delice1: ['sucres'],
+    delice2: ['sucres'],
+    delice3: ['sucres'],
+    boisson1: ['boissons'],
+    decouverte1: ['sucres'],
+    decouverte2: ['sales'],
+    decouverte3: ['boissons']
+};
+
+const productOptionsCatalog = {
+    iceHotSwitch: {
+        label: 'Température',
+        type: 'switch',
+        choices: ['Ice', 'Hot']
+    },
+    teaFlavor: {
+        label: 'Saveur',
+        type: 'single',
+        choices: [
+            { name: 'Menthe / Jasmin', price: 0 },
+            { name: 'Rooibos Pêche', price: 0 },
+            { name: 'Fruits Rouges / Miel', price: 0 }
+        ]
+    },
+    juiceIngredients: {
+        label: 'Ingrédients (3 max)',
+        type: 'multi',
+        max: 3,
+        choices: [
+            { name: 'Pomme', price: 0 },
+            { name: 'Carotte', price: 0 },
+            { name: 'Orange', price: 0 },
+            { name: 'Concombre', price: 0 },
+            { name: 'Ananas', price: 0 },
+            { name: 'Gingembre', price: 0 },
+            { name: 'Citron', price: 0 },
+            { name: 'Menthe', price: 0 }
+        ]
+    }
+};
+
+const optionsByProduct = {
+    delice1: ['iceHotSwitch'],
+    delice2: ['iceHotSwitch'],
+    delice3: ['iceHotSwitch'],
+    delice6: ['iceHotSwitch'],
+    boisson1: ['iceHotSwitch'],
+    boisson2: ['teaFlavor'],
+    boisson3: ['juiceIngredients'],
+    decouverte1: ['iceHotSwitch'],
+    decouverte2: ['iceHotSwitch'],
+    decouverte3: ['iceHotSwitch'],
+    decouverte4: ['iceHotSwitch']
+};
+
+const formulaConfig = {
+    formule1: [
+        { label: 'Choix salé', type: 'sale' },
+        { label: 'Choix sucré', type: 'sucre' },
+        { label: 'Choix boisson', type: 'boisson' }
+    ],
+    formule2: [
+        { label: 'Pâtisserie 1', type: 'sucre' },
+        { label: 'Pâtisserie 2', type: 'sucre' },
+        { label: 'Boisson froide 1', type: 'boisson' },
+        { label: 'Boisson froide 2', type: 'boisson' },
+        { label: "Petit plus à partager", type: 'sale' }
+    ],
+    formule3: [
+        { label: 'Tartine salée 1', type: 'sale' },
+        { label: 'Tartine salée 2', type: 'sale' },
+        { label: 'Dessert 1', type: 'sucre' },
+        { label: 'Dessert 2', type: 'sucre' },
+        { label: 'Boisson 1', type: 'boisson' },
+        { label: 'Boisson 2', type: 'boisson' },
+        { label: 'Découverte surprise', type: 'decouverte' }
+    ]
+};
+
+const whatsappNumber = '33123456789';
 let currentProductId = null;
 let cart = [];
 
@@ -202,11 +299,13 @@ const renderSupplementsListing = () => {
     `;
 };
 
-const buildSupplementSelectors = () => {
+const buildSupplementSelectors = (productId) => {
     const selectorHost = document.getElementById('supplementSelectors');
     selectorHost.innerHTML = '';
 
-    Object.entries(supplementsCatalog).forEach(([key, values]) => {
+    const allowedCategories = supplementsByProduct[productId] || [];
+    allowedCategories.forEach((key) => {
+        const values = supplementsCatalog[key] || [];
         const row = document.createElement('div');
         row.className = 'add-line';
 
@@ -216,7 +315,6 @@ const buildSupplementSelectors = () => {
 
         const select = document.createElement('select');
         select.id = `supplement-${key}`;
-        select.dataset.category = key;
 
         const noOption = document.createElement('option');
         noOption.value = '';
@@ -234,6 +332,196 @@ const buildSupplementSelectors = () => {
         row.appendChild(select);
         selectorHost.appendChild(row);
     });
+};
+
+const enforceIngredientLimit = (container, max) => {
+    const checkboxes = Array.from(container.querySelectorAll('input[type="checkbox"]'));
+    const checkedCount = checkboxes.filter((box) => box.checked).length;
+    checkboxes.forEach((box) => {
+        box.disabled = checkedCount >= max && !box.checked;
+    });
+};
+
+const getProductsByType = (type) => {
+    if (type === 'decouverte') {
+        return Object.entries(productsData)
+            .filter(([id]) => id.startsWith('decouverte'))
+            .map(([id, product]) => ({ id, product }));
+    }
+
+    return Object.entries(productsData)
+        .filter(([id, product]) => !id.startsWith('formule') && product.productType === type)
+        .map(([id, product]) => ({ id, product }));
+};
+
+const buildFormulaSelectors = (productId) => {
+    const host = document.getElementById('productOptionSelectors');
+    host.innerHTML = '';
+
+    const config = formulaConfig[productId] || [];
+    config.forEach((group, index) => {
+        const row = document.createElement('div');
+        row.className = 'add-line';
+
+        const label = document.createElement('label');
+        label.textContent = group.label;
+
+        const select = document.createElement('select');
+        select.dataset.optionType = 'formula';
+        select.dataset.groupLabel = group.label;
+
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Sélectionner';
+        select.appendChild(placeholder);
+
+        getProductsByType(group.type).forEach(({ id, product }) => {
+            const option = document.createElement('option');
+            option.value = JSON.stringify({ id, name: product.title });
+            option.textContent = product.title;
+            select.appendChild(option);
+        });
+
+        row.appendChild(label);
+        row.appendChild(select);
+        host.appendChild(row);
+    });
+};
+
+const buildProductOptionSelectors = (productId) => {
+    const optionsHost = document.getElementById('productOptionSelectors');
+    optionsHost.innerHTML = '';
+
+    if (formulaConfig[productId]) {
+        buildFormulaSelectors(productId);
+        return;
+    }
+
+    const optionKeys = optionsByProduct[productId] || [];
+    optionKeys.forEach((optionKey) => {
+        const optionConfig = productOptionsCatalog[optionKey];
+        if (!optionConfig) {
+            return;
+        }
+
+        const row = document.createElement('div');
+        row.className = 'add-line';
+
+        const label = document.createElement('label');
+        label.textContent = optionConfig.label;
+        row.appendChild(label);
+
+        if (optionConfig.type === 'switch') {
+            const switchGroup = document.createElement('div');
+            switchGroup.className = 'toggle-switch';
+            switchGroup.dataset.optionType = 'switch';
+            switchGroup.dataset.optionLabel = optionConfig.label;
+
+            optionConfig.choices.forEach((choice, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `toggle-choice ${index === 0 ? 'active' : ''}`;
+                btn.textContent = choice;
+                btn.dataset.value = choice;
+                btn.addEventListener('click', () => {
+                    switchGroup.querySelectorAll('.toggle-choice').forEach((node) => node.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+                switchGroup.appendChild(btn);
+            });
+
+            row.appendChild(switchGroup);
+        }
+
+        if (optionConfig.type === 'single') {
+            const select = document.createElement('select');
+            select.dataset.optionType = 'single';
+            select.dataset.optionLabel = optionConfig.label;
+
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = 'Sélectionner';
+            select.appendChild(placeholder);
+
+            optionConfig.choices.forEach((choice) => {
+                const option = document.createElement('option');
+                option.value = JSON.stringify(choice);
+                option.textContent = choice.name;
+                select.appendChild(option);
+            });
+
+            row.appendChild(select);
+        }
+
+        if (optionConfig.type === 'multi') {
+            const checkboxGroup = document.createElement('div');
+            checkboxGroup.className = 'checkbox-group';
+            checkboxGroup.dataset.optionType = 'multi';
+            checkboxGroup.dataset.optionLabel = optionConfig.label;
+            checkboxGroup.dataset.max = String(optionConfig.max);
+
+            optionConfig.choices.forEach((choice) => {
+                const wrapper = document.createElement('label');
+                wrapper.className = 'checkbox-item';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = JSON.stringify(choice);
+                checkbox.addEventListener('change', () => {
+                    enforceIngredientLimit(checkboxGroup, optionConfig.max);
+                });
+
+                const text = document.createElement('span');
+                text.textContent = choice.name;
+
+                wrapper.appendChild(checkbox);
+                wrapper.appendChild(text);
+                checkboxGroup.appendChild(wrapper);
+            });
+
+            row.appendChild(checkboxGroup);
+            enforceIngredientLimit(checkboxGroup, optionConfig.max);
+        }
+
+        optionsHost.appendChild(row);
+    });
+};
+
+const collectProductOptions = () => {
+    const options = [];
+
+    document.querySelectorAll('#productOptionSelectors .toggle-switch[data-option-type="switch"]').forEach((group) => {
+        const active = group.querySelector('.toggle-choice.active');
+        if (active) {
+            options.push({ name: `${group.dataset.optionLabel}: ${active.dataset.value}`, price: 0 });
+        }
+    });
+
+    document.querySelectorAll('#productOptionSelectors select[data-option-type="single"]').forEach((select) => {
+        if (!select.value) {
+            return;
+        }
+        const selected = JSON.parse(select.value);
+        options.push({ name: `${select.dataset.optionLabel}: ${selected.name}`, price: selected.price || 0 });
+    });
+
+    document.querySelectorAll('#productOptionSelectors .checkbox-group[data-option-type="multi"]').forEach((group) => {
+        const selected = Array.from(group.querySelectorAll('input[type="checkbox"]:checked'))
+            .map((checkbox) => JSON.parse(checkbox.value).name);
+        if (selected.length > 0) {
+            options.push({ name: `${group.dataset.optionLabel}: ${selected.join(', ')}`, price: 0 });
+        }
+    });
+
+    document.querySelectorAll('#productOptionSelectors select[data-option-type="formula"]').forEach((select) => {
+        if (!select.value) {
+            return;
+        }
+        const selected = JSON.parse(select.value);
+        options.push({ name: `${select.dataset.groupLabel}: ${selected.name}`, price: 0 });
+    });
+
+    return options;
 };
 
 const renderCart = () => {
@@ -260,11 +548,15 @@ const renderCart = () => {
         const supplementsText = line.supplements.length > 0
             ? `Suppléments : ${line.supplements.map((item) => item.name).join(', ')}`
             : 'Sans supplément';
+        const optionsText = line.options.length > 0
+            ? `Choix : ${line.options.map((item) => item.name).join(' | ')}`
+            : 'Sans choix spécifique';
 
         lineNode.innerHTML = `
             <div>
                 <p><strong>${line.quantity} × ${line.title}</strong></p>
                 <p>${supplementsText}</p>
+                <p>${optionsText}</p>
                 <p>${formatPrice(line.total)}</p>
             </div>
             <button data-index="${index}" class="remove-cart-item">Retirer</button>
@@ -287,8 +579,7 @@ const renderCart = () => {
 };
 
 const closeAllModals = () => {
-    const modalIds = ['productModal', 'orderModal', 'takeawayModal'];
-    modalIds.forEach((id) => {
+    ['productModal', 'orderModal', 'takeawayModal'].forEach((id) => {
         const node = document.getElementById(id);
         if (node) {
             node.style.display = 'none';
@@ -313,7 +604,8 @@ const setupProductCards = () => {
             }
 
             currentProductId = productId;
-            buildSupplementSelectors();
+            buildSupplementSelectors(productId);
+            buildProductOptionSelectors(productId);
             document.getElementById('modalQuantity').value = '1';
 
             const modalMediaContainer = document.getElementById('modalMediaContainer');
@@ -362,6 +654,22 @@ const setupOrderFlow = () => {
     });
 };
 
+const setupQuantityControls = () => {
+    const input = document.getElementById('modalQuantity');
+    const minus = document.getElementById('quantityMinusBtn');
+    const plus = document.getElementById('quantityPlusBtn');
+
+    minus.addEventListener('click', () => {
+        const current = Math.max(1, Number.parseInt(input.value, 10) || 1);
+        input.value = String(Math.max(1, current - 1));
+    });
+
+    plus.addEventListener('click', () => {
+        const current = Math.max(1, Number.parseInt(input.value, 10) || 1);
+        input.value = String(current + 1);
+    });
+};
+
 const setupAddToCart = () => {
     document.getElementById('addToCartBtn').addEventListener('click', () => {
         if (!currentProductId) {
@@ -377,21 +685,77 @@ const setupAddToCart = () => {
             .filter((value) => value)
             .map((value) => JSON.parse(value));
 
+        const selectedOptions = collectProductOptions();
         const supplementsTotal = selectedSupplements.reduce((sum, item) => sum + item.price, 0);
-        const lineTotal = (basePrice + supplementsTotal) * quantity;
+        const optionsTotal = selectedOptions.reduce((sum, item) => sum + (item.price || 0), 0);
+        const lineTotal = (basePrice + supplementsTotal + optionsTotal) * quantity;
 
         cart.push({
             title: product.title,
             quantity,
             supplements: selectedSupplements,
+            options: selectedOptions,
             total: lineTotal
         });
 
-        closeAllModals();
-        const takeawayModal = document.getElementById('takeawayModal');
-        takeawayModal.style.display = 'block';
-        renderCart();
+        document.getElementById('productModal').style.display = 'none';
     });
+};
+
+const generateInvoicePdf = () => {
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        return;
+    }
+
+    const doc = new window.jspdf.jsPDF();
+    let y = 16;
+
+    doc.setFontSize(16);
+    doc.text('Facture - Tartine et Chocolat', 14, y);
+    y += 8;
+
+    doc.setFontSize(10);
+    doc.text(`Date: ${new Date().toLocaleString('fr-FR')}`, 14, y);
+    y += 8;
+
+    cart.forEach((line) => {
+        doc.text(`${line.quantity} x ${line.title} - ${formatPrice(line.total)}`, 14, y);
+        y += 6;
+        if (line.options.length > 0) {
+            doc.text(`Choix: ${line.options.map((opt) => opt.name).join(' | ')}`, 18, y);
+            y += 6;
+        }
+        if (line.supplements.length > 0) {
+            doc.text(`Suppléments: ${line.supplements.map((sup) => sup.name).join(', ')}`, 18, y);
+            y += 6;
+        }
+        if (y > 250) {
+            doc.addPage();
+            y = 20;
+        }
+    });
+
+    const total = cart.reduce((sum, line) => sum + line.total, 0);
+    y += 4;
+    doc.setFontSize(12);
+    doc.text(`Total TTC: ${formatPrice(total)}`, 14, y);
+    y += 10;
+
+    doc.setFontSize(8);
+    const legalLines = [
+        'Mentions légales - Auto-entreprise (France):',
+        'Tartine et Chocolat - Micro-entreprise, Cannes (06).',
+        'TVA non applicable, art. 293 B du CGI.',
+        'SIREN: A RENSEIGNER | Adresse: A RENSEIGNER | Contact: A RENSEIGNER.',
+        'Conservation de la facture: 10 ans (Code de commerce).'
+    ];
+
+    legalLines.forEach((line) => {
+        doc.text(line, 14, y);
+        y += 4;
+    });
+
+    doc.save(`facture-tartine-et-chocolat-${Date.now()}.pdf`);
 };
 
 const setupWhatsAppSend = () => {
@@ -400,13 +764,23 @@ const setupWhatsAppSend = () => {
             return;
         }
 
+        const accepted = window.confirm('Confirmer la commande ? Une facture PDF sera téléchargée.');
+        if (!accepted) {
+            return;
+        }
+
         const total = cart.reduce((sum, line) => sum + line.total, 0);
         const content = cart.map((line) => {
-            const extras = line.supplements.length > 0
+            const supplements = line.supplements.length > 0
                 ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
                 : '';
-            return `- ${line.quantity} x ${line.title}${extras} = ${formatPrice(line.total)}`;
+            const options = line.options.length > 0
+                ? ` | choix: ${line.options.map((o) => o.name).join(', ')}`
+                : '';
+            return `- ${line.quantity} x ${line.title}${supplements}${options} = ${formatPrice(line.total)}`;
         }).join('\n');
+
+        generateInvoicePdf();
 
         const message = `Bonjour Tartine et Chocolat,%0AJe souhaite commander à emporter :%0A${content}%0A%0ATotal estimé : ${formatPrice(total)}%0AMerci !`;
         window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
@@ -442,11 +816,6 @@ const setupModalClosing = () => {
 
 const setupCardAnimation = () => {
     const cards = document.querySelectorAll('.card');
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -454,7 +823,10 @@ const setupCardAnimation = () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
     cards.forEach((card) => {
         card.style.opacity = '0';
@@ -469,6 +841,7 @@ setupTabsAndButtons();
 setupModalClosing();
 setupProductCards();
 setupOrderFlow();
+setupQuantityControls();
 setupAddToCart();
 setupWhatsAppSend();
 setupCardAnimation();
