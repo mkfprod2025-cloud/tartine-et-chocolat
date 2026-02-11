@@ -172,7 +172,9 @@ const addToCartBtn = document.getElementById('addToCartBtn');
 const cartItemsContainer = document.getElementById('cartItems');
 const orderTypeInput = document.getElementById('orderType');
 const customerNameInput = document.getElementById('customerName');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
 const customerPhoneInput = document.getElementById('customerPhone');
+> main
 const customerNotesInput = document.getElementById('customerNotes');
 
 const cartOption = document.getElementById('cartOption');
@@ -189,6 +191,7 @@ const WHATSAPP_PHONE = '33123456789';
 const TELEGRAM_USER = 'tartineetchocolat';
 const UBER_EATS_URL = 'https://www.ubereats.com/';
 
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
 
 const supplementCatalog = {
     salty: [
@@ -233,7 +236,7 @@ const getSupplementOptions = (productId) => {
     const panel = productSupplementPanels[productId] || 'salty';
     return supplementCatalog[panel] || [];
 };
-
+> main
 let selectedProductId = null;
 let cart = [];
 
@@ -242,6 +245,7 @@ const formatCartMessage = () => {
         return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
     }
 
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
     const lines = cart.flatMap(item => {
         const supplementLine = item.supplements.length
             ? `  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`
@@ -253,6 +257,9 @@ const formatCartMessage = () => {
     const orderType = orderTypeInput.value;
     const customerName = customerNameInput.value.trim() || 'Non renseigné';
     const customerPhone = customerPhoneInput.value.trim() || 'Non renseigné';
+    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';> main
     const customerNotes = customerNotesInput.value.trim() || 'Aucune';
 
     return [
@@ -262,7 +269,8 @@ const formatCartMessage = () => {
         '',
         `Mode: ${orderType}`,
         `Nom: ${customerName}`,
-        `Téléphone: ${customerPhone}`,
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        `Téléphone: ${customerPhone}`,> main
         `Notes: ${customerNotes}`
     ].join('\n');
 };
@@ -273,6 +281,7 @@ const updateCartView = () => {
         return;
     }
 
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
     cartItemsContainer.innerHTML = cart.map(item => {
         const supplementOptions = getSupplementOptions(item.id);
         const supplementInputs = supplementOptions.map(option => {
@@ -281,14 +290,16 @@ const updateCartView = () => {
         }).join('');
 
         return `
+    cartItemsContainer.innerHTML = cart.map(item => `> main
         <div class="cart-item-row">
             <div>
                 <strong>${item.title}</strong><br>
                 <small>${item.price}</small>
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
                 <div class="supplement-panel">
                     <p>Suppléments disponibles :</p>
                     <div class="supplement-grid">${supplementInputs}</div>
-                </div>
+                </div> > main
             </div>
             <div class="cart-item-actions">
                 <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
@@ -296,8 +307,10 @@ const updateCartView = () => {
                 <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
             </div>
         </div>
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
     `;
     }).join('');
+    `).join('');> main
 };
 
 cartItemsContainer.addEventListener('click', (event) => {
@@ -306,8 +319,11 @@ cartItemsContainer.addEventListener('click', (event) => {
         return;
     }
 
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
     const action = button.getAttribute('data-action');
     const itemId = button.getAttribute('data-id');
+    const itemId = button.getAttribute('data-id');
+    const action = button.getAttribute('data-action');> main
     const item = cart.find(entry => entry.id === itemId);
 
     if (!item) {
@@ -325,6 +341,7 @@ cartItemsContainer.addEventListener('click', (event) => {
 
     updateCartView();
 });
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
 
 cartItemsContainer.addEventListener('change', (event) => {
     const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
@@ -353,6 +370,8 @@ cartItemsContainer.addEventListener('change', (event) => {
         item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
     }
 });
+=======
+> main
 
 // Boutons de fermeture
 const closeButtons = document.querySelectorAll('.close');
@@ -430,14 +449,18 @@ addToCartBtn.addEventListener('click', () => {
 
     if (existing) {
         existing.qty += 1;
-        existing.supplements = existing.supplements || [];
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        existing.supplements = existing.supplements || []; > main
     } else {
         cart.push({
             id: selectedProductId,
             title: product.title,
-            price: product.price,
+            price: product.price, 
+            < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
             qty: 1,
             supplements: []
+            qty: 1
+> main
         });
     }
 

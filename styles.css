@@ -95,10 +95,10 @@ header {
 
 .description {
     font-size: 2rem;
-    color: #666;
+    color: #475569;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 2;
 }
 
 /* Navigation par onglets */
@@ -542,7 +542,7 @@ header {
     text-align: center;
     padding: 10px;
 }
-
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
 
 .supplements-pane {
     text-align: left;
@@ -611,7 +611,7 @@ header {
     color: #3f7fb8;
     font-weight: 600;
 }
-
+> main
 /* Responsive */
 @media (max-width: 768px) {
     .logo {
@@ -620,7 +620,7 @@ header {
     }
 
     .tagline {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
     }
 
     .main-title {
@@ -628,7 +628,7 @@ header {
     }
 
     .description {
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
 
     .tab-button {
