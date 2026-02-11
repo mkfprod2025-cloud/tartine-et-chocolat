@@ -210,19 +210,19 @@ const productOptionsCatalog = {
     formule1ingredients: {
         label: "1 tartine salée",
         type: "multi",
-    max:1,
+    max: 1,
         choices: [
             { name: "campagnarde"},
             { name: "mediterrané"},
             { name: "veggan"},
-            },
+            }, ]
          label: "1 dessert",
      type: "multi",
     max: 1,
     choices: [
         {name: "crumble"},
         {name: "gateau choco"},
-        {name: "tarte tatin"},
+        {name: "tarte tatin"}, ]
 };
 const categoryLabels = {
     sales: "Suppléments salés",
