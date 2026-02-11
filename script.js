@@ -172,6 +172,9 @@ const addToCartBtn = document.getElementById('addToCartBtn');
 const cartItemsContainer = document.getElementById('cartItems');
 const orderTypeInput = document.getElementById('orderType');
 const customerNameInput = document.getElementById('customerName');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+const customerPhoneInput = document.getElementById('customerPhone');
+> main
 const customerNotesInput = document.getElementById('customerNotes');
 
 const cartOption = document.getElementById('cartOption');
@@ -188,6 +191,52 @@ const WHATSAPP_PHONE = '33123456789';
 const TELEGRAM_USER = 'tartineetchocolat';
 const UBER_EATS_URL = 'https://www.ubereats.com/';
 
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+
+const supplementCatalog = {
+    salty: [
+        { id: 'avocat', label: 'Avocat', price: '+2.00€' },
+        { id: 'saumon-fume', label: 'Saumon fumé', price: '+3.50€' },
+        { id: 'fromage-frais', label: 'Fromage frais', price: '+1.50€' },
+        { id: 'oeuf-poche', label: 'Œuf poché', price: '+1.80€' }
+    ],
+    sweet: [
+        { id: 'chantilly', label: 'Chantilly', price: '+1.20€' },
+        { id: 'coulis-chocolat', label: 'Coulis chocolat', price: '+1.50€' },
+        { id: 'glace-vanille', label: 'Boule glace vanille', price: '+2.00€' }
+    ],
+    drink: [
+        { id: 'shot-espresso', label: 'Shot espresso', price: '+1.00€' },
+        { id: 'lait-vegetal', label: 'Lait végétal', price: '+0.80€' },
+        { id: 'sirop-maison', label: 'Sirop maison', price: '+0.70€' }
+    ]
+};
+
+const productSupplementPanels = {
+    delice1: 'sweet',
+    delice2: 'sweet',
+    delice3: 'sweet',
+    delice4: 'salty',
+    delice5: 'salty',
+    delice6: 'salty',
+    boisson1: 'drink',
+    boisson2: 'drink',
+    boisson3: 'drink',
+    boisson4: 'drink',
+    decouverte1: 'sweet',
+    decouverte2: 'salty',
+    decouverte3: 'drink',
+    decouverte4: 'drink',
+    formule1: 'salty',
+    formule2: 'sweet',
+    formule3: 'salty'
+};
+
+const getSupplementOptions = (productId) => {
+    const panel = productSupplementPanels[productId] || 'salty';
+    return supplementCatalog[panel] || [];
+};
+> main
 let selectedProductId = null;
 let cart = [];
 
@@ -196,9 +245,21 @@ const formatCartMessage = () => {
         return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
     }
 
-    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    const lines = cart.flatMap(item => {
+        const supplementLine = item.supplements.length
+            ? `  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`
+            : null;
+        return supplementLine
+            ? [`- ${item.qty} x ${item.title} (${item.price})`, supplementLine]
+            : [`- ${item.qty} x ${item.title} (${item.price})`];
+    });
     const orderType = orderTypeInput.value;
     const customerName = customerNameInput.value.trim() || 'Non renseigné';
+    const customerPhone = customerPhoneInput.value.trim() || 'Non renseigné';
+    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';> main
     const customerNotes = customerNotesInput.value.trim() || 'Aucune';
 
     return [
@@ -208,6 +269,8 @@ const formatCartMessage = () => {
         '',
         `Mode: ${orderType}`,
         `Nom: ${customerName}`,
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        `Téléphone: ${customerPhone}`,> main
         `Notes: ${customerNotes}`
     ].join('\n');
 };
@@ -218,11 +281,25 @@ const updateCartView = () => {
         return;
     }
 
-    cartItemsContainer.innerHTML = cart.map(item => `
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    cartItemsContainer.innerHTML = cart.map(item => {
+        const supplementOptions = getSupplementOptions(item.id);
+        const supplementInputs = supplementOptions.map(option => {
+            const checked = item.supplements.some(s => s.id === option.id) ? 'checked' : '';
+            return `<label class="supplement-option"><input type="checkbox" data-action="toggle-supplement" data-item-id="${item.id}" data-supp-id="${option.id}" ${checked}> ${option.label} <span>${option.price}</span></label>`;
+        }).join('');
+
+        return `
+    cartItemsContainer.innerHTML = cart.map(item => `> main
         <div class="cart-item-row">
             <div>
                 <strong>${item.title}</strong><br>
                 <small>${item.price}</small>
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+                <div class="supplement-panel">
+                    <p>Suppléments disponibles :</p>
+                    <div class="supplement-grid">${supplementInputs}</div>
+                </div> > main
             </div>
             <div class="cart-item-actions">
                 <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
@@ -230,7 +307,10 @@ const updateCartView = () => {
                 <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
             </div>
         </div>
-    `).join('');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    `;
+    }).join('');
+    `).join('');> main
 };
 
 cartItemsContainer.addEventListener('click', (event) => {
@@ -239,8 +319,11 @@ cartItemsContainer.addEventListener('click', (event) => {
         return;
     }
 
-    const itemId = button.getAttribute('data-id');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
     const action = button.getAttribute('data-action');
+    const itemId = button.getAttribute('data-id');
+    const itemId = button.getAttribute('data-id');
+    const action = button.getAttribute('data-action');> main
     const item = cart.find(entry => entry.id === itemId);
 
     if (!item) {
@@ -258,6 +341,37 @@ cartItemsContainer.addEventListener('click', (event) => {
 
     updateCartView();
 });
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+
+cartItemsContainer.addEventListener('change', (event) => {
+    const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
+    if (!checkbox) {
+        return;
+    }
+
+    const itemId = checkbox.getAttribute('data-item-id');
+    const supplementId = checkbox.getAttribute('data-supp-id');
+    const item = cart.find(entry => entry.id === itemId);
+    if (!item) {
+        return;
+    }
+
+    const supplement = getSupplementOptions(itemId).find(option => option.id === supplementId);
+    if (!supplement) {
+        return;
+    }
+
+    if (checkbox.checked) {
+        const exists = item.supplements.some(entry => entry.id === supplementId);
+        if (!exists) {
+            item.supplements.push(supplement);
+        }
+    } else {
+        item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
+    }
+});
+=======
+> main
 
 // Boutons de fermeture
 const closeButtons = document.querySelectorAll('.close');
@@ -335,12 +449,18 @@ addToCartBtn.addEventListener('click', () => {
 
     if (existing) {
         existing.qty += 1;
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        existing.supplements = existing.supplements || []; > main
     } else {
         cart.push({
             id: selectedProductId,
             title: product.title,
-            price: product.price,
+            price: product.price, 
+            < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+            qty: 1,
+            supplements: []
             qty: 1
+> main
         });
     }
 
