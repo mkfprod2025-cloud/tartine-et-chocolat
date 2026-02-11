@@ -150,6 +150,50 @@ const categoryLabels = {
     boissons: "Suppléments boissons"
 };
 
+
+
+const productOptionsCatalog = {
+    defaultTemperature: {
+        label: "Température",
+        type: "single",
+        choices: [
+            { name: "Chaud", price: 0 },
+            { name: "Froid", price: 0 }
+        ]
+    },
+    boisson3Ingredients: {
+        label: "Ingrédients (3 max)",
+        type: "multi",
+        max: 3,
+        choices: [
+            { name: "Pomme", price: 0 },
+            { name: "Carotte", price: 0 },
+            { name: "Orange", price: 0 },
+            { name: "Concombre", price: 0 },
+            { name: "Ananas", price: 0 },
+            { name: "Gingembre", price: 0 },
+            { name: "Citron", price: 0 },
+            { name: "Menthe", price: 0 }
+        ]
+    }
+};
+
+const supplementsByProduct = {
+    delice4: ['sales'],
+    delice5: ['sales'],
+    delice6: ['sales'],
+    decouverte2: ['sales', 'sucres']
+};
+
+const optionsByProduct = {
+    boisson1: ['defaultTemperature'],
+    boisson2: ['defaultTemperature'],
+    boisson3: ['defaultTemperature', 'boisson3Ingredients'],
+    boisson4: ['defaultTemperature'],
+    decouverte3: ['defaultTemperature'],
+    decouverte4: ['defaultTemperature']
+};
+
 const whatsappNumber = "33123456789";
 let currentProductId = null;
 let cart = [];
@@ -202,11 +246,17 @@ const renderSupplementsListing = () => {
     `;
 };
 
-const buildSupplementSelectors = () => {
+const buildSupplementSelectors = (productId) => {
     const selectorHost = document.getElementById('supplementSelectors');
     selectorHost.innerHTML = '';
 
-    Object.entries(supplementsCatalog).forEach(([key, values]) => {
+    const allowedCategories = supplementsByProduct[productId] || [];
+    if (allowedCategories.length === 0) {
+        return;
+    }
+
+    allowedCategories.forEach((key) => {
+        const values = supplementsCatalog[key] || [];
         const row = document.createElement('div');
         row.className = 'add-line';
 
@@ -236,6 +286,117 @@ const buildSupplementSelectors = () => {
     });
 };
 
+const enforceIngredientLimit = (container, max) => {
+    const checkboxes = Array.from(container.querySelectorAll('input[type="checkbox"]'));
+    const checkedCount = checkboxes.filter((box) => box.checked).length;
+    checkboxes.forEach((box) => {
+        box.disabled = checkedCount >= max && !box.checked;
+    });
+};
+
+const buildProductOptionSelectors = (productId) => {
+    const optionsHost = document.getElementById('productOptionSelectors');
+    optionsHost.innerHTML = '';
+
+    const optionKeys = optionsByProduct[productId] || [];
+    optionKeys.forEach((optionKey) => {
+        const optionConfig = productOptionsCatalog[optionKey];
+        if (!optionConfig) {
+            return;
+        }
+
+        const row = document.createElement('div');
+        row.className = 'add-line';
+
+        const label = document.createElement('label');
+        label.textContent = optionConfig.label;
+        row.appendChild(label);
+
+        if (optionConfig.type === 'single') {
+            const select = document.createElement('select');
+            select.dataset.optionType = 'single';
+            select.dataset.optionKey = optionKey;
+
+            const noOption = document.createElement('option');
+            noOption.value = '';
+            noOption.textContent = 'Sélectionner';
+            select.appendChild(noOption);
+
+            optionConfig.choices.forEach((choice) => {
+                const choiceOption = document.createElement('option');
+                choiceOption.value = JSON.stringify(choice);
+                choiceOption.textContent = choice.price > 0
+                    ? `${choice.name} (+${formatPrice(choice.price)})`
+                    : choice.name;
+                select.appendChild(choiceOption);
+            });
+
+            row.appendChild(select);
+        }
+
+        if (optionConfig.type === 'multi') {
+            const checkboxGroup = document.createElement('div');
+            checkboxGroup.className = 'checkbox-group';
+            checkboxGroup.dataset.optionType = 'multi';
+            checkboxGroup.dataset.optionKey = optionKey;
+            checkboxGroup.dataset.max = String(optionConfig.max || optionConfig.choices.length);
+
+            optionConfig.choices.forEach((choice, index) => {
+                const wrapper = document.createElement('label');
+                wrapper.className = 'checkbox-item';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = JSON.stringify(choice);
+                checkbox.id = `${optionKey}-${index}`;
+                checkbox.addEventListener('change', () => {
+                    enforceIngredientLimit(checkboxGroup, optionConfig.max || optionConfig.choices.length);
+                });
+
+                const text = document.createElement('span');
+                text.textContent = choice.name;
+
+                wrapper.appendChild(checkbox);
+                wrapper.appendChild(text);
+                checkboxGroup.appendChild(wrapper);
+            });
+
+            row.appendChild(checkboxGroup);
+            enforceIngredientLimit(checkboxGroup, optionConfig.max || optionConfig.choices.length);
+        }
+
+        optionsHost.appendChild(row);
+    });
+};
+
+const collectProductOptions = () => {
+    const options = [];
+
+    document.querySelectorAll('#productOptionSelectors select[data-option-type="single"]').forEach((select) => {
+        if (!select.value) {
+            return;
+        }
+        const selected = JSON.parse(select.value);
+        options.push({
+            ...selected,
+            label: selected.name
+        });
+    });
+
+    document.querySelectorAll('#productOptionSelectors .checkbox-group[data-option-type="multi"]').forEach((group) => {
+        const checked = Array.from(group.querySelectorAll('input[type="checkbox"]:checked'));
+        checked.forEach((input) => {
+            const selected = JSON.parse(input.value);
+            options.push({
+                ...selected,
+                label: selected.name
+            });
+        });
+    });
+
+    return options;
+};
+
 const renderCart = () => {
     const cartItems = document.getElementById('cartItems');
     const emptyState = document.getElementById('cartEmptyState');
@@ -260,11 +421,15 @@ const renderCart = () => {
         const supplementsText = line.supplements.length > 0
             ? `Suppléments : ${line.supplements.map((item) => item.name).join(', ')}`
             : 'Sans supplément';
+        const optionsText = line.options.length > 0
+            ? `Options : ${line.options.map((item) => item.label).join(', ')}`
+            : 'Sans option';
 
         lineNode.innerHTML = `
             <div>
                 <p><strong>${line.quantity} × ${line.title}</strong></p>
                 <p>${supplementsText}</p>
+                <p>${optionsText}</p>
                 <p>${formatPrice(line.total)}</p>
             </div>
             <button data-index="${index}" class="remove-cart-item">Retirer</button>
@@ -313,7 +478,8 @@ const setupProductCards = () => {
             }
 
             currentProductId = productId;
-            buildSupplementSelectors();
+            buildSupplementSelectors(productId);
+            buildProductOptionSelectors(productId);
             document.getElementById('modalQuantity').value = '1';
 
             const modalMediaContainer = document.getElementById('modalMediaContainer');
@@ -377,13 +543,16 @@ const setupAddToCart = () => {
             .filter((value) => value)
             .map((value) => JSON.parse(value));
 
+        const selectedOptions = collectProductOptions();
         const supplementsTotal = selectedSupplements.reduce((sum, item) => sum + item.price, 0);
-        const lineTotal = (basePrice + supplementsTotal) * quantity;
+        const optionsTotal = selectedOptions.reduce((sum, item) => sum + item.price, 0);
+        const lineTotal = (basePrice + supplementsTotal + optionsTotal) * quantity;
 
         cart.push({
             title: product.title,
             quantity,
             supplements: selectedSupplements,
+            options: selectedOptions,
             total: lineTotal
         });
 
@@ -402,10 +571,13 @@ const setupWhatsAppSend = () => {
 
         const total = cart.reduce((sum, line) => sum + line.total, 0);
         const content = cart.map((line) => {
-            const extras = line.supplements.length > 0
+            const supplements = line.supplements.length > 0
                 ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
                 : '';
-            return `- ${line.quantity} x ${line.title}${extras} = ${formatPrice(line.total)}`;
+            const options = line.options.length > 0
+                ? ` | options: ${line.options.map((o) => o.label).join(', ')}`
+                : '';
+            return `- ${line.quantity} x ${line.title}${supplements}${options} = ${formatPrice(line.total)}`;
         }).join('\n');
 
         const message = `Bonjour Tartine et Chocolat,%0AJe souhaite commander à emporter :%0A${content}%0A%0ATotal estimé : ${formatPrice(total)}%0AMerci !`;
