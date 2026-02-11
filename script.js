@@ -250,7 +250,7 @@ const productOptionsCatalog = {
     formule2ingredients2:{
          label: "2 boisson",
      type: "multi",
-    max: 1,
+    max: 2,
     choices: [
         {name: "coffee ou latte(froid)"},
         {name: "thé glacé"},
@@ -279,15 +279,16 @@ const supplementsByProduct = {
     decouverte2: ['sales'],
  decouverte3: ['boissons'],
  decouverte4: ['boissons'],
+    formule1: ['sales','sucres','boissons'],
+    formule2: ['sucres','boissons']
 };
-
 const optionsByProduct = {
     boisson1: ['boisson1Ingredients'],
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','sales','formule1ingredients2','sucres','formule1ingredients3','boissons'],
-    formule2: ['formule2ingredients1', 'sucres','formule2ingredients2','sucres'],
+    formule1: ['formule1ingredients','sales','formule1ingredients2','formule1ingredients3','],
+    formule2: ['formule2ingredients1','formule2ingredients2'],
 };
 
 const whatsappNumber = "33123456789";
