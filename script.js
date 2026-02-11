@@ -137,32 +137,6 @@ const productsData = {
     }
 };
 
-const supplementsCatalog = {
-    sales: [
-        { name: "jambon.blanc", price: 3 },
-        { name: "poulet", price: 2 },
-        { name: "oeuf dur", price: 2 },
-        { name: "Saumon fumé", price: 3.5 },
-        { name: "Fromage frais", price: 1.5 },
-        { name: "pistache", price: 1 },
-        { name: "houmous", price: 3 }
-    ],
-    sucres: [
-        { name: "pommes", price: 2 },
-        { name: "ananas", price: 2 },
-        { name: "banane", price: 2 },
-        { name: "gingembre", price: 1.5 },
-        { name: "Fruits rouges", price: 2 },
-        { name: "crème fraiche", price: 1.5 }
-    ],
-    boissons: [
-        { name: "sucre de Cannes", price: 0.5 },
-        { name: "sirop de vanille", price: 0.5 },
-        { name: "sirop de caramel", price: 0.5 },
-        { name: "lait vegetal avoine", price: 1 },
-        { name: "lait vegetal coco", price: 1 }
-    ]
-};
 const productOptionsCatalog = {
           boisson1Ingredients: {
         label: "choix des saveurs",
@@ -291,6 +265,32 @@ const optionsByProduct = {
     formule2: ['formule2ingredients1','formule2ingredients2'],
 };
 
+const supplementsCatalog = {
+    sales: [
+        { name: "jambon.blanc", price: 3 },
+        { name: "poulet", price: 2 },
+        { name: "oeuf dur", price: 2 },
+        { name: "Saumon fumé", price: 3.5 },
+        { name: "Fromage frais", price: 1.5 },
+        { name: "pistache", price: 1 },
+        { name: "houmous", price: 3 }
+    ],
+    sucres: [
+        { name: "pommes", price: 2 },
+        { name: "ananas", price: 2 },
+        { name: "banane", price: 2 },
+        { name: "gingembre", price: 1.5 },
+        { name: "Fruits rouges", price: 2 },
+        { name: "crème fraiche", price: 1.5 }
+    ],
+    boissons: [
+        { name: "sucre de Cannes", price: 0.5 },
+        { name: "sirop de vanille", price: 0.5 },
+        { name: "sirop de caramel", price: 0.5 },
+        { name: "lait vegetal avoine", price: 1 },
+        { name: "lait vegetal coco", price: 1 }
+    ]
+};
 const whatsappNumber = "33123456789";
 let currentProductId = null;
 let cart = [];
