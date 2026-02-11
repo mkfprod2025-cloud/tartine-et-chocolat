@@ -215,8 +215,8 @@ const productOptionsCatalog = {
             { name: "campagnarde"},
             { name: "mediterrané"},
             { name: "veggan"},
-            ]
-         label: "1 dessert",
+            ],
+        { label: "1 dessert",
      type: "multi",
     max: 1,
     choices: [
