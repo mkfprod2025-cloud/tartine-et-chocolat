@@ -233,7 +233,7 @@ const productOptionsCatalog = {
         {name: "thé glacéx2"},
         {name: "jus de fruit x2"}, ]
    } ,
-        formule3ingredients: {
+        formule3ingredients1: {
         label: "2 tartine salée",
         type: "multi",
     max: 2,
@@ -302,7 +302,7 @@ const optionsByProduct = {
     boisson4: ['boisson4Ingredients'],
     formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
-    formule3: ['fomule3ingredients','formule3ingredients2','formule3ingredients3'],
+    formule3: ['fomule3ingredients1','formule3ingredients2','formule3ingredients3'],
 };
 
 const supplementsCatalog = {
