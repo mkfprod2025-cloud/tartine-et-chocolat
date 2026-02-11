@@ -140,10 +140,10 @@ const supplementsCatalog = {
         { name: "lait vegetal coco", price: 1.8 }
     ],
     boissons: [
-        { name: "chaud", price:  },
-        { name: "froid", price:  },
-        { name: "sans glace", price: },
-        { name: "sans sucre", price:  }
+        { name: "chaud", price: 0.0 },
+        { name: "froid", price: 0.0 },
+        { name: "sans glace", price: 0.0},
+        { name: "sans sucre", price: 0.0 }
     ]
 };
 
