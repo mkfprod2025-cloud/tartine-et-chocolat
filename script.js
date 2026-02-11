@@ -234,6 +234,30 @@ const productOptionsCatalog = {
         {name: "coffee ou latte(froid)"},
         {name: "thé glacé"},
         {name: "jus de fruit"}, ]
+    },
+  formule2ingredients1:{
+         label: "2 dessert",
+     type: "multi",
+    max: 2,
+    choices: [
+        {name: "crumble"},
+        {name: "gateau choco"},
+        {name: "tarte tatin"},
+        {name: "crumble x2"},
+        {name: "gateau choco x2"},
+        {name: "tarte tatin x2"}, ]
+},
+    formule2ingredients2:{
+         label: "2 boisson",
+     type: "multi",
+    max: 1,
+    choices: [
+        {name: "coffee ou latte(froid)"},
+        {name: "thé glacé"},
+        {name: "jus de fruit"},
+           {name: "coffee ou latte(froid) x2"},
+        {name: "thé glacéx2"},
+        {name: "jus de fruit x2"}, ]
     }};
 const categoryLabels = {
     sales: "Suppléments salés",
@@ -262,9 +286,9 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','sales','formule1ingredients2','sucres','formule1ingredients3','boissons']
-    
-};
+    formule1: ['formule1ingredients','sales','formule1ingredients2','sucres','formule1ingredients3','boissons'],
+    formule2: ['formule2ingredients1', 'sucres','formule2ingredients2','sucres'],
+}};
 
 const whatsappNumber = "33123456789";
 let currentProductId = null;
