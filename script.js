@@ -1,4 +1,4 @@
-const productsData = {
+e de la baronne 0640 Cannesconst productsData = {
     delice1: {
         title: "Crumble Pomme et Cannelle",
         description: "Crumble pommes cannelle, dessert à emporter au goût réconfortant. Pommes fondantes parfumées à la cannelle, recouvertes d’un crumble croustillant et doré.(pomme,cannelle,farine de blé, beurre, sucre.)",
@@ -753,7 +753,7 @@ const generateInvoicePdf = () => {
         'Mentions légales - Auto-entreprise (France):',
         'Tartine et Chocolat - Micro-entreprise, Cannes (06).',
         'TVA non applicable, art. 293 B du CGI.',
-        'SIREN: A RENSEIGNER | Adresse: A RENSEIGNER | Contact: A RENSEIGNER.',
+        'SIREN: A RENSEIGNER | Adresse:4A avenue de la Baronne 06400 Cannes | Contact:0664624506.',
         'Conservation de la facture: 10 ans (Code de commerce).'
     ];
 
