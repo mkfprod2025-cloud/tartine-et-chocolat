@@ -1,42 +1,42 @@
 const productsData = {
     delice1: {
         title: "Crumble Pomme et Cannelle",
-        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
+        description: "Crumble pommes cannelle, dessert à emporter au goût réconfortant. Pommes fondantes parfumées à la cannelle, recouvertes d’un crumble croustillant et doré.(pomme,cannelle,farine de blé, beurre, sucre.)",
         price: "10€",
         image: "assets/crumblevid.mp4",
         media_type: "video"
     },
     delice2: {
         title: "gateau au chocolat",
-        description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.",
+        description: "Gâteau au chocolat à emporter, texture moelleuse et cœur fondant, goût chocolaté profond et généreux.(farine, œufs, sucre, beurre, chocolat).",
         price: "11€",
         image: "assets/fondantchovid.mp4",
         media_type: "video"
     },
     delice3: {
         title: "Tarte Tatin",
-        description: "la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
+        description: "La célèbre tarte des sœurs Tatin, recette mythique aux pommes fondantes et caramel doré, accompagnée de sa pipette de crème fraîche.(pommes, sucre, beurre, farine de blé, crème fraîche)",
         price: "13.00€",
         image: "assets/tatinvid.mp4",
         media_type: "video"
     },
     delice4: {
         title: "La Tartine Campagnarde",
-        description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.",
+        description: "La Tartine Campagnarde, rustique et nourrissante, sur pain campagnard, avec fromage frais aux herbes, jambon blanc ou poulet et touche de pistache.(pain campagnard, fromage frais, herbes fines, jambon blanc ou poulet, pistache)",
         price: "13€",
         image: "assets/campavid.mp4",
         media_type: "video"
     },
     delice5: {
         title: "La Tartine Méditerranéenne",
-        description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
+        description: "Un accord méditerranéen entre houmous savoureux et saumon fondant, déposé sur un pain tendre et léger.(pois chiches, purée de sésame, citron, ail, huile d’olive, cumin moulu, saumon, pain)",
         price: "16€",
         image: "assets/maraivid.mp4",
         media_type: "video"
     },
     delice6: {
         title: "La Maraichère",
-        description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
+        description: "La tartine végé, une garniture généreuse de légumes de saison sur un pain focaccia moelleux et aérien.(légumes melangé de saison, farine de blé, levure, huile d’olive)",
         price: "12€",
         image: "assets/vegivid.mp4",
         media_type: "video"
@@ -71,21 +71,21 @@ const productsData = {
     },
     decouverte1: {
         title: "La Tarte aux myrtilles",
-        description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
+        description: "Une belle part de tarte aux myrtilles façon grand-mère, à la pâte épaisse et gourmande, idéale pour rassurer les après-midi.(myrtilles, farine de blé, beurre, sucre, œufs)",
         price: "11€",
         image: "assets/myrtvid.mp4",
         media_type: "video"
     },
     decouverte2: {
         title: "La soupe de saison",
-        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
+        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saisons mijôté avec beaucoup d'amour et d'épices",
         price: "10.50€",
         image: "assets/soupvid.mp4",
         media_type: "video"
     },
     decouverte3: {
         title: "matcha latte",
-        description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples",
+        description: "Un doux matcha au lait de vache ou vegetal de votre choix, chaud ou froid, a agrémenter de sirops aux saveurs mutiples",
         price: "9.50€",
         image: "assets/matchavid.mp4",
         media_type: "video"
