@@ -288,7 +288,7 @@ const optionsByProduct = {
     boisson4: ['boisson4Ingredients'],
     formule1: ['formule1ingredients','sales','formule1ingredients2','sucres','formule1ingredients3','boissons'],
     formule2: ['formule2ingredients1', 'sucres','formule2ingredients2','sucres'],
-}};
+};
 
 const whatsappNumber = "33123456789";
 let currentProductId = null;
