@@ -213,7 +213,7 @@ const productOptionsCatalog = {
     max: 1,
         choices: [
             { name: "campagnarde"},
-            { name: "mediterrané"},
+            { name: "méditerranéenne"},
             { name: "veggan"},
             ]
     },
@@ -262,7 +262,7 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3']
+    formule1: ['formule1ingredients','sales','formule1ingredients2','sucres','formule1ingredients3','boissons']
     
 };
 
