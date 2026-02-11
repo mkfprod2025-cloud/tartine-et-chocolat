@@ -1,281 +1,528 @@
-// Données des produits
-const productsData = {
-    // Délices
-    delice1: {
-        title: "Crumble Pomme et Cannelle",
-        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
-        price: "10€",
-        image: "assets/crumblevid.mp4",
-        media_type: "video" // ou "video"
-    },
-    delice2: {
-        title: "gateau au chocolat",
-        description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.",
-        price: "11€",
-        image: "assets/fondantchovid.mp4",
-        media_type: "video"
-    },
-    delice3: {
-        title: "Tarte Tatin",
-        description:"la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
-        price: "13.00€",
-        image: "assets/tatinvid.mp4",
-        media_type: "video"
-    },
-    delice4: {
-        title: "La Tartine Campagnarde",
-        description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.",
-        price: "13€",
-        image: "assets/campavid.mp4",
-        media_type: "video"
-    },
-    delice5: {
-        title: "La Tartine Méditerranéenne",
-        description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
-        price: "16€",
-        image: "assets/maraivid.mp4",
-        media_type: "video"
-    },
-    delice6: {
-        title: "La Maraichère",
-        description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
-        price: "12€",
-        image: "assets/vegivid.mp4",
-        media_type: "video"
-    },
+/* Reset et variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Boissons
-    boisson1: {
-        title: "Nos spécialité de café glacé ",
-        description: "ice coffee, latté, frappé sucré celon votre convenance ",
-        price: "de 7€ a 12€",
-        image: "assets/coffeevid.mp4",
-             media_type: "video"
-    },
-    boisson2: {
-        title: "Thé Glacé Maison",
-        description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
-        price: "8.50€",
-        image: "assets/icetvid.mp4",
-         media_type: "video"
-    },
-    boisson3: {
-        title: "les jus de fruits centrifugés ",
-        description: "pommes, carottes, oranges pressées à la commande ",
-        price: "8.5€", 
-        image: "assets/centrivid.mp4",
-          media_type: "video"
-    },
-    boisson4: {
-        title: "nos smoothies aux fruits ",
-        description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
-        price: "9.50€",
-        image: "assets/smootvid.mp4",
-        media_type: "video"
-    },
+:root {
+    --primary-color: #d4a574;
+    --secondary-color: #8b6f47;
+    --dark-color: #2c2416;
+    --light-color: #f5f5f5;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
 
-    // Découvertes
-    decouverte1: {
-        title: "La Tarte aux myrtilles",
-        description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
-        price: "11€",
-        image: "assets/myrtvid.mp4",
-          media_type: "video"
-    },
-    decouverte2: {
-        title: "La soupe de saison",
-        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
-        price: "10.50€",
-        image: "assets/soupvid.mp4",
-        media_type: "video"
-    },
-    decouverte3: {
-        title: "matcha latte",
-        description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples",
-        price: "9.50€",
-        image: "assets/matchavid.mp4",
-        media_type: "video"
-    },
-    decouverte4: {
-        title: "notre jus star du moment ",
-        description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
-        price: "9.50€",
-        image: "assets/jusmoisvid.mp4",
-        media_type: "video"     
-    },
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    min-height: 100vh;
+    position: relative;
+}
 
-    // Formules
-    formule1: {
-        title: "Formule équilibré",
-        description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
-        price: "17€",
-        image: "assets/form1couv.png",
-        media_type: "image"
-    },
-    formule2: {
-        title: "Formule Gouté à deux",
-        description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
-        price: "24€",
-        image: "assets/form2vid.mp4",
-        media_type: "video"
-    },
-    formule3: {
-        title: "Formule Brunch Club",
-        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
-        price: "55€",
-        image: "assets/form3vid.mp4",
-        media_type: "video"
+/* Fond d'écran */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    /* Overlay pour améliorer la lisibilité */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.15);
     }
-};
+}
 
-// Gestion des onglets
-const tabButtons = document.querySelectorAll('.tab-button');
-const tabPanes = document.querySelectorAll('.tab-pane');
+/* Conteneur principal */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
 
-const openTab = (tabId) => {
-    tabPanes.forEach(pane => pane.classList.remove('active'));
+/* En-tête */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: none;
+}
 
-    const targetPane = document.getElementById(tabId);
-    if (targetPane) {
-        targetPane.classList.add('active');
+.logo {
+    max-width: 70%;
+    height: auto;
+    max-height: 200px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+}
+
+.tagline {
+    font-size: 2.8rem;
+    color: #ffff00
+ ;
+    margin-top: 10px;
+    font-weight: 300;
+    font-style: Pirata One ;
+}
+
+.main-title {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.description {
+    font-size: 2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Navigation par onglets */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.tab-button {
+    padding: 15px 30px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.tab-button.active {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+/* Contenu des onglets */
+.tab-content {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    min-height: 500px;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grilles */
+.grid {
+    display: grid;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.grid-6 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* Cartes produits */
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.card h3 {
+    padding: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Section Commander */
+.order-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.order-button {
+    padding: 20px 60px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.order-button:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.secondary-order-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    min-width: 260px;
+}
+
+.info-pane {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.info-pane h2 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.info-pane p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.product-modal {
+    max-width: 900px;
+}
+
+.order-modal {
+    max-width: 700px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--secondary-color);
+}
+
+/* Modal Options de commande */
+.order-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.order-option {
+    background: linear-gradient(135deg, var(--light-color) 0%, white 100%);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.order-option:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.option-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.order-option h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.order-option p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Modal À Emporter */
+.contact-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin: 15px 0;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.phone-number {
+    font-size: 2rem !important;
+    font-weight: 700;
+    color: var(--secondary-color) !important;
+    margin: 25px 0 !important;
+}
+
+.info-text {
+    font-style: italic;
+    color: #888 !important;
+    margin-top: 20px !important;
+}
+
+/* Modal Produit */
+.product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+#modalMediaContainer {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+#modalMediaContainer img,
+#modalMediaContainer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-details img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.product-info h2 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.product-info p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.price {
+    font-size: 1.8rem !important;
+    font-weight: 700;
+    color: var(--primary-color) !important;
+    margin-top: 25px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 80%;
+        max-height: 150px;
     }
 
-    tabButtons.forEach(btn => {
-        const isActive = btn.getAttribute('data-tab') === tabId;
-        btn.classList.toggle('active', isActive);
-    });
-};
-
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-tab');
-        openTab(tabId);
-    });
-});
-
-const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
-secondaryTabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const tabId = button.getAttribute('data-target-tab');
-        openTab(tabId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
-
-// Gestion des modals
-const productModal = document.getElementById('productModal');
-const orderModal = document.getElementById('orderModal');
-const takeawayModal = document.getElementById('takeawayModal');
-
-// Boutons de fermeture
-const closeButtons = document.querySelectorAll('.close');
-closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Pause vidéo si elle existe
-        const video = document.querySelector('#modalMediaContainer video');
-        if (video) {
-            video.pause();
-        }
-        
-        productModal.style.display = 'none';
-        orderModal.style.display = 'none';
-        takeawayModal.style.display = 'none';
-    });
-});
-
-// Fermer en cliquant à l'extérieur
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-        // Pause vidéo si elle existe
-        const video = document.querySelector('#modalMediaContainer video');
-        if (video) {
-            video.pause();
-        }
-        
-        e.target.style.display = 'none';
+    .tagline {
+        font-size: 1.1rem;
     }
-});
 
-// Gestion des cartes produits
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const productId = card.getAttribute('data-product');
-        const product = productsData[productId];
+    .main-title {
+        font-size: 2rem;
+    }
 
-        if (product) {
-            const modalMediaContainer = document.getElementById('modalMediaContainer');
-            
-            // Vider le conteneur
-            modalMediaContainer.innerHTML = '';
-            
-            // Créer l'élément approprié selon le type de média
-            if (product.media_type === 'video') {
-                const video = document.createElement('video');
-                video.src = product.image;
-                video.controls = true;
-                video.autoplay = true;
-                video.loop = true;
-                video.muted = true;
-                video.id = 'modalMedia';
-                modalMediaContainer.appendChild(video);
-            } else {
-                const img = document.createElement('img');
-                img.src = product.image;
-                img.alt = product.title;
-                img.id = 'modalMedia';
-                modalMediaContainer.appendChild(img);
-            }
-            
-            document.getElementById('modalTitle').textContent = product.title;
-            document.getElementById('modalDescription').textContent = product.description;
-            document.getElementById('modalPrice').textContent = product.price;
+    .description {
+        font-size: 1rem;
+    }
 
-            productModal.style.display = 'block';
-        }
-    });
-});
+    .tab-button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
 
-// Bouton Commander
-const orderBtn = document.getElementById('orderBtn');
-orderBtn.addEventListener('click', () => {
-    orderModal.style.display = 'block';
-});
+    .product-details {
+        grid-template-columns: 1fr;
+    }
 
-// Options de commande
-const takeawayOption = document.getElementById('takeawayOption');
-const deliveryOption = document.getElementById('deliveryOption');
+    #modalMediaContainer {
+        height: 250px;
+    }
 
-takeawayOption.addEventListener('click', () => {
-    orderModal.style.display = 'none';
-    takeawayModal.style.display = 'block';
-});
+    .product-details img {
+        height: 250px;
+    }
 
-deliveryOption.addEventListener('click', () => {
-    // Redirection vers Uber Eats
-    // Remplacer l'URL par votre véritable lien Uber Eats
-    window.open('https://www.ubereats.com/', '_blank');
-    orderModal.style.display = 'none';
-});
+    .order-button {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+    }
 
-// Animation au scroll (optionnel)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    .secondary-order-button {
+        width: min(100%, 320px);
+        font-size: 0.95rem;
+    }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+    .grid-6,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
 
-cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
-});
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .tab-content {
+        padding: 20px 15px;
+    }
+
+    .grid {
+        gap: 15px;
+    }
+
+    .grid-6,
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
