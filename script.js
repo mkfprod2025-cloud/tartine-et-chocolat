@@ -234,7 +234,7 @@ const productOptionsCatalog = {
         {name: "coffee ou latte(froid)"},
         {name: "thé glacé"},
         {name: "jus de fruit"}, ]
-};
+    }};
 const categoryLabels = {
     sales: "Suppléments salés",
     sucres: "Suppléments sucrés",
