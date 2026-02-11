@@ -162,24 +162,7 @@ const supplementsCatalog = {
         { name: "lait vegetal coco", price: 1 }
     ]
 };
-
-const categoryLabels = {
-    sales: "Suppléments salés",
-    sucres: "Suppléments sucrés",
-    boissons: "Suppléments boissons"
-};
-
-
-
 const productOptionsCatalog = {
-    defaultTemperature: {
-        label: "Température",
-        type: "single",
-        choices: [
-            { name: "Chaud", price: 0 },
-            { name: "Froid", price: 0 }
-        ]
-    },
           boisson1Ingredients: {
         label: "choix des saveurs",
         type: "multi",
@@ -225,7 +208,11 @@ const productOptionsCatalog = {
         ]
     }
 };
-
+const categoryLabels = {
+    sales: "Suppléments salés",
+    sucres: "Suppléments sucrés",
+    boissons: "Suppléments boissons"
+};
 const supplementsByProduct = {
     delice1: ['sucres'],
     delice2: ['sucres'],
@@ -244,12 +231,12 @@ const supplementsByProduct = {
 };
 
 const optionsByProduct = {
-    boisson1: ['boisson1Ingredients','defaultTemperature'],
-    boisson2: ['boisson2Ingredients','defaultTemperature'],
+    boisson1: ['boisson1Ingredients'],
+    boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    decouverte3: ['defaultTemperature'],
-    decouverte4: ['defaultTemperature']
+    decouverte3: [],
+    decouverte4: []
 };
 
 const whatsappNumber = "33123456789";
