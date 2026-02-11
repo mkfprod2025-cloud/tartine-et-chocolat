@@ -76,12 +76,13 @@ header {
 
 .tagline {
     font-size: 2.8rem;
-    color: #ffff00
- ;
+    color: #5f93c6;
     margin-top: 10px;
-    font-weight: 300;
-    font-style: Pirata One ;
+    font-weight: 400;
+    font-family: 'Lobster', cursive;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 12px rgba(70, 130, 180, 0.4);
 }
+
 
 .main-title {
     font-size: 3rem;
@@ -94,10 +95,10 @@ header {
 
 .description {
     font-size: 2rem;
-    color: #666;
+    color: #475569;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.8;
+    line-height: 2;
 }
 
 /* Navigation par onglets */
@@ -243,6 +244,36 @@ header {
     background: var(--primary-color);
     transform: scale(1.05);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.secondary-order-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    min-width: 260px;
+}
+
+.info-pane {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.info-pane h2 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.info-pane p {
+    font-size: 1.1rem;
+    color: #666;
 }
 
 /* Modals */
@@ -407,10 +438,12 @@ header {
 }
 
 .product-info p {
-    color: #666;
+    color: #5f93c6;
     line-height: 1.8;
     margin-bottom: 15px;
     font-size: 1.1rem;
+    font-family: 'Lobster', cursive;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 8px rgba(70, 130, 180, 0.35);
 }
 
 .price {
@@ -420,6 +453,169 @@ header {
     margin-top: 25px !important;
 }
 
+.add-cart-button {
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #3f7fb8 0%, #78a8d4 100%);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cart-modal {
+    max-width: 760px;
+}
+
+.cart-subtitle {
+    margin: 8px 0 16px;
+    color: #555;
+}
+
+.cart-items {
+    background: #f7f9fc;
+    border-radius: 10px;
+    padding: 14px;
+    max-height: 230px;
+    overflow: auto;
+    margin-bottom: 16px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 8px 0;
+    gap: 10px;
+}
+
+.cart-item-row:last-child {
+    border-bottom: none;
+}
+
+.cart-item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.qty-button {
+    border: 1px solid #adc4da;
+    background: white;
+    border-radius: 7px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.cart-form {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.cart-form input,
+.cart-form select,
+.cart-form textarea {
+    border: 1px solid #d6dce5;
+    border-radius: 8px;
+    padding: 10px;
+    font: inherit;
+}
+
+.cart-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.cart-action-button {
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 1rem;
+}
+
+.empty-cart {
+    color: #6b7280;
+    text-align: center;
+    padding: 10px;
+}
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+
+.supplements-pane {
+    text-align: left;
+}
+
+.supplements-layout {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.supplements-layout section {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #d7e4f1;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.supplements-layout h3 {
+    color: #3f7fb8;
+    margin-bottom: 8px;
+}
+
+.supplements-layout ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.supplements-layout li {
+    padding: 4px 0;
+    color: #485569;
+}
+
+.supplement-panel {
+    margin-top: 8px;
+    padding: 8px;
+    background: #f3f8fd;
+    border-radius: 8px;
+}
+
+.supplement-panel p {
+    margin: 0 0 6px;
+    font-size: 0.9rem;
+    color: #3c5f81;
+    font-family: inherit;
+    text-shadow: none;
+}
+
+.supplement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 6px;
+}
+
+.supplement-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    color: #2f4c68;
+}
+
+.supplement-option span {
+    color: #3f7fb8;
+    font-weight: 600;
+}
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+> main
+> main
 /* Responsive */
 @media (max-width: 768px) {
     .logo {
@@ -428,7 +624,7 @@ header {
     }
 
     .tagline {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
     }
 
     .main-title {
@@ -436,7 +632,7 @@ header {
     }
 
     .description {
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
 
     .tab-button {
@@ -459,6 +655,11 @@ header {
     .order-button {
         padding: 15px 40px;
         font-size: 1.2rem;
+    }
+
+    .secondary-order-button {
+        width: min(100%, 320px);
+        font-size: 0.95rem;
     }
 
     .grid-6,

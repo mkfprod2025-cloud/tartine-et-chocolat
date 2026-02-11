@@ -16,7 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="">
 <link rel="icon" type="image/jpeg" href="assets/logoTc.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/jpeg" href="assets/logoTc.jpg">
+<link rel="apple-touch-icon" href="assets/logoTc.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logoTc.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -120,7 +123,7 @@
                 <div class="grid grid-3">
                     <div class="card" data-product="formule1">
                         <img src="assets/form1couv.png" alt="Formule 1">
-                        <h3>Formule equilibrée</h3>
+                        <h3>formule équilibrée</h3>
                     </div>
                     <div class="card" data-product="formule2">
                         <img src="assets/form2couv.jpg" alt="Formule 2">
@@ -132,11 +135,83 @@
                     </div>
                 </div>
             </div>
+
+            <div id="allergenes" class="tab-pane info-pane">
+                <h2>Allergènes</h2>
+                <p>Contenu à venir.</p>
+            </div>
+
+            <div id="tracabilite" class="tab-pane info-pane">
+                <h2>Traçabilité</h2>
+                <p>Contenu à venir.</p>
+            </div>
+
+< codex/add-buttons-for-allergen-and-tracing-features-yfw5bt
+
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+> main
+            <div id="supplements" class="tab-pane info-pane supplements-pane">
+                <h2>Suppléments tarifaires</h2>
+                <p>Tarifs simplifiés pour le panier (version courte). La page complète pourra être enrichie ensuite.</p>
+                <div class="supplements-layout">
+                    <section>
+                        <h3>Produits (référence rapide)</h3>
+                        <ul>
+                            <li>Tartines salées : à partir de 12€</li>
+                            <li>Pâtisseries : à partir de 10€</li>
+                            <li>Boissons : de 7€ à 12€</li>
+                            <li>Formules : de 17€ à 55€</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Suppléments Salé</h3>
+                        <ul>
+                            <li>Avocat +2.00€</li>
+                            <li>Saumon fumé +3.50€</li>
+                            <li>Fromage frais +1.50€</li>
+                            <li>Œuf poché +1.80€</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Suppléments Sucré</h3>
+                        <ul>
+                            <li>Chantilly +1.20€</li>
+                            <li>Coulis chocolat +1.50€</li>
+                            <li>Boule glace vanille +2.00€</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Suppléments Boisson</h3>
+                        <ul>
+                            <li>Shot espresso +1.00€</li>
+                            <li>Lait végétal +0.80€</li>
+                            <li>Sirop maison +0.70€</li>
+                        </ul>
+                    </section>
+< codex/add-buttons-for-allergen-and-tracing-features-yfw5bt
+                </div>
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+                </div>
+          </div>
+  <div id="supplements" class="tab-pane info-pane">
+                <h2>Suppléments tarifaires</h2>
+                <p>Contenu à venir.</p>
+> main
+> main
+            </div>
         </div>
 
         <!-- Bouton Commander -->
         <div class="order-section">
             <button class="order-button" id="orderBtn">Commander</button>
+            <div class="secondary-actions">
+                <button class="order-button secondary-order-button" data-target-tab="allergenes">Allergènes</button>
+                <button class="order-button secondary-order-button" data-target-tab="tracabilite">Traçabilité</button>
+                <button class="order-button secondary-order-button" data-target-tab="supplements">Suppléments tarifaires</button>
+            </div>
         </div>
     </div>
 
@@ -146,17 +221,28 @@
             <span class="close">&times;</span>
             <h2>Choisissez votre mode de commande</h2>
             <div class="order-options">
-                <div class="order-option" id="takeawayOption">
-                    <div class="option-icon">📦</div>
-                    <h3>À Emporter</h3>
-                    <p>Appelez-nous pour passer commande</p>
+                <div class="order-option" id="cartOption">
+                    <div class="option-icon">🛒</div>
+                    <h3>Panier personnalisé</h3>
+                    <p>Composez votre commande avec plusieurs options</p>
                 </div>
                 <div class="order-option" id="deliveryOption">
                     <div class="option-icon">🚴</div>
-                    <h3>À Domicile</h3>
-                    <p>Commandez via Uber Eats</p>
+                    <h3>Commander sur Uber Eats</h3>
+                    <p>Rejoignez Uber Eats pour la livraison</p>
+                </div>
+                <div class="order-option" id="whatsappOption">
+                    <div class="option-icon">💬</div>
+                    <h3>WhatsApp officiel</h3>
+                    <p>Commande à emporter via WhatsApp</p>
+                </div>
+                <div class="order-option" id="telegramOption">
+                    <div class="option-icon">📨</div>
+                    <h3>Telegram</h3>
+                    <p>Envoyez votre commande via Telegram</p>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -185,7 +271,43 @@
                     <h2 id="modalTitle"></h2>
                     <p id="modalDescription"></p>
                     <p class="price" id="modalPrice"></p>
+                    <button class="add-cart-button" id="addToCartBtn">Ajouter au panier</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Panier -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close">&times;</span>
+            <h2>Votre panier</h2>
+            <p class="cart-subtitle">Choisissez les options d’envoi pour transmettre votre commande.</p>
+            <div id="cartItems" class="cart-items"></div>
+            <div class="cart-form">
+                <label for="orderType">Mode :</label>
+                <select id="orderType">
+                    <option value="a emporter">À emporter</option>
+                    <option value="livraison">Livraison</option>
+                </select>
+                <label for="customerName">Nom :</label>
+                <input type="text" id="customerName" placeholder="Votre nom">
+< codex/add-buttons-for-allergen-and-tracing-features-yfw5bt
+
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+> main
+                <label for="customerPhone">Téléphone :</label>
+                <input type="tel" id="customerPhone" placeholder="06 12 34 56 78">
+                <label for="customerNotes">Notes :</label>
+                <textarea id="customerNotes" rows="3" placeholder="Allergies, suppléments, préférences..."></textarea>
+            </div>
+            <div class="cart-actions">
+                <button class="order-button cart-action-button" id="sendRestaurantBtn">Envoyer au restaurant</button>
+                <button class="order-button cart-action-button" id="sendWhatsappBtn">Envoyer via WhatsApp</button>
+                <button class="order-button cart-action-button" id="sendTelegramBtn">Envoyer via Telegram</button>
+                <button class="order-button cart-action-button" id="openUberBtn">Commander sur Uber Eats</button>
             </div>
         </div>
     </div>
