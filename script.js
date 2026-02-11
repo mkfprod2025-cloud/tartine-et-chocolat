@@ -1,70 +1,136 @@
-// JS build: 20260211b cache-bust
 // Données des produits
 const productsData = {
-    delice1: { title: "Crumble Pomme et Cannelle", description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.", price: "10€", image: "assets/crumblevid.mp4", media_type: "video" },
-    delice2: { title: "gateau au chocolat", description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.", price: "11€", image: "assets/fondantchovid.mp4", media_type: "video" },
-    delice3: { title: "Tarte Tatin", description: "la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche", price: "13.00€", image: "assets/tatinvid.mp4", media_type: "video" },
-    delice4: { title: "La Tartine Campagnarde", description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.", price: "13€", image: "assets/campavid.mp4", media_type: "video" },
-    delice5: { title: "La Tartine Méditerranéenne", description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .", price: "16€", image: "assets/maraivid.mp4", media_type: "video" },
-    delice6: { title: "La Maraichère", description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.", price: "12€", image: "assets/vegivid.mp4", media_type: "video" },
-    boisson1: { title: "Nos spécialité de café glacé ", description: "ice coffee, latté, frappé sucré celon votre convenance ", price: "de 7€ a 12€", image: "assets/coffeevid.mp4", media_type: "video" },
-    boisson2: { title: "Thé Glacé Maison", description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.", price: "8.50€", image: "assets/icetvid.mp4", media_type: "video" },
-    boisson3: { title: "les jus de fruits centrifugés ", description: "pommes, carottes, oranges pressées à la commande ", price: "8.5€", image: "assets/centrivid.mp4", media_type: "video" },
-    boisson4: { title: "nos smoothies aux fruits ", description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)", price: "9.50€", image: "assets/smootvid.mp4", media_type: "video" },
-    decouverte1: { title: "La Tarte aux myrtilles", description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.", price: "11€", image: "assets/myrtvid.mp4", media_type: "video" },
-    decouverte2: { title: "La soupe de saison", description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices", price: "10.50€", image: "assets/soupvid.mp4", media_type: "video" },
-    decouverte3: { title: "matcha latte", description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples", price: "9.50€", image: "assets/matchavid.mp4", media_type: "video" },
-    decouverte4: { title: "notre jus star du moment ", description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis", price: "9.50€", image: "assets/jusmoisvid.mp4", media_type: "video" },
-    formule1: { title: "Formule équilibré", description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.", price: "17€", image: "assets/form1couv.png", media_type: "image" },
-    formule2: { title: "Formule Gouté à deux", description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .", price: "24€", image: "assets/form2vid.mp4", media_type: "video" },
-    formule3: { title: "Formule Brunch Club", description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise", price: "55€", image: "assets/form3vid.mp4", media_type: "video" }
+    // Délices
+    delice1: {
+        title: "Crumble Pomme et Cannelle",
+        description: "Un délicieux crumble aux pommes préparé avec des pommes fraîches et une pâte craquante maison.",
+        price: "10€",
+        image: "assets/crumblevid.mp4",
+        media_type: "video" // ou "video"
+    },
+    delice2: {
+        title: "gateau au chocolat",
+        description: "un recomfortant Gateau au Chocolat moelleux au coeur tendre.",
+        price: "11€",
+        image: "assets/fondantchovid.mp4",
+        media_type: "video"
+    },
+    delice3: {
+        title: "Tarte Tatin",
+        description:"la celebre tarte des soeurs Tatin avec sa pipette de crème fraiche",
+        price: "13.00€",
+        image: "assets/tatinvid.mp4",
+        media_type: "video"
+    },
+    delice4: {
+        title: "La Tartine Campagnarde",
+        description: "la grosse tartine qui tient au corps , pain campagnard, fromage frais , herbes fines, jambon blanc ou de poulet , pistache.",
+        price: "13€",
+        image: "assets/campavid.mp4",
+        media_type: "video"
+    },
+    delice5: {
+        title: "La Tartine Méditerranéenne",
+        description: "Un mélange mediterranéen de houmous (pois chiches , purée de sésame , citron ,ail , huile d’olive ,cumin moulu) et de saumon sur un fin pain tendre .",
+        price: "16€",
+        image: "assets/maraivid.mp4",
+        media_type: "video"
+    },
+    delice6: {
+        title: "La Maraichère",
+        description: "La tartine végé , des légumes de saisons cuisinés sur un pain a foccacia fluffy.",
+        price: "12€",
+        image: "assets/vegivid.mp4",
+        media_type: "video"
+    },
+
+    // Boissons
+    boisson1: {
+        title: "Nos spécialité de café glacé ",
+        description: "ice coffee, latté, frappé sucré celon votre convenance ",
+        price: "de 7€ a 12€",
+        image: "assets/coffeevid.mp4",
+             media_type: "video"
+    },
+    boisson2: {
+        title: "Thé Glacé Maison",
+        description: "Thé glacé fait maison infusé, menthe-jasmin, fruit rouge-miel, rooïbos peche. Rafraîchissant et désaltérant.",
+        price: "8.50€",
+        image: "assets/icetvid.mp4",
+         media_type: "video"
+    },
+    boisson3: {
+        title: "les jus de fruits centrifugés ",
+        description: "pommes, carottes, oranges pressées à la commande ",
+        price: "8.5€", 
+        image: "assets/centrivid.mp4",
+          media_type: "video"
+    },
+    boisson4: {
+        title: "nos smoothies aux fruits ",
+        description: "Smoothie vitaminé aux fruits  , mixés avec du fromage blanc 0% , du lait et une touche de miel.(ananas coco, fruits rouges, banane)",
+        price: "9.50€",
+        image: "assets/smootvid.mp4",
+        media_type: "video"
+    },
+
+    // Découvertes
+    decouverte1: {
+        title: "La Tarte aux myrtilles",
+        description: "Une belle part de tarte aux myrtilles façon grand-mère avec une pate épaisse et gourmandes pour rasurer ses apres-midi.",
+        price: "11€",
+        image: "assets/myrtvid.mp4",
+          media_type: "video"
+    },
+    decouverte2: {
+        title: "La soupe de saison",
+        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saoisons mijoté avec beaucoup d'amour et d'épices",
+        price: "10.50€",
+        image: "assets/soupvid.mp4",
+        media_type: "video"
+    },
+    decouverte3: {
+        title: "matcha latte",
+        description: "Un doux matcha au lait de votre choix a agrémenter de sirops aux saveurs mutiples",
+        price: "9.50€",
+        image: "assets/matchavid.mp4",
+        media_type: "video"
+    },
+    decouverte4: {
+        title: "notre jus star du moment ",
+        description: "notre composition du moment au grès du marché : pomme, concombre, menthe.testez jugez rapportez nous votre avis",
+        price: "9.50€",
+        image: "assets/jusmoisvid.mp4",
+        media_type: "video"     
+    },
+
+    // Formules
+    formule1: {
+        title: "Formule équilibré",
+        description: "Formule complète comprenant :une petite tartine salé, une petite patisserie et une boisson.",
+        price: "17€",
+        image: "assets/form1couv.png",
+        media_type: "image"
+    },
+    formule2: {
+        title: "Formule Gouté à deux",
+        description: "Formule pour les gourmands : 2 pâtisseries au choix parmi notre sélection + 2 boisson froide et un p'ti plus a partager .",
+        price: "24€",
+        image: "assets/form2vid.mp4",
+        media_type: "video"
+    },
+    formule3: {
+        title: "Formule Brunch Club",
+        description: "Formule Brunch Club :2 tartines salées, 2 desserts, 2 boissons aux choix et une decouverte surprise  ",
+        price: "55€",
+        image: "assets/form3vid.mp4",
+        media_type: "video"
+    }
 };
 
-const supplementCatalog = {
-    salty: [
-        { id: 'avocat', label: 'Avocat', price: '+2.00€' },
-        { id: 'saumon-fume', label: 'Saumon fumé', price: '+3.50€' },
-        { id: 'fromage-frais', label: 'Fromage frais', price: '+1.50€' },
-        { id: 'oeuf-poche', label: 'Œuf poché', price: '+1.80€' }
-    ],
-    sweet: [
-        { id: 'chantilly', label: 'Chantilly', price: '+1.20€' },
-        { id: 'coulis-chocolat', label: 'Coulis chocolat', price: '+1.50€' },
-        { id: 'glace-vanille', label: 'Boule glace vanille', price: '+2.00€' }
-    ],
-    drink: [
-        { id: 'shot-espresso', label: 'Shot espresso', price: '+1.00€' },
-        { id: 'lait-vegetal', label: 'Lait végétal', price: '+0.80€' },
-        { id: 'sirop-maison', label: 'Sirop maison', price: '+0.70€' }
-    ]
-};
-
-< codex/add-buttons-for-allergen-and-tracing-features-yfw5bt
-const productSupplementPanels = {
-    delice1: 'sweet', delice2: 'sweet', delice3: 'sweet', delice4: 'salty', delice5: 'salty', delice6: 'salty',
-    boisson1: 'drink', boisson2: 'drink', boisson3: 'drink', boisson4: 'drink',
-    decouverte1: 'sweet', decouverte2: 'salty', decouverte3: 'drink', decouverte4: 'drink',
-    formule1: 'salty', formule2: 'sweet', formule3: 'salty'
-};
-
-const WHATSAPP_PHONE = '33123456789';
-const TELEGRAM_USER = 'tartineetchocolat';
-const UBER_EATS_URL = 'https://www.ubereats.com/';
-
-const safeValue = (input, fallback = '') => {
-    if (!input || typeof input.value !== 'string') return fallback;
-    const value = input.value.trim();
-    return value || fallback;
-};
-
-const getSupplementOptions = (productId) => {
-    const panel = productSupplementPanels[productId] || 'salty';
-    return supplementCatalog[panel] || [];
-};
-
+// Gestion des onglets
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabPanes = document.querySelectorAll('.tab-pane');
-const cards = document.querySelectorAll('.card');
 
 const openTab = (tabId) => {
     tabPanes.forEach(pane => pane.classList.remove('active'));
@@ -95,372 +161,55 @@ secondaryTabButtons.forEach(button => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
-> main
 
+// Gestion des modals
 const productModal = document.getElementById('productModal');
 const orderModal = document.getElementById('orderModal');
 const takeawayModal = document.getElementById('takeawayModal');
-const cartModal = document.getElementById('cartModal');
-
-const addToCartBtn = document.getElementById('addToCartBtn');
-const cartItemsContainer = document.getElementById('cartItems');
-const orderTypeInput = document.getElementById('orderType');
-const customerNameInput = document.getElementById('customerName');
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-const codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-> main
-const customerPhoneInput = document.getElementById('customerPhone');
-const customerNotesInput = document.getElementById('customerNotes');
-
-const cartOption = document.getElementById('cartOption');
-const deliveryOption = document.getElementById('deliveryOption');
-const whatsappOption = document.getElementById('whatsappOption');
-const telegramOption = document.getElementById('telegramOption');
-
-const sendRestaurantBtn = document.getElementById('sendRestaurantBtn');
-const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
-const sendTelegramBtn = document.getElementById('sendTelegramBtn');
-const openUberBtn = document.getElementById('openUberBtn');
-
-const WHATSAPP_PHONE = '33123456789';
-const TELEGRAM_USER = 'tartineetchocolat';
-const UBER_EATS_URL = 'https://www.ubereats.com/';
-
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-> main
-
-const supplementCatalog = {
-    salty: [
-        { id: 'avocat', label: 'Avocat', price: '+2.00€' },
-        { id: 'saumon-fume', label: 'Saumon fumé', price: '+3.50€' },
-        { id: 'fromage-frais', label: 'Fromage frais', price: '+1.50€' },
-        { id: 'oeuf-poche', label: 'Œuf poché', price: '+1.80€' }
-    ],
-    sweet: [
-        { id: 'chantilly', label: 'Chantilly', price: '+1.20€' },
-        { id: 'coulis-chocolat', label: 'Coulis chocolat', price: '+1.50€' },
-        { id: 'glace-vanille', label: 'Boule glace vanille', price: '+2.00€' }
-    ],
-    drink: [
-        { id: 'shot-espresso', label: 'Shot espresso', price: '+1.00€' },
-        { id: 'lait-vegetal', label: 'Lait végétal', price: '+0.80€' },
-        { id: 'sirop-maison', label: 'Sirop maison', price: '+0.70€' }
-    ]
-};
-
-const productSupplementPanels = {
-    delice1: 'sweet',
-    delice2: 'sweet',
-    delice3: 'sweet',
-    delice4: 'salty',
-    delice5: 'salty',
-    delice6: 'salty',
-    boisson1: 'drink',
-    boisson2: 'drink',
-    boisson3: 'drink',
-    boisson4: 'drink',
-    decouverte1: 'sweet',
-    decouverte2: 'salty',
-    decouverte3: 'drink',
-    decouverte4: 'drink',
-    formule1: 'salty',
-    formule2: 'sweet',
-    formule3: 'salty'
-};
-
-const getSupplementOptions = (productId) => {
-    const panel = productSupplementPanels[productId] || 'salty';
-    return supplementCatalog[panel] || [];
-};
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-
-let selectedProductId = null;
-let cart = [];
-
-const safeValue = (input, fallback = '') => {
-    if (!input || typeof input.value !== 'string') {
-        return fallback;
-    }
-    const value = input.value.trim();
-    return value || fallback;
-};
-> main
-let selectedProductId = null;
-let cart = [];
-
-> main
-const formatCartMessage = () => {
-    if (!cart.length) {
-        return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
-    }
-
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-> main
-    const lines = cart.flatMap(item => {
-        const supplementLine = item.supplements.length
-            ? `  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`
-            : null;
-        return supplementLine
-            ? [`- ${item.qty} x ${item.title} (${item.price})`, supplementLine]
-            : [`- ${item.qty} x ${item.title} (${item.price})`];
-    });
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-    const orderType = safeValue(orderTypeInput, 'a emporter');
-    const customerName = safeValue(customerNameInput, 'Non renseigné');
-    const customerPhone = safeValue(customerPhoneInput, 'Non renseigné');
-    const customerNotes = safeValue(customerNotesInput, 'Aucune');
-    const orderType = orderTypeInput.value;
-    const customerName = customerNameInput.value.trim() || 'Non renseigné';
-    const customerPhone = customerPhoneInput.value.trim() || 'Non renseigné';
-    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
-    const orderType = orderTypeInput.value;
-    const customerName = customerNameInput.value.trim() || 'Non renseigné';> main
-    const customerNotes = customerNotesInput.value.trim() || 'Aucune';
-> main
-
-    return [
-        'Bonjour Tartine et Chocolat,',
-        'Voici ma commande :',
-        ...lines,
-        '',
-        `Mode: ${orderType}`,
-        `Nom: ${customerName}`,
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-        `Téléphone: ${customerPhone}`,
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-        `Téléphone: ${customerPhone}`,> main
-> main
-        `Notes: ${customerNotes}`
-    ].join('\n');
-};
-
-const updateCartView = () => {
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-    if (!cartItemsContainer) {
-        return;
-    }
-> main
-    if (!cart.length) {
-        cartItemsContainer.innerHTML = '<p class="empty-cart">Votre panier est vide. Ajoutez un article depuis une fiche produit.</p>';
-        return;
-    }
-
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-> main
-    cartItemsContainer.innerHTML = cart.map(item => {
-        const supplementOptions = getSupplementOptions(item.id);
-        const supplementInputs = supplementOptions.map(option => {
-            const checked = item.supplements.some(s => s.id === option.id) ? 'checked' : '';
-            return `<label class="supplement-option"><input type="checkbox" data-action="toggle-supplement" data-item-id="${item.id}" data-supp-id="${option.id}" ${checked}> ${option.label} <span>${option.price}</span></label>`;
-        }).join('');
-
-        return `
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-    cartItemsContainer.innerHTML = cart.map(item => `> main
-> main
-        <div class="cart-item-row">
-            <div>
-                <strong>${item.title}</strong><br>
-                <small>${item.price}</small>
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-                <div class="supplement-panel">
-                    <p>Suppléments disponibles :</p>
-                    <div class="supplement-grid">${supplementInputs}</div>
-                </div>
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-                <div class="supplement-panel">
-                    <p>Suppléments disponibles :</p>
-                    <div class="supplement-grid">${supplementInputs}</div>
-                </div> > main>
-> main
-            </div>
-            <div class="cart-item-actions">
-                <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
-                <span>${item.qty}</span>
-                <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
-            </div>
-        </div>
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-    `;
-    }).join('');
-};
-
-if (cartItemsContainer) {
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-    `;
-    }).join('');
-    `).join('');> main
-};
-> main
-cartItemsContainer.addEventListener('click', (event) => {
-    const button = event.target.closest('.qty-button');
-    if (!button) {
-        return;
-    }
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-    const action = button.getAttribute('data-action');
-    const itemId = button.getAttribute('data-id');
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-    const action = button.getAttribute('data-action');
-    const itemId = button.getAttribute('data-id');
-    const itemId = button.getAttribute('data-id');
-    const action = button.getAttribute('data-action');> main
-> main
-    const item = cart.find(entry => entry.id === itemId);
-
-    if (!item) {
-        return;
-    }
-
-    if (action === 'increase') {
-        item.qty += 1;
-    } else if (action === 'decrease') {
-        item.qty -= 1;
-        if (item.qty <= 0) {
-            cart = cart.filter(entry => entry.id !== itemId);
-        }
-    }
-
-    updateCartView();
-});
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-> main
-
-cartItemsContainer.addEventListener('change', (event) => {
-    const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
-    if (!checkbox) {
-        return;
-    }
-
-    const itemId = checkbox.getAttribute('data-item-id');
-    const supplementId = checkbox.getAttribute('data-supp-id');
-    const item = cart.find(entry => entry.id === itemId);
-    if (!item) {
-        return;
-    }
-
-    const supplement = getSupplementOptions(itemId).find(option => option.id === supplementId);
-    if (!supplement) {
-        return;
-    }
-
-    if (checkbox.checked) {
-        const exists = item.supplements.some(entry => entry.id === supplementId);
-        if (!exists) {
-            item.supplements.push(supplement);
-        }
-    } else {
-        item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
-    }
-});
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-}
-> main
-> main
 
 // Boutons de fermeture
 const closeButtons = document.querySelectorAll('.close');
 closeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
+        // Pause vidéo si elle existe
         const video = document.querySelector('#modalMediaContainer video');
         if (video) {
             video.pause();
         }
-
+        
         productModal.style.display = 'none';
         orderModal.style.display = 'none';
         takeawayModal.style.display = 'none';
-        cartModal.style.display = 'none';
     });
 });
 
 // Fermer en cliquant à l'extérieur
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {
+        // Pause vidéo si elle existe
         const video = document.querySelector('#modalMediaContainer video');
         if (video) {
             video.pause();
         }
-
+        
         e.target.style.display = 'none';
     }
+});
 
-    cartItemsContainer.innerHTML = cart.map(item => {
-        const optionsHtml = getSupplementOptions(item.id)
-            .map(opt => {
-                const checked = item.supplements.some(s => s.id === opt.id) ? 'checked' : '';
-                return `<label class="supplement-option"><input type="checkbox" data-action="toggle-supplement" data-item-id="${item.id}" data-supp-id="${opt.id}" ${checked}> ${opt.label} <span>${opt.price}</span></label>`;
-            })
-            .join('');
-
-        return `<div class="cart-item-row">
-            <div>
-                <strong>${item.title}</strong><br>
-                <small>${item.price}</small>
-                <div class="supplement-panel">
-                    <p>Suppléments disponibles :</p>
-                    <div class="supplement-grid">${optionsHtml}</div>
-                </div>
-            </div>
-            <div class="cart-item-actions">
-                <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
-                <span>${item.qty}</span>
-                <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
-            </div>
-        </div>`;
-    }).join('');
-};
-
-if (cartItemsContainer) {
-    cartItemsContainer.addEventListener('click', (event) => {
-        const button = event.target.closest('.qty-button');
-        if (!button) return;
-
-        const itemId = button.getAttribute('data-id');
-        const action = button.getAttribute('data-action');
-        const item = cart.find(entry => entry.id === itemId);
-        if (!item) return;
-
-        if (action === 'increase') item.qty += 1;
-        if (action === 'decrease') item.qty -= 1;
-        if (item.qty <= 0) cart = cart.filter(entry => entry.id !== itemId);
-
-        updateCartView();
-    });
-
-    cartItemsContainer.addEventListener('change', (event) => {
-        const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
-        if (!checkbox) return;
-
-        const itemId = checkbox.getAttribute('data-item-id');
-        const supplementId = checkbox.getAttribute('data-supp-id');
-        const item = cart.find(entry => entry.id === itemId);
-        const supplement = getSupplementOptions(itemId).find(option => option.id === supplementId);
-        if (!item || !supplement) return;
-
-        if (checkbox.checked) {
-            if (!item.supplements.some(entry => entry.id === supplementId)) item.supplements.push(supplement);
-        } else {
-            item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
-        }
-    });
-}
-
+// Gestion des cartes produits
+const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
     card.addEventListener('click', () => {
         const productId = card.getAttribute('data-product');
         const product = productsData[productId];
-        if (!product || !productModal) return;
 
         if (product) {
-            selectedProductId = productId;
             const modalMediaContainer = document.getElementById('modalMediaContainer');
+            
+            // Vider le conteneur
             modalMediaContainer.innerHTML = '';
-
+            
+            // Créer l'élément approprié selon le type de média
             if (product.media_type === 'video') {
                 const video = document.createElement('video');
                 video.src = product.image;
@@ -468,188 +217,53 @@ cards.forEach(card => {
                 video.autoplay = true;
                 video.loop = true;
                 video.muted = true;
-                mediaContainer.appendChild(video);
+                video.id = 'modalMedia';
+                modalMediaContainer.appendChild(video);
             } else {
                 const img = document.createElement('img');
                 img.src = product.image;
                 img.alt = product.title;
-                mediaContainer.appendChild(img);
+                img.id = 'modalMedia';
+                modalMediaContainer.appendChild(img);
             }
-
+            
             document.getElementById('modalTitle').textContent = product.title;
             document.getElementById('modalDescription').textContent = product.description;
             document.getElementById('modalPrice').textContent = product.price;
 
             productModal.style.display = 'block';
         }
-
-        const title = document.getElementById('modalTitle');
-        const desc = document.getElementById('modalDescription');
-        const price = document.getElementById('modalPrice');
-        if (title) title.textContent = product.title;
-        if (desc) desc.textContent = product.description;
-        if (price) price.textContent = product.price;
-
-        productModal.style.display = 'block';
     });
 });
-
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-if (addToCartBtn) {
-> main
-addToCartBtn.addEventListener('click', () => {
-    if (!selectedProductId) {
-        return;
-    }
-
-    const product = productsData[selectedProductId];
-    const existing = cart.find(item => item.id === selectedProductId);
-
-    if (existing) {
-        existing.qty += 1;
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-        existing.supplements = existing.supplements || [];
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-        existing.supplements = existing.supplements || []; > main
-> main
-    } else {
-        cart.push({
-            id: selectedProductId,
-            title: product.title,
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-            price: product.price,
-            qty: 1,
-            supplements: []
-            price: product.price, 
-            < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
-            qty: 1,
-            supplements: []
-            qty: 1
-> main
-> main
-        });
-    }
-
-    updateCartView();
-    productModal.style.display = 'none';
-});
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-}
-> main
 
 // Bouton Commander
 const orderBtn = document.getElementById('orderBtn');
-if (orderBtn) {
 orderBtn.addEventListener('click', () => {
     orderModal.style.display = 'block';
 });
-}
 
 // Options de commande
-< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
-if (cartOption) {
-    cartOption.addEventListener('click', () => {
-        orderModal.style.display = 'none';
-        updateCartView();
-        cartModal.style.display = 'block';
-    });
-}
+const takeawayOption = document.getElementById('takeawayOption');
+const deliveryOption = document.getElementById('deliveryOption');
 
-if (deliveryOption) {
-    deliveryOption.addEventListener('click', () => {
-        window.open(UBER_EATS_URL, '_blank');
-        orderModal.style.display = 'none';
-    });
-}
-
-if (whatsappOption) {
-    whatsappOption.addEventListener('click', () => {
-        window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
-        orderModal.style.display = 'none';
-    });
-}
-
-if (telegramOption) {
-    telegramOption.addEventListener('click', () => {
-        window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
-        orderModal.style.display = 'none';
-    });
-}
-
-if (sendRestaurantBtn) {
-    sendRestaurantBtn.addEventListener('click', () => {
-        const msg = encodeURIComponent(formatCartMessage());
-        window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
-    });
-}
-
-if (sendWhatsappBtn) {
-    sendWhatsappBtn.addEventListener('click', () => {
-        const msg = encodeURIComponent(formatCartMessage());
-        window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
-    });
-}
-
-if (sendTelegramBtn) {
-    sendTelegramBtn.addEventListener('click', () => {
-        const msg = encodeURIComponent(formatCartMessage());
-        window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
-    });
-}
-
-if (openUberBtn) {
-    openUberBtn.addEventListener('click', () => {
-        window.open(UBER_EATS_URL, '_blank');
-    });
-}
-cartOption.addEventListener('click', () => {
+takeawayOption.addEventListener('click', () => {
     orderModal.style.display = 'none';
-    updateCartView();
-    cartModal.style.display = 'block';
+    takeawayModal.style.display = 'block';
 });
 
 deliveryOption.addEventListener('click', () => {
-    window.open(UBER_EATS_URL, '_blank');
+    // Redirection vers Uber Eats
+    // Remplacer l'URL par votre véritable lien Uber Eats
+    window.open('https://www.ubereats.com/', '_blank');
     orderModal.style.display = 'none';
 });
 
-whatsappOption.addEventListener('click', () => {
-    window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
-    orderModal.style.display = 'none';
-});
+// Animation au scroll (optionnel)
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-telegramOption.addEventListener('click', () => {
-    window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
-    orderModal.style.display = 'none';
-});
-> main
-sendRestaurantBtn.addEventListener('click', () => {
-    const msg = encodeURIComponent(formatCartMessage());
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
-});
-
-sendWhatsappBtn.addEventListener('click', () => {
-    const msg = encodeURIComponent(formatCartMessage());
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
-});
-
-sendTelegramBtn.addEventListener('click', () => {
-    const msg = encodeURIComponent(formatCartMessage());
-    window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
-});
-
-openUberBtn.addEventListener('click', () => {
-    window.open(UBER_EATS_URL, '_blank');
-});
-
-window.addEventListener('click', (event) => {
-    if (!event.target.classList.contains('modal')) return;
-    const video = document.querySelector('#modalMediaContainer video');
-    if (video) video.pause();
-    event.target.style.display = 'none';
-});
-
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
