@@ -155,6 +155,7 @@ const supplementsCatalog = {
         { name: "crème fraiche", price: 1.5 }
     ],
     boissons: [
+        { name: "sucre de Cannes", price: 0.5 },
         { name: "sirop de vanille", price: 0.5 },
         { name: "sirop de caramel", price: 0.5 },
         { name: "lait vegetal avoine", price: 1 },
