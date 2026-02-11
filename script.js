@@ -53,7 +53,7 @@ const productsData = {
         price: "de 7€ a 12€",
         image: "assets/coffeevid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     boisson2: {
         title: "Thé Glacé Maison",
@@ -61,7 +61,7 @@ const productsData = {
         price: "8.50€",
         image: "assets/icetvid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     boisson3: {
         title: "les jus de fruits centrifugés",
@@ -69,7 +69,7 @@ const productsData = {
         price: "8.5€",
         image: "assets/centrivid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     boisson4: {
         title: "nos smoothies aux fruits",
@@ -77,7 +77,7 @@ const productsData = {
         price: "9.50€",
         image: "assets/smootvid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     decouverte1: {
         title: "La Tarte aux myrtilles",
@@ -101,7 +101,7 @@ const productsData = {
         price: "9.50€",
         image: "assets/matchavid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     decouverte4: {
         title: "notre jus star du moment",
@@ -109,7 +109,7 @@ const productsData = {
         price: "9.50€",
         image: "assets/jusmoisvid.mp4",
         media_type: "video",
-        productType: "boisson"
+        productType: "boissons"
     },
     formule1: {
         title: "Formule équilibré",
