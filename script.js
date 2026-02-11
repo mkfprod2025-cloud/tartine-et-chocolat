@@ -302,7 +302,7 @@ const optionsByProduct = {
     boisson4: ['boisson4Ingredients'],
     formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
-    formule3: ['fomule3ingredients1','formule3ingredients2','formule3ingredients3'],
+    formule3: ['formule3ingredients1','formule3ingredients2','formule3ingredients3'],
 };
 
 const supplementsCatalog = {
