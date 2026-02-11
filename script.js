@@ -1,528 +1,222 @@
-
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #d4a574;
-    --secondary-color: #8b6f47;
-    --dark-color: #2c2416;
-    --light-color: #f5f5f5;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--dark-color);
-    min-height: 100vh;
-    position: relative;
-}
-
-/* Fond d'écran */
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    /* Overlay pour améliorer la lisibilité */
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.15);
-    }
-}
-
-/* Conteneur principal */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-/* En-tête */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: none;
-}
-
-.logo {
-    max-width: 70%;
-    height: auto;
-    max-height: 200px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-}
-
-.tagline {
-    font-size: 2.8rem;
-    color: #ffff00
- ;
-    margin-top: 10px;
-    font-weight: 300;
-    font-style: Pirata One ;
-}
-
-.main-title {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.description {
-    font-size: 2rem;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* Navigation par onglets */
-.tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.6);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-}
-
-.tab-button {
-    padding: 15px 30px;
-    background: white;
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--secondary-color);
-    transition: all 0.3s ease;
-}
-
-.tab-button:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-}
-
-.tab-button.active {
-    background: var(--secondary-color);
-    color: white;
-    border-color: var(--secondary-color);
-}
-
-/* Contenu des onglets */
-.tab-content {
-    background: rgba(255, 255, 255, 0.75);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: var(--shadow-lg);
-    min-height: 500px;
-}
-
-.tab-pane {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.tab-pane.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Grilles */
-.grid {
-    display: grid;
-    gap: 25px;
-    margin-bottom: 20px;
-}
-
-.grid-6 {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.grid-4 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}
-
-/* Cartes produits */
-.card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
-.card h3 {
-    padding: 20px;
-    text-align: center;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-/* Section Commander */
-.order-section {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.order-button {
-    padding: 20px 60px;
-    background: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.4rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-lg);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.order-button:hover {
-    background: var(--primary-color);
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.secondary-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.secondary-order-button {
-    padding: 12px 28px;
-    font-size: 1rem;
-    min-width: 260px;
-}
-
-.info-pane {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.info-pane h2 {
-    color: var(--secondary-color);
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.info-pane p {
-    font-size: 1.1rem;
-    color: #666;
-}
-
-/* Modals */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    animation: fadeIn 0.3s ease;
-}
-
-.modal-content {
-    background-color: white;
-    margin: 5% auto;
-    padding: 40px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideDown 0.4s ease;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.product-modal {
-    max-width: 900px;
-}
-
-.order-modal {
-    max-width: 700px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: var(--secondary-color);
-}
-
-/* Modal Options de commande */
-.order-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.order-option {
-    background: linear-gradient(135deg, var(--light-color) 0%, white 100%);
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.order-option:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-lg);
-}
-
-.option-icon {
-    font-size: 4rem;
-    margin-bottom: 15px;
-}
-
-.order-option h3 {
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-}
-
-.order-option p {
-    color: #666;
-    font-size: 1rem;
-}
-
-/* Modal À Emporter */
-.contact-info {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.contact-info p {
-    margin: 15px 0;
-    color: #555;
-    font-size: 1.1rem;
-}
-
-.phone-number {
-    font-size: 2rem !important;
-    font-weight: 700;
-    color: var(--secondary-color) !important;
-    margin: 25px 0 !important;
-}
-
-.info-text {
-    font-style: italic;
-    color: #888 !important;
-    margin-top: 20px !important;
-}
-
-/* Modal Produit */
-.product-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
-}
-
-#modalMediaContainer {
-    width: 100%;
-    height: 350px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
-#modalMediaContainer img,
-#modalMediaContainer video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.product-details img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-}
-
-.product-info h2 {
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.product-info p {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.price {
-    font-size: 1.8rem !important;
-    font-weight: 700;
-    color: var(--primary-color) !important;
-    margin-top: 25px !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .logo {
-        max-width: 80%;
-        max-height: 150px;
-    }
-
-    .tagline {
-        font-size: 1.1rem;
-    }
-
-    .main-title {
-        font-size: 2rem;
-    }
-
-    .description {
-        font-size: 1rem;
-    }
-
-    .tab-button {
-        padding: 12px 20px;
-        font-size: 0.95rem;
-    }
-
-    .product-details {
-        grid-template-columns: 1fr;
-    }
-
-    #modalMediaContainer {
-        height: 250px;
-    }
-
-    .product-details img {
-        height: 250px;
-    }
-
-    .order-button {
-        padding: 15px 40px;
-        font-size: 1.2rem;
-    }
-
-    .secondary-order-button {
-        width: min(100%, 320px);
-        font-size: 0.95rem;
-    }
-
-    .grid-6,
-    .grid-4,
-    .grid-3 {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 20px 10px;
-    }
-
-    header {
-        padding: 10px;
-    }
-
-    .tab-content {
-        padding: 20px 15px;
-    }
-
-    .grid {
-        gap: 15px;
-    }
-
-    .grid-6,
-    .grid-4,
-    .grid-3 {
-        grid-template-columns: 1fr;
-    }
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartine et Chocolat</title>
+    <meta property="og:type" content="website">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mkfprod2025-cloud.github.io/tartine-et-chocolat/">
+<meta property="og:title" content="Tartine et Chocolat">
+<meta property="og:description" content="Le craquant qui fond, le bonheur qui se tartine.">
+
+<meta property="og:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tartine et Chocolat">
+<meta name="twitter:description" content="Le craquant qui fond, le bonheur qui se tartine.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mkfprod2025-cloud/tartine-et-chocolat/main/assets/logoTc.jpg">
+
+<link rel="icon" type="image/jpeg" href="assets/logoTc.jpg">
+<link rel="shortcut icon" type="image/jpeg" href="assets/logoTc.jpg">
+<link rel="apple-touch-icon" href="assets/logoTc.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logoTc.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fond d'écran -->
+    <div class="background-image"></div>
+
+    <!-- Conteneur principal -->
+    <div class="container">
+        <!-- En-tête -->
+        <header>
+            <img src="assets/logoTc.jpg" alt="Logo" class="logo">
+            <p class="tagline">Le craquant qui fond, le bonheur qui se tartine.</p>
+        </header>
+
+        <!-- Navigation par onglets -->
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="delices">Nos Délices</button>
+            <button class="tab-button" data-tab="boissons">Nos Boissons</button>
+            <button class="tab-button" data-tab="decouvertes">Nos Découvertes</button>
+            <button class="tab-button" data-tab="formules">Nos Formules</button>
+        </nav>
+
+        <!-- Contenu des onglets -->
+        <div class="tab-content">
+            <!-- Onglet Nos Délices (6 cases) -->
+            <div id="delices" class="tab-pane active">
+                <div class="grid grid-6">
+                    <div class="card" data-product="delice1">
+                        <img src="assets/crumblecouv.jpg" alt="Délice 1">
+                        <h3>Crumble Pommes Canelle</h3>
+                    </div>
+                    <div class="card" data-product="delice2">
+                        <img src="assets/fondantchoccouv.jpg" alt="Délice 2">
+                        <h3>gateaux au chocolat</h3>
+                    </div>
+                    <div class="card" data-product="delice3">
+                        <img src="assets/tatincouv.jpg" alt="Délice 3">
+                        <h3>Tarte Tatin </h3>
+                    </div>
+                    <div class="card" data-product="delice4">
+                        <img src="assets/campacouv.jpg" alt="Délice 4">
+                        <h3>La Tartine Campagnarde</h3>
+                    </div>
+                    <div class="card" data-product="delice5">
+                        <img src="assets/maraicouv.jpg" alt="Délice 5">
+                        <h3>La Tartine Méditeranéenne</h3>
+                    </div>
+                    <div class="card" data-product="delice6">
+                        <img src="assets/vegicouv.jpg" alt="Délice 6">
+                        <h3>la maraichère(végé)</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Boissons (4 cases) -->
+            <div id="boissons" class="tab-pane">
+                <div class="grid grid-4">
+                    <div class="card" data-product="boisson1">
+                        <img src="assets/coffeecouv.jpg" alt="Boisson 1">
+                        <h3>coffee shop</h3>
+                    </div>
+                    <div class="card" data-product="boisson2">
+                        <img src="assets/icetcouv.jpg" alt="Boisson 2">
+                        <h3>Thé Glacé Maison</h3>
+                    </div>
+                    <div class="card" data-product="boisson3">
+                        <img src="assets/centricouv.jpg" alt="Boisson 3">
+                        <h3>jus de fruits et légumes pressés</h3>
+                    </div>
+                    <div class="card" data-product="boisson4">
+                        <img src="assets/smootcouv.jpg" alt="Boisson 4">
+                        <h3> Les Smoothies</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Découvertes (4 cases) -->
+            <div id="decouvertes" class="tab-pane">
+                <div class="grid grid-4">
+                    <div class="card" data-product="decouverte1">
+                        <img src="assets/myrtcouv.jpg" alt="Découverte 1">
+                        <h3>Tarte aux Myrtilles</h3>
+                    </div>
+                    <div class="card" data-product="decouverte2">
+                        <img src="assets/soupcouv.jpg" alt="Découverte 2">
+                        <h3>La soupe de saison</h3>
+                    </div>
+                    <div class="card" data-product="decouverte3">
+                        <img src="assets/matchacouv.jpg" alt="Découverte 3">
+                        <h3>Matcha latte</h3>
+                    </div>
+                    <div class="card" data-product="decouverte4">
+                        <img src="assets/jusmoiscouv.jpg" alt="Découverte 4">
+                        <h3>Le jus du moment</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onglet Nos Formules (3 cases) -->
+            <div id="formules" class="tab-pane">
+                <div class="grid grid-3">
+                    <div class="card" data-product="formule1">
+                        <img src="assets/form1couv.png" alt="Formule 1">
+                        <h3>Formule equilibrée</h3>
+                    </div>
+                    <div class="card" data-product="formule2">
+                        <img src="assets/form2couv.jpg" alt="Formule 2">
+                        <h3>formule gouter a 2</h3>
+                    </div>
+                    <div class="card" data-product="formule3">
+                        <img src="assets/form3couv.jpg" alt="Formule 3">
+                        <h3>formule Brunch Club</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="allergenes" class="tab-pane info-pane">
+                <h2>Allergènes</h2>
+                <p>Contenu à venir.</p>
+            </div>
+
+            <div id="tracabilite" class="tab-pane info-pane">
+                <h2>Traçabilité</h2>
+                <p>Contenu à venir.</p>
+            </div>
+
+            <div id="supplements" class="tab-pane info-pane">
+                <h2>Suppléments tarifaires</h2>
+                <p>Contenu à venir.</p>
+            </div>
+        </div>
+
+        <!-- Bouton Commander -->
+        <div class="order-section">
+            <button class="order-button" id="orderBtn">Commander</button>
+            <div class="secondary-actions">
+                <button class="order-button secondary-order-button" data-target-tab="allergenes">Allergènes</button>
+                <button class="order-button secondary-order-button" data-target-tab="tracabilite">Traçabilité</button>
+                <button class="order-button secondary-order-button" data-target-tab="supplements">Suppléments tarifaires</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de choix de commande -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content order-modal">
+            <span class="close">&times;</span>
+            <h2>Choisissez votre mode de commande</h2>
+            <div class="order-options">
+                <div class="order-option" id="takeawayOption">
+                    <div class="option-icon">📦</div>
+                    <h3>À Emporter</h3>
+                    <p>Appelez-nous pour passer commande</p>
+                </div>
+                <div class="order-option" id="deliveryOption">
+                    <div class="option-icon">🚴</div>
+                    <h3>À Domicile</h3>
+                    <p>Commandez via Uber Eats</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal À Emporter -->
+    <div id="takeawayModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>À Emporter</h2>
+            <div class="contact-info">
+                <p><strong>Emplacement :</strong></p>
+                <p>123 Rue de la Gourmandise<br>75001 Paris</p>
+                <p><strong>Numéro de téléphone :</strong></p>
+                <p class="phone-number">01 23 45 67 89</p>
+                <p class="info-text">Appelez-nous pour passer votre commande</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Produit -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal">
+            <span class="close">&times;</span>
+            <div class="product-details">
+                <div id="modalMediaContainer"></div>
+                <div class="product-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <p class="price" id="modalPrice"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
