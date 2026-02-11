@@ -27,18 +27,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Fond d'écran -->
     <div class="background-image"></div>
 
-    <!-- Conteneur principal -->
     <div class="container">
-        <!-- En-tête -->
         <header>
             <img src="assets/logoTc.jpg" alt="Logo" class="logo">
             <p class="tagline">Le craquant qui fond, le bonheur qui se tartine.</p>
         </header>
 
-        <!-- Navigation par onglets -->
         <nav class="tabs">
             <button class="tab-button active" data-tab="delices">Nos Délices</button>
             <button class="tab-button" data-tab="boissons">Nos Boissons</button>
@@ -46,9 +42,7 @@
             <button class="tab-button" data-tab="formules">Nos Formules</button>
         </nav>
 
-        <!-- Contenu des onglets -->
         <div class="tab-content">
-            <!-- Onglet Nos Délices (6 cases) -->
             <div id="delices" class="tab-pane active">
                 <div class="grid grid-6">
                     <div class="card" data-product="delice1">
@@ -78,7 +72,6 @@
                 </div>
             </div>
 
-            <!-- Onglet Nos Boissons (4 cases) -->
             <div id="boissons" class="tab-pane">
                 <div class="grid grid-4">
                     <div class="card" data-product="boisson1">
@@ -100,7 +93,6 @@
                 </div>
             </div>
 
-            <!-- Onglet Nos Découvertes (4 cases) -->
             <div id="decouvertes" class="tab-pane">
                 <div class="grid grid-4">
                     <div class="card" data-product="decouverte1">
@@ -122,7 +114,6 @@
                 </div>
             </div>
 
-            <!-- Onglet Nos Formules (3 cases) -->
             <div id="formules" class="tab-pane">
                 <div class="grid grid-3">
                     <div class="card" data-product="formule1">
@@ -152,11 +143,10 @@
 
             <div id="supplements" class="tab-pane info-pane">
                 <h2>Suppléments tarifaires</h2>
-                <p>Contenu à venir.</p>
+                <div id="supplementsListing" class="supplements-listing"></div>
             </div>
         </div>
 
-        <!-- Bouton Commander -->
         <div class="order-section">
             <button class="order-button" id="orderBtn">Commander</button>
             <div class="secondary-actions">
@@ -167,7 +157,6 @@
         </div>
     </div>
 
-    <!-- Modal de choix de commande -->
     <div id="orderModal" class="modal">
         <div class="modal-content order-modal">
             <span class="close">&times;</span>
@@ -176,7 +165,7 @@
                 <div class="order-option" id="takeawayOption">
                     <div class="option-icon">📦</div>
                     <h3>À Emporter</h3>
-                    <p>Appelez-nous pour passer commande</p>
+                    <p>Panier local + envoi WhatsApp</p>
                 </div>
                 <div class="order-option" id="deliveryOption">
                     <div class="option-icon">🚴</div>
@@ -187,22 +176,21 @@
         </div>
     </div>
 
-    <!-- Modal À Emporter -->
     <div id="takeawayModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content takeaway-modal">
             <span class="close">&times;</span>
-            <h2>À Emporter</h2>
+            <h2>Panier à emporter</h2>
             <div class="contact-info">
-                <p><strong>Emplacement :</strong></p>
-                <p>123 Rue de la Gourmandise<br>75001 Paris</p>
-                <p><strong>Numéro de téléphone :</strong></p>
-                <p class="phone-number">01 23 45 67 89</p>
-                <p class="info-text">Appelez-nous pour passer votre commande</p>
+                <p><strong>Emplacement :</strong> 123 Rue de la Gourmandise, 75001 Paris</p>
+                <p><strong>WhatsApp :</strong> +33 1 23 45 67 89</p>
             </div>
+            <div id="cartEmptyState" class="empty-cart">Votre panier est vide.</div>
+            <div id="cartItems" class="cart-items"></div>
+            <div id="cartTotal" class="cart-total">Total : 0,00€</div>
+            <button id="sendWhatsAppBtn" class="order-button whatsapp-button" disabled>Envoyer la commande sur WhatsApp</button>
         </div>
     </div>
 
-    <!-- Modal Produit -->
     <div id="productModal" class="modal">
         <div class="modal-content product-modal">
             <span class="close">&times;</span>
@@ -212,6 +200,12 @@
                     <h2 id="modalTitle"></h2>
                     <p id="modalDescription"></p>
                     <p class="price" id="modalPrice"></p>
+                    <div id="supplementSelectors" class="supplement-selectors"></div>
+                    <div class="add-line">
+                        <label for="modalQuantity">Quantité</label>
+                        <input id="modalQuantity" type="number" min="1" value="1">
+                    </div>
+                    <button id="addToCartBtn" class="order-button add-cart-button">Ajouter au panier emporter</button>
                 </div>
             </div>
         </div>
