@@ -224,8 +224,8 @@ const supplementsByProduct = {
     boisson2:['boissons'],
     boisson3:['boissons'],
     boisson4: ['sucres','boissons'],
-    decouverte:1 ['sucres'],
-     decouverte2: ['sales'],
+    decouverte1: ['sucres'],
+    decouverte2: ['sales'],
  decouverte3: ['boissons'],
  decouverte4: ['boissons'],
 };
