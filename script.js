@@ -38,24 +38,12 @@ const supplementCatalog = {
     ]
 };
 
+< codex/add-buttons-for-allergen-and-tracing-features-yfw5bt
 const productSupplementPanels = {
-    delice1: 'sweet',
-    delice2: 'sweet',
-    delice3: 'sweet',
-    delice4: 'salty',
-    delice5: 'salty',
-    delice6: 'salty',
-    boisson1: 'drink',
-    boisson2: 'drink',
-    boisson3: 'drink',
-    boisson4: 'drink',
-    decouverte1: 'sweet',
-    decouverte2: 'salty',
-    decouverte3: 'drink',
-    decouverte4: 'drink',
-    formule1: 'salty',
-    formule2: 'sweet',
-    formule3: 'salty'
+    delice1: 'sweet', delice2: 'sweet', delice3: 'sweet', delice4: 'salty', delice5: 'salty', delice6: 'salty',
+    boisson1: 'drink', boisson2: 'drink', boisson3: 'drink', boisson4: 'drink',
+    decouverte1: 'sweet', decouverte2: 'salty', decouverte3: 'drink', decouverte4: 'drink',
+    formule1: 'salty', formule2: 'sweet', formule3: 'salty'
 };
 
 const WHATSAPP_PHONE = '33123456789';
@@ -77,14 +65,51 @@ const tabButtons = document.querySelectorAll('.tab-button');
 const tabPanes = document.querySelectorAll('.tab-pane');
 const cards = document.querySelectorAll('.card');
 
+const openTab = (tabId) => {
+    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
+
+    tabButtons.forEach(btn => {
+        const isActive = btn.getAttribute('data-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+    });
+};
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        openTab(tabId);
+    });
+});
+
+const secondaryTabButtons = document.querySelectorAll('[data-target-tab]');
+secondaryTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-target-tab');
+        openTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+> main
+
 const productModal = document.getElementById('productModal');
 const orderModal = document.getElementById('orderModal');
 const takeawayModal = document.getElementById('takeawayModal');
 const cartModal = document.getElementById('cartModal');
 
-const orderBtn = document.getElementById('orderBtn');
 const addToCartBtn = document.getElementById('addToCartBtn');
 const cartItemsContainer = document.getElementById('cartItems');
+const orderTypeInput = document.getElementById('orderType');
+const customerNameInput = document.getElementById('customerName');
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+const codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+const customerPhoneInput = document.getElementById('customerPhone');
+const customerNotesInput = document.getElementById('customerNotes');
 
 const cartOption = document.getElementById('cartOption');
 const deliveryOption = document.getElementById('deliveryOption');
@@ -96,60 +121,271 @@ const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
 const sendTelegramBtn = document.getElementById('sendTelegramBtn');
 const openUberBtn = document.getElementById('openUberBtn');
 
-const orderTypeInput = document.getElementById('orderType');
-const customerNameInput = document.getElementById('customerName');
-const customerPhoneInput = document.getElementById('customerPhone');
-const customerNotesInput = document.getElementById('customerNotes');
+const WHATSAPP_PHONE = '33123456789';
+const TELEGRAM_USER = 'tartineetchocolat';
+const UBER_EATS_URL = 'https://www.ubereats.com/';
+
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+
+const supplementCatalog = {
+    salty: [
+        { id: 'avocat', label: 'Avocat', price: '+2.00€' },
+        { id: 'saumon-fume', label: 'Saumon fumé', price: '+3.50€' },
+        { id: 'fromage-frais', label: 'Fromage frais', price: '+1.50€' },
+        { id: 'oeuf-poche', label: 'Œuf poché', price: '+1.80€' }
+    ],
+    sweet: [
+        { id: 'chantilly', label: 'Chantilly', price: '+1.20€' },
+        { id: 'coulis-chocolat', label: 'Coulis chocolat', price: '+1.50€' },
+        { id: 'glace-vanille', label: 'Boule glace vanille', price: '+2.00€' }
+    ],
+    drink: [
+        { id: 'shot-espresso', label: 'Shot espresso', price: '+1.00€' },
+        { id: 'lait-vegetal', label: 'Lait végétal', price: '+0.80€' },
+        { id: 'sirop-maison', label: 'Sirop maison', price: '+0.70€' }
+    ]
+};
+
+const productSupplementPanels = {
+    delice1: 'sweet',
+    delice2: 'sweet',
+    delice3: 'sweet',
+    delice4: 'salty',
+    delice5: 'salty',
+    delice6: 'salty',
+    boisson1: 'drink',
+    boisson2: 'drink',
+    boisson3: 'drink',
+    boisson4: 'drink',
+    decouverte1: 'sweet',
+    decouverte2: 'salty',
+    decouverte3: 'drink',
+    decouverte4: 'drink',
+    formule1: 'salty',
+    formule2: 'sweet',
+    formule3: 'salty'
+};
+
+const getSupplementOptions = (productId) => {
+    const panel = productSupplementPanels[productId] || 'salty';
+    return supplementCatalog[panel] || [];
+};
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 
 let selectedProductId = null;
 let cart = [];
 
-const openTab = (tabId) => {
-    tabPanes.forEach(p => p.classList.remove('active'));
-    const target = document.getElementById(tabId);
-    if (target) target.classList.add('active');
-    tabButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId));
+const safeValue = (input, fallback = '') => {
+    if (!input || typeof input.value !== 'string') {
+        return fallback;
+    }
+    const value = input.value.trim();
+    return value || fallback;
 };
+> main
+let selectedProductId = null;
+let cart = [];
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => openTab(button.getAttribute('data-tab')));
-});
-
-document.querySelectorAll('[data-target-tab]').forEach(button => {
-    button.addEventListener('click', () => {
-        openTab(button.getAttribute('data-target-tab'));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-});
-
+> main
 const formatCartMessage = () => {
-    if (!cart.length) return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
+    if (!cart.length) {
+        return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
+    }
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
     const lines = cart.flatMap(item => {
-        const list = [`- ${item.qty} x ${item.title} (${item.price})`];
-        if (item.supplements.length) {
-            list.push(`  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`);
-        }
-        return list;
+        const supplementLine = item.supplements.length
+            ? `  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`
+            : null;
+        return supplementLine
+            ? [`- ${item.qty} x ${item.title} (${item.price})`, supplementLine]
+            : [`- ${item.qty} x ${item.title} (${item.price})`];
     });
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    const orderType = safeValue(orderTypeInput, 'a emporter');
+    const customerName = safeValue(customerNameInput, 'Non renseigné');
+    const customerPhone = safeValue(customerPhoneInput, 'Non renseigné');
+    const customerNotes = safeValue(customerNotesInput, 'Aucune');
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';
+    const customerPhone = customerPhoneInput.value.trim() || 'Non renseigné';
+    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';> main
+    const customerNotes = customerNotesInput.value.trim() || 'Aucune';
+> main
 
     return [
         'Bonjour Tartine et Chocolat,',
         'Voici ma commande :',
         ...lines,
         '',
-        `Mode: ${safeValue(orderTypeInput, 'a emporter')}`,
-        `Nom: ${safeValue(customerNameInput, 'Non renseigné')}`,
-        `Téléphone: ${safeValue(customerPhoneInput, 'Non renseigné')}`,
-        `Notes: ${safeValue(customerNotesInput, 'Aucune')}`
+        `Mode: ${orderType}`,
+        `Nom: ${customerName}`,
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+        `Téléphone: ${customerPhone}`,
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        `Téléphone: ${customerPhone}`,> main
+> main
+        `Notes: ${customerNotes}`
     ].join('\n');
 };
 
 const updateCartView = () => {
-    if (!cartItemsContainer) return;
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    if (!cartItemsContainer) {
+        return;
+    }
+> main
     if (!cart.length) {
         cartItemsContainer.innerHTML = '<p class="empty-cart">Votre panier est vide. Ajoutez un article depuis une fiche produit.</p>';
         return;
+    }
+
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+    cartItemsContainer.innerHTML = cart.map(item => {
+        const supplementOptions = getSupplementOptions(item.id);
+        const supplementInputs = supplementOptions.map(option => {
+            const checked = item.supplements.some(s => s.id === option.id) ? 'checked' : '';
+            return `<label class="supplement-option"><input type="checkbox" data-action="toggle-supplement" data-item-id="${item.id}" data-supp-id="${option.id}" ${checked}> ${option.label} <span>${option.price}</span></label>`;
+        }).join('');
+
+        return `
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    cartItemsContainer.innerHTML = cart.map(item => `> main
+> main
+        <div class="cart-item-row">
+            <div>
+                <strong>${item.title}</strong><br>
+                <small>${item.price}</small>
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+                <div class="supplement-panel">
+                    <p>Suppléments disponibles :</p>
+                    <div class="supplement-grid">${supplementInputs}</div>
+                </div>
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+                <div class="supplement-panel">
+                    <p>Suppléments disponibles :</p>
+                    <div class="supplement-grid">${supplementInputs}</div>
+                </div> > main>
+> main
+            </div>
+            <div class="cart-item-actions">
+                <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
+                <span>${item.qty}</span>
+                <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
+            </div>
+        </div>
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    `;
+    }).join('');
+};
+
+if (cartItemsContainer) {
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    `;
+    }).join('');
+    `).join('');> main
+};
+> main
+cartItemsContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.qty-button');
+    if (!button) {
+        return;
+    }
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    const action = button.getAttribute('data-action');
+    const itemId = button.getAttribute('data-id');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    const action = button.getAttribute('data-action');
+    const itemId = button.getAttribute('data-id');
+    const itemId = button.getAttribute('data-id');
+    const action = button.getAttribute('data-action');> main
+> main
+    const item = cart.find(entry => entry.id === itemId);
+
+    if (!item) {
+        return;
+    }
+
+    if (action === 'increase') {
+        item.qty += 1;
+    } else if (action === 'decrease') {
+        item.qty -= 1;
+        if (item.qty <= 0) {
+            cart = cart.filter(entry => entry.id !== itemId);
+        }
+    }
+
+    updateCartView();
+});
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
+
+cartItemsContainer.addEventListener('change', (event) => {
+    const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
+    if (!checkbox) {
+        return;
+    }
+
+    const itemId = checkbox.getAttribute('data-item-id');
+    const supplementId = checkbox.getAttribute('data-supp-id');
+    const item = cart.find(entry => entry.id === itemId);
+    if (!item) {
+        return;
+    }
+
+    const supplement = getSupplementOptions(itemId).find(option => option.id === supplementId);
+    if (!supplement) {
+        return;
+    }
+
+    if (checkbox.checked) {
+        const exists = item.supplements.some(entry => entry.id === supplementId);
+        if (!exists) {
+            item.supplements.push(supplement);
+        }
+    } else {
+        item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
+    }
+});
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+}
+> main
+> main
+
+// Boutons de fermeture
+const closeButtons = document.querySelectorAll('.close');
+closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+
+        productModal.style.display = 'none';
+        orderModal.style.display = 'none';
+        takeawayModal.style.display = 'none';
+        cartModal.style.display = 'none';
+    });
+});
+
+// Fermer en cliquant à l'extérieur
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        const video = document.querySelector('#modalMediaContainer video');
+        if (video) {
+            video.pause();
+        }
+
+        e.target.style.display = 'none';
     }
 
     cartItemsContainer.innerHTML = cart.map(item => {
@@ -219,10 +455,11 @@ cards.forEach(card => {
         const product = productsData[productId];
         if (!product || !productModal) return;
 
-        selectedProductId = productId;
-        const mediaContainer = document.getElementById('modalMediaContainer');
-        if (mediaContainer) {
-            mediaContainer.innerHTML = '';
+        if (product) {
+            selectedProductId = productId;
+            const modalMediaContainer = document.getElementById('modalMediaContainer');
+            modalMediaContainer.innerHTML = '';
+
             if (product.media_type === 'video') {
                 const video = document.createElement('video');
                 video.src = product.image;
@@ -237,6 +474,12 @@ cards.forEach(card => {
                 img.alt = product.title;
                 mediaContainer.appendChild(img);
             }
+
+            document.getElementById('modalTitle').textContent = product.title;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalPrice').textContent = product.price;
+
+            productModal.style.display = 'block';
         }
 
         const title = document.getElementById('modalTitle');
@@ -250,40 +493,152 @@ cards.forEach(card => {
     });
 });
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', () => {
-        if (!selectedProductId) return;
-        const product = productsData[selectedProductId];
-        if (!product) return;
+> main
+addToCartBtn.addEventListener('click', () => {
+    if (!selectedProductId) {
+        return;
+    }
 
-        const existing = cart.find(item => item.id === selectedProductId);
-        if (existing) {
-            existing.qty += 1;
-        } else {
-            cart.push({ id: selectedProductId, title: product.title, price: product.price, qty: 1, supplements: [] });
-        }
+    const product = productsData[selectedProductId];
+    const existing = cart.find(item => item.id === selectedProductId);
 
+    if (existing) {
+        existing.qty += 1;
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+        existing.supplements = existing.supplements || [];
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        existing.supplements = existing.supplements || []; > main
+> main
+    } else {
+        cart.push({
+            id: selectedProductId,
+            title: product.title,
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+            price: product.price,
+            qty: 1,
+            supplements: []
+            price: product.price, 
+            < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+            qty: 1,
+            supplements: []
+            qty: 1
+> main
+> main
+        });
+    }
+
+    updateCartView();
+    productModal.style.display = 'none';
+});
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+}
+> main
+
+// Bouton Commander
+const orderBtn = document.getElementById('orderBtn');
+if (orderBtn) {
+orderBtn.addEventListener('click', () => {
+    orderModal.style.display = 'block';
+});
+}
+
+// Options de commande
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+if (cartOption) {
+    cartOption.addEventListener('click', () => {
+        orderModal.style.display = 'none';
         updateCartView();
-        if (productModal) productModal.style.display = 'none';
+        cartModal.style.display = 'block';
     });
 }
 
-if (orderBtn) orderBtn.addEventListener('click', () => { if (orderModal) orderModal.style.display = 'block'; });
-if (cartOption) cartOption.addEventListener('click', () => { if (orderModal) orderModal.style.display = 'none'; updateCartView(); if (cartModal) cartModal.style.display = 'block'; });
-if (deliveryOption) deliveryOption.addEventListener('click', () => { window.open(UBER_EATS_URL, '_blank'); if (orderModal) orderModal.style.display = 'none'; });
-if (whatsappOption) whatsappOption.addEventListener('click', () => { window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank'); if (orderModal) orderModal.style.display = 'none'; });
-if (telegramOption) telegramOption.addEventListener('click', () => { window.open(`https://t.me/${TELEGRAM_USER}`, '_blank'); if (orderModal) orderModal.style.display = 'none'; });
-if (sendRestaurantBtn) sendRestaurantBtn.addEventListener('click', () => { const msg = encodeURIComponent(formatCartMessage()); window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank'); });
-if (sendWhatsappBtn) sendWhatsappBtn.addEventListener('click', () => { const msg = encodeURIComponent(formatCartMessage()); window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank'); });
-if (sendTelegramBtn) sendTelegramBtn.addEventListener('click', () => { const msg = encodeURIComponent(formatCartMessage()); window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank'); });
-if (openUberBtn) openUberBtn.addEventListener('click', () => window.open(UBER_EATS_URL, '_blank'));
-
-document.querySelectorAll('.close').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const video = document.querySelector('#modalMediaContainer video');
-        if (video) video.pause();
-        [productModal, orderModal, takeawayModal, cartModal].forEach(modal => { if (modal) modal.style.display = 'none'; });
+if (deliveryOption) {
+    deliveryOption.addEventListener('click', () => {
+        window.open(UBER_EATS_URL, '_blank');
+        orderModal.style.display = 'none';
     });
+}
+
+if (whatsappOption) {
+    whatsappOption.addEventListener('click', () => {
+        window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
+        orderModal.style.display = 'none';
+    });
+}
+
+if (telegramOption) {
+    telegramOption.addEventListener('click', () => {
+        window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
+        orderModal.style.display = 'none';
+    });
+}
+
+if (sendRestaurantBtn) {
+    sendRestaurantBtn.addEventListener('click', () => {
+        const msg = encodeURIComponent(formatCartMessage());
+        window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+    });
+}
+
+if (sendWhatsappBtn) {
+    sendWhatsappBtn.addEventListener('click', () => {
+        const msg = encodeURIComponent(formatCartMessage());
+        window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+    });
+}
+
+if (sendTelegramBtn) {
+    sendTelegramBtn.addEventListener('click', () => {
+        const msg = encodeURIComponent(formatCartMessage());
+        window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
+    });
+}
+
+if (openUberBtn) {
+    openUberBtn.addEventListener('click', () => {
+        window.open(UBER_EATS_URL, '_blank');
+    });
+}
+cartOption.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+    updateCartView();
+    cartModal.style.display = 'block';
+});
+
+deliveryOption.addEventListener('click', () => {
+    window.open(UBER_EATS_URL, '_blank');
+    orderModal.style.display = 'none';
+});
+
+whatsappOption.addEventListener('click', () => {
+    window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
+    orderModal.style.display = 'none';
+});
+
+telegramOption.addEventListener('click', () => {
+    window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
+    orderModal.style.display = 'none';
+});
+> main
+sendRestaurantBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendWhatsappBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendTelegramBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
+});
+
+openUberBtn.addEventListener('click', () => {
+    window.open(UBER_EATS_URL, '_blank');
 });
 
 window.addEventListener('click', (event) => {
