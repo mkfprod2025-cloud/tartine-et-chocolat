@@ -180,6 +180,25 @@ const productOptionsCatalog = {
             { name: "Froid", price: 0 }
         ]
     },
+          boisson1Ingredients: {
+        label: "choix des saveurs",
+        type: "multi",
+        max: 1,
+        choices: [
+            { name: "café noir long" },
+            { name: "latte (café au lait)" },
+        ]
+    } ,
+       boisson2Ingredients: {
+        label: "choix des saveurs",
+        type: "multi",
+        max: 1,
+        choices: [
+            { name: "Rooîbos pêche" },
+            { name: "fruits rouges/miel" },
+            { name: "menthe/jasmin" },
+        ]
+    },
     boisson3Ingredients: {
         label: "Ingrédients (3 max)",
         type: "multi",
@@ -200,7 +219,7 @@ const productOptionsCatalog = {
         type: "multi",
         max: 1,
         choices: [
-            { name: "annanas/coco/sirop de vanille" },
+            { name: "ananas/coco/sirop de vanille" },
             { name: "fruits rouges/miel" },
             { name: "pomme/banane" },
         ]
@@ -214,6 +233,10 @@ const supplementsByProduct = {
     delice4: ['sales'],
     delice5: ['sales'],
     delice6: ['sales'],
+    boisson1:['boissons'],
+    boisson2:['boissons'],
+    boisson3:['boissons'],
+    boisson4: ['sucres','boissons'],
     decouverte:1 ['sucres'],
      decouverte2: ['sales'],
  decouverte3: ['boissons'],
@@ -221,8 +244,8 @@ const supplementsByProduct = {
 };
 
 const optionsByProduct = {
-    boisson1: ['defaultTemperature'],
-    boisson2: ['defaultTemperature'],
+    boisson1: ['boisson1Ingredients','defaultTemperature'],
+    boisson2: ['boisson2Ingredients','defaultTemperature'],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
     decouverte3: ['defaultTemperature'],
