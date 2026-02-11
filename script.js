@@ -215,7 +215,8 @@ const productOptionsCatalog = {
             { name: "campagnarde"},
             { name: "mediterrané"},
             { name: "veggan"},
-            ],
+            ]
+    },
      formule1ingredients2:{
          label: "1 dessert",
      type: "multi",
@@ -224,6 +225,15 @@ const productOptionsCatalog = {
         {name: "crumble"},
         {name: "gateau choco"},
         {name: "tarte tatin"}, ]
+},
+    formule1ingredients3:{
+         label: "1 boisson",
+     type: "multi",
+    max: 1,
+    choices: [
+        {name: "coffee ou latte(froid)"},
+        {name: "thé glacé"},
+        {name: "jus de fruit"}, ]
 };
 const categoryLabels = {
     sales: "Suppléments salés",
@@ -252,7 +262,7 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    formule1: ['formule1ingredients','formule1ingredients2']]
+    formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3']
     
 };
 
