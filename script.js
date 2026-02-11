@@ -148,6 +148,7 @@ const supplementsCatalog = {
         { name: "houmous", price: 3 }
     ],
     sucres: [
+        { name: "pommes", price: 2 },
         { name: "ananas", price: 2 },
         { name: "banane", price: 2 },
         { name: "gingembre", price: 1.5 },
@@ -193,7 +194,6 @@ const productOptionsCatalog = {
             { name: "Concombre", price: 0 },
             { name: "Ananas", price: 0 },
             { name: "Gingembre", price: 0 },
-            { name: "Citron", price: 0 },
             { name: "Menthe", price: 0 }
         ]
     },
@@ -235,8 +235,6 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    decouverte3: [],
-    decouverte4: []
 };
 
 const whatsappNumber = "33123456789";
