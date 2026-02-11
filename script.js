@@ -172,6 +172,9 @@ const addToCartBtn = document.getElementById('addToCartBtn');
 const cartItemsContainer = document.getElementById('cartItems');
 const orderTypeInput = document.getElementById('orderType');
 const customerNameInput = document.getElementById('customerName');
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+const codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
 const customerPhoneInput = document.getElementById('customerPhone');
 const customerNotesInput = document.getElementById('customerNotes');
 
@@ -189,6 +192,9 @@ const WHATSAPP_PHONE = '33123456789';
 const TELEGRAM_USER = 'tartineetchocolat';
 const UBER_EATS_URL = 'https://www.ubereats.com/';
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
 
 const supplementCatalog = {
     salty: [
@@ -233,6 +239,7 @@ const getSupplementOptions = (productId) => {
     const panel = productSupplementPanels[productId] || 'salty';
     return supplementCatalog[panel] || [];
 };
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 
 let selectedProductId = null;
 let cart = [];
@@ -244,12 +251,19 @@ const safeValue = (input, fallback = '') => {
     const value = input.value.trim();
     return value || fallback;
 };
+> main
+let selectedProductId = null;
+let cart = [];
 
+> main
 const formatCartMessage = () => {
     if (!cart.length) {
         return 'Bonjour, je souhaite passer commande. Mon panier est vide pour le moment.';
     }
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
     const lines = cart.flatMap(item => {
         const supplementLine = item.supplements.length
             ? `  • Suppléments: ${item.supplements.map(s => `${s.label} ${s.price}`).join(', ')}`
@@ -258,10 +272,19 @@ const formatCartMessage = () => {
             ? [`- ${item.qty} x ${item.title} (${item.price})`, supplementLine]
             : [`- ${item.qty} x ${item.title} (${item.price})`];
     });
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
     const orderType = safeValue(orderTypeInput, 'a emporter');
     const customerName = safeValue(customerNameInput, 'Non renseigné');
     const customerPhone = safeValue(customerPhoneInput, 'Non renseigné');
     const customerNotes = safeValue(customerNotesInput, 'Aucune');
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';
+    const customerPhone = customerPhoneInput.value.trim() || 'Non renseigné';
+    const lines = cart.map(item => `- ${item.qty} x ${item.title} (${item.price})`);
+    const orderType = orderTypeInput.value;
+    const customerName = customerNameInput.value.trim() || 'Non renseigné';> main
+    const customerNotes = customerNotesInput.value.trim() || 'Aucune';
+> main
 
     return [
         'Bonjour Tartine et Chocolat,',
@@ -270,21 +293,29 @@ const formatCartMessage = () => {
         '',
         `Mode: ${orderType}`,
         `Nom: ${customerName}`,
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
         `Téléphone: ${customerPhone}`,
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        `Téléphone: ${customerPhone}`,> main
+> main
         `Notes: ${customerNotes}`
     ].join('\n');
 };
 
 const updateCartView = () => {
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
     if (!cartItemsContainer) {
         return;
     }
-
+> main
     if (!cart.length) {
         cartItemsContainer.innerHTML = '<p class="empty-cart">Votre panier est vide. Ajoutez un article depuis une fiche produit.</p>';
         return;
     }
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
     cartItemsContainer.innerHTML = cart.map(item => {
         const supplementOptions = getSupplementOptions(item.id);
         const supplementInputs = supplementOptions.map(option => {
@@ -293,14 +324,24 @@ const updateCartView = () => {
         }).join('');
 
         return `
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+    cartItemsContainer.innerHTML = cart.map(item => `> main
+> main
         <div class="cart-item-row">
             <div>
                 <strong>${item.title}</strong><br>
                 <small>${item.price}</small>
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
                 <div class="supplement-panel">
                     <p>Suppléments disponibles :</p>
                     <div class="supplement-grid">${supplementInputs}</div>
                 </div>
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+                <div class="supplement-panel">
+                    <p>Suppléments disponibles :</p>
+                    <div class="supplement-grid">${supplementInputs}</div>
+                </div> > main>
+> main
             </div>
             <div class="cart-item-actions">
                 <button class="qty-button" data-action="decrease" data-id="${item.id}">-</button>
@@ -308,19 +349,32 @@ const updateCartView = () => {
                 <button class="qty-button" data-action="increase" data-id="${item.id}">+</button>
             </div>
         </div>
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
     `;
     }).join('');
 };
 
 if (cartItemsContainer) {
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    `;
+    }).join('');
+    `).join('');> main
+};
+> main
 cartItemsContainer.addEventListener('click', (event) => {
     const button = event.target.closest('.qty-button');
     if (!button) {
         return;
     }
-
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
     const action = button.getAttribute('data-action');
     const itemId = button.getAttribute('data-id');
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+    const action = button.getAttribute('data-action');
+    const itemId = button.getAttribute('data-id');
+    const itemId = button.getAttribute('data-id');
+    const action = button.getAttribute('data-action');> main
+> main
     const item = cart.find(entry => entry.id === itemId);
 
     if (!item) {
@@ -338,6 +392,9 @@ cartItemsContainer.addEventListener('click', (event) => {
 
     updateCartView();
 });
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+> main
 
 cartItemsContainer.addEventListener('change', (event) => {
     const checkbox = event.target.closest('input[data-action="toggle-supplement"]');
@@ -366,7 +423,10 @@ cartItemsContainer.addEventListener('change', (event) => {
         item.supplements = item.supplements.filter(entry => entry.id !== supplementId);
     }
 });
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 }
+> main
+> main
 
 // Boutons de fermeture
 const closeButtons = document.querySelectorAll('.close');
@@ -434,7 +494,9 @@ cards.forEach(card => {
     });
 });
 
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 if (addToCartBtn) {
+> main
 addToCartBtn.addEventListener('click', () => {
     if (!selectedProductId) {
         return;
@@ -445,21 +507,36 @@ addToCartBtn.addEventListener('click', () => {
 
     if (existing) {
         existing.qty += 1;
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
         existing.supplements = existing.supplements || [];
+< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+        existing.supplements = existing.supplements || []; > main
+> main
     } else {
         cart.push({
             id: selectedProductId,
             title: product.title,
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
             price: product.price,
             qty: 1,
             supplements: []
+=======
+            price: product.price, 
+            < codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+            qty: 1,
+            supplements: []
+            qty: 1
+> main
+> main
         });
     }
 
     updateCartView();
     productModal.style.display = 'none';
 });
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 }
+> main
 
 // Bouton Commander
 const orderBtn = document.getElementById('orderBtn');
@@ -470,6 +547,7 @@ orderBtn.addEventListener('click', () => {
 }
 
 // Options de commande
+< codex/add-buttons-for-allergen-and-tracing-features-71rsxu
 if (cartOption) {
     cartOption.addEventListener('click', () => {
         orderModal.style.display = 'none';
@@ -525,6 +603,45 @@ if (openUberBtn) {
         window.open(UBER_EATS_URL, '_blank');
     });
 }
+cartOption.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+    updateCartView();
+    cartModal.style.display = 'block';
+});
+
+deliveryOption.addEventListener('click', () => {
+    window.open(UBER_EATS_URL, '_blank');
+    orderModal.style.display = 'none';
+});
+
+whatsappOption.addEventListener('click', () => {
+    window.open(`https://wa.me/${WHATSAPP_PHONE}`, '_blank');
+    orderModal.style.display = 'none';
+});
+
+telegramOption.addEventListener('click', () => {
+    window.open(`https://t.me/${TELEGRAM_USER}`, '_blank');
+    orderModal.style.display = 'none';
+});
+> main
+sendRestaurantBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendWhatsappBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, '_blank');
+});
+
+sendTelegramBtn.addEventListener('click', () => {
+    const msg = encodeURIComponent(formatCartMessage());
+    window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
+});
+
+openUberBtn.addEventListener('click', () => {
+    window.open(UBER_EATS_URL, '_blank');
+});
 
 // Animation au scroll (optionnel)
 const observerOptions = {
