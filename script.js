@@ -122,22 +122,28 @@ const productsData = {
 
 const supplementsCatalog = {
     sales: [
-        { name: "Avocat", price: 1.5 },
-        { name: "Oeuf mollet", price: 1.8 },
+        { name: "jambon.blanc", price: 3 },
+        { name: "poulet", price: 2 },
+        { name: "oeuf dur", price: 2 },
         { name: "Saumon fumé", price: 3.5 },
-        { name: "Fromage frais", price: 1.2 }
+        { name: "Fromage frais", price: 1.5 },
+        { name: "pistache", price: 1 }
     ],
     sucres: [
-        { name: "Chantilly", price: 1.2 },
-        { name: "Coulis chocolat", price: 1.5 },
-        { name: "Fruits rouges", price: 2.5 },
-        { name: "Caramel beurre salé", price: 1.8 }
+         { name: "ananas", price:2  },
+        { name: "banane", price: 2 },
+        { name: "gingembre", price: 1.5 },
+        { name: "Fruits rouges", price: 2 },
+        { name: "sirop de vanille", price: 0.50 },
+        { name: "sirop de caramel", price: 0.5 },
+        { name: "lait vegetal avoine", price: 1 },
+        { name: "lait vegetal coco", price: 1.8 }
     ],
     boissons: [
-        { name: "Lait végétal", price: 0.8 },
-        { name: "Sirop maison", price: 0.9 },
-        { name: "Shot expresso", price: 1.3 },
-        { name: "Perles de fruits", price: 1.7 }
+        { name: "chaud", price:  },
+        { name: "froid", price:  },
+        { name: "sans glace", price: },
+        { name: "sans sucre", price:  }
     ]
 };
 
