@@ -134,16 +134,13 @@ const supplementsCatalog = {
         { name: "banane", price: 2 },
         { name: "gingembre", price: 1.5 },
         { name: "Fruits rouges", price: 2 },
-        { name: "sirop de vanille", price: 0.50 },
-        { name: "sirop de caramel", price: 0.5 },
-        { name: "lait vegetal avoine", price: 1 },
-        { name: "lait vegetal coco", price: 1.8 }
+        { name: "crème fraiche", price: 1.5},
     ],
     boissons: [
-        { name: "chaud", price: 0.0 },
-        { name: "froid", price: 0.0 },
-        { name: "sans glace", price: 0.0},
-        { name: "sans sucre", price: 0.0 }
+          { name: "sirop de vanille", price: 0.50 },
+        { name: "sirop de caramel", price: 0.5 },
+        { name: "lait vegetal avoine", price: 1 },
+        { name: "lait vegetal coco", price: 1 },
     ]
 };
 
