@@ -172,9 +172,8 @@ const addToCartBtn = document.getElementById('addToCartBtn');
 const cartItemsContainer = document.getElementById('cartItems');
 const orderTypeInput = document.getElementById('orderType');
 const customerNameInput = document.getElementById('customerName');
-< codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
+codex/add-buttons-for-allergen-and-tracing-features-z3n6cs
 const customerPhoneInput = document.getElementById('customerPhone');
-> main
 const customerNotesInput = document.getElementById('customerNotes');
 
 const cartOption = document.getElementById('cartOption');
