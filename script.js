@@ -641,11 +641,12 @@ openUberBtn.addEventListener('click', () => {
     window.open(UBER_EATS_URL, '_blank');
 });
 
-// Animation au scroll (optionnel)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+window.addEventListener('click', (event) => {
+    if (!event.target.classList.contains('modal')) return;
+    const video = document.querySelector('#modalMediaContainer video');
+    if (video) video.pause();
+    event.target.style.display = 'none';
+});
 
 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
