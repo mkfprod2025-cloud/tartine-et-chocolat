@@ -194,6 +194,16 @@ const productOptionsCatalog = {
             { name: "Citron", price: 0 },
             { name: "Menthe", price: 0 }
         ]
+    },
+        boisson4Ingredients: {
+        label: "choix des saveurs",
+        type: "multi",
+        max: 1,
+        choices: [
+            { name: "annanas/coco/sirop de vanille" },
+            { name: "fruits rouges/miel" },
+            { name: "pomme/banane" },
+        ]
     }
 };
 
@@ -213,8 +223,8 @@ const supplementsByProduct = {
 const optionsByProduct = {
     boisson1: ['defaultTemperature'],
     boisson2: ['defaultTemperature'],
-    boisson3: ['defaultTemperature', 'boisson3Ingredients'],
-    boisson4: ['defaultTemperature'],
+    boisson3: ['boisson3Ingredients'],
+    boisson4: ['boisson4Ingredients'],
     decouverte3: ['defaultTemperature'],
     decouverte4: ['defaultTemperature']
 };
