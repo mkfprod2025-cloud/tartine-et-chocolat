@@ -361,6 +361,36 @@ const stripeCheckoutEndpoint = stripeConfig.checkoutEndpoint || null;
 const stripeClient = stripePublishableKey && window.Stripe
     ? window.Stripe(stripePublishableKey)
     : null;
+const PENDING_ORDER_STORAGE_KEY = 'tartine.pendingOrder';
+
+const savePendingOrder = (orderLines) => {
+    try {
+        localStorage.setItem(PENDING_ORDER_STORAGE_KEY, JSON.stringify(orderLines));
+    } catch {
+        // ignore storage errors
+    }
+};
+
+const loadPendingOrder = () => {
+    try {
+        const raw = localStorage.getItem(PENDING_ORDER_STORAGE_KEY);
+        if (!raw) {
+            return null;
+        }
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : null;
+    } catch {
+        return null;
+    }
+};
+
+const clearPendingOrder = () => {
+    try {
+        localStorage.removeItem(PENDING_ORDER_STORAGE_KEY);
+    } catch {
+        // ignore storage errors
+    }
+};
 
 const parsePrice = (priceText) => {
     const matches = priceText.match(/\d+(?:[.,]\d+)?/g);
@@ -847,6 +877,7 @@ const handlePspAccepted = () => {
 
     cart = [];
     pendingOrder = null;
+    clearPendingOrder();
     closeAllModals();
     renderCart();
 };
@@ -926,14 +957,46 @@ const setupPaymentFlow = () => {
         }
 
         pendingOrder = cart.map((line) => ({ ...line }));
+        savePendingOrder(pendingOrder);
 
         try {
             await redirectToStripeCheckout(pendingOrder);
         } catch (error) {
             pendingOrder = null;
+            clearPendingOrder();
             window.alert(`Impossible de lancer Stripe Checkout: ${error.message}`);
         }
     });
+};
+
+const handleCheckoutReturn = () => {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('checkout');
+
+    if (!status) {
+        return;
+    }
+
+    if (status === 'success') {
+        const storedOrder = loadPendingOrder();
+        if (storedOrder && storedOrder.length > 0) {
+            pendingOrder = storedOrder;
+            handlePspAccepted();
+        } else {
+            window.alert('Paiement confirmé, mais aucune commande locale trouvée.');
+        }
+    }
+
+    if (status === 'cancel') {
+        window.alert('Paiement Stripe annulé.');
+    }
+
+    clearPendingOrder();
+    params.delete('checkout');
+    params.delete('session_id');
+    const cleanedQuery = params.toString();
+    const newUrl = `${window.location.pathname}${cleanedQuery ? `?${cleanedQuery}` : ''}${window.location.hash}`;
+    window.history.replaceState({}, document.title, newUrl);
 };
 
 const setupTabsAndButtons = () => {
@@ -994,3 +1057,4 @@ setupQuantityControls();
 setupAddToCart();
 setupPaymentFlow();
 setupCardAnimation();
+handleCheckoutReturn();
