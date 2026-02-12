@@ -130,3 +130,37 @@ Dans `styles.css`, lignes 9-14, modifiez les variables CSS :
 ## Licence
 
 Projet libre d'utilisation.
+
+## Paiement Stripe (mode test)
+
+Le front est prêt pour Stripe Checkout en mode test.
+
+### 1) Configurer `stripe-config.js`
+
+Le fichier `stripe-config.js` est versionné pour éviter une erreur 404 en production (GitHub Pages).
+
+Mettez à jour :
+- `publishableKey` = votre clé publique Stripe (`pk_test_...`) ;
+- `checkoutEndpoint` = endpoint backend qui crée la session Checkout.
+
+> Le fichier ne doit contenir **que** des informations publiques (jamais `sk_test_...`).
+
+### 2) Clé secrète Stripe
+
+Ne jamais mettre la clé secrète (`sk_test_...`) dans le front (`index.html`, `script.js`) ni dans GitHub.
+
+Utilisez-la uniquement côté serveur (backend), via variable d'environnement, par exemple :
+
+```bash
+export STRIPE_SECRET_KEY="sk_test_..."
+```
+
+### 3) Endpoint backend attendu
+
+Le front envoie un `POST` JSON vers `checkoutEndpoint` et attend la réponse :
+
+```json
+{ "sessionId": "cs_test_..." }
+```
+
+Ensuite le navigateur redirige automatiquement vers Stripe Checkout.
