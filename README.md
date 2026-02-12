@@ -135,15 +135,19 @@ Projet libre d'utilisation.
 
 Le front est prêt pour Stripe Checkout en mode test.
 
-### 1) Configurer `stripe-config.js`
+### 1) Créer votre config locale (non versionnée)
 
-Le fichier `stripe-config.js` est versionné pour éviter une erreur 404 en production (GitHub Pages).
+Copiez le fichier exemple et adaptez l'URL backend :
 
-Mettez à jour :
+```bash
+cp stripe-config.example.js stripe-config.js
+```
+
+Dans `stripe-config.js` :
 - `publishableKey` = votre clé publique Stripe (`pk_test_...`) ;
 - `checkoutEndpoint` = endpoint backend qui crée la session Checkout.
 
-> Le fichier ne doit contenir **que** des informations publiques (jamais `sk_test_...`).
+> `stripe-config.js` est ignoré par Git via `.gitignore`, donc il ne sera pas publié sur GitHub.
 
 ### 2) Clé secrète Stripe
 
