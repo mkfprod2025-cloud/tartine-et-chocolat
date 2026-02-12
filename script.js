@@ -79,6 +79,14 @@ e de la baronne 0640 Cannesconst productsData = {
         media_type: "video",
         productType: "boissons"
     },
+    boisson5: {
+        title: "Boisson 5",
+        description: "",
+        price: "",
+        image: "assets/logoTc.jpg",
+        media_type: "image",
+        productType: "boissons"
+    },
     decouverte1: {
         title: "La Tarte aux myrtilles",
         description: "Une belle part de tarte aux myrtilles façon grand-mère, à la pâte épaisse et gourmande, idéale pour rassurer les après-midi.(myrtilles, farine de blé, beurre, sucre, œufs)",
@@ -287,6 +295,7 @@ const supplementsByProduct = {
     boisson2:['boissons'],
     boisson3:['boissons'],
     boisson4: ['sucres','boissons'],
+    boisson5: [],
     decouverte1: ['sucres'],
     decouverte2: ['sales'],
  decouverte3: ['boissons'],
@@ -300,6 +309,7 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
+    boisson5: [],
     formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
     formule3: ['formule3ingredients1','formule3ingredients2','formule3ingredients3'],
