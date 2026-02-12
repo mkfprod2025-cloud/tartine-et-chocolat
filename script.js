@@ -346,6 +346,13 @@ let currentProductId = null;
 let cart = [];
 let pendingOrder = null;
 
+const stripeConfig = window.STRIPE_CONFIG || {};
+const stripePublishableKey = stripeConfig.publishableKey || null;
+const stripeCheckoutEndpoint = stripeConfig.checkoutEndpoint || null;
+const stripeClient = stripePublishableKey && window.Stripe
+    ? window.Stripe(stripePublishableKey)
+    : null;
+
 const parsePrice = (priceText) => {
     const matches = priceText.match(/\d+(?:[.,]\d+)?/g);
     if (!matches || matches.length === 0) {
@@ -810,7 +817,7 @@ const openPaymentSummary = () => {
         <div class="payment-summary-box">
             ${rows}
             <div class="payment-total">Total à payer : ${formatPrice(total)}</div>
-            <p class="payment-note">Après confirmation PSP : facture téléchargée + confirmation client + commande WhatsApp société.</p>
+            <p class="payment-note">Après confirmation Stripe : facture téléchargée + confirmation client + commande WhatsApp société.</p>
         </div>
     `;
 };
@@ -824,7 +831,7 @@ const handlePspAccepted = () => {
     const content = buildOrderContent(pendingOrder);
 
     generateInvoicePdf(pendingOrder);
-    window.alert('Paiement accepté par le PSP. Votre facture est téléchargée.');
+    window.alert('Paiement accepté par Stripe. Votre facture est téléchargée.');
 
     const message = `Bonjour Tartine et Chocolat,%0ACommande payée et validée (emporté) :%0A${content}%0A%0ATotal payé : ${formatPrice(total)}%0AMerci !`;
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
@@ -833,6 +840,79 @@ const handlePspAccepted = () => {
     pendingOrder = null;
     closeAllModals();
     renderCart();
+};
+
+const buildStripeCheckoutPayload = (orderLines) => ({
+    currency: 'eur',
+    locale: 'fr',
+    orderLines: orderLines.map((line) => ({
+        title: line.title,
+        quantity: line.quantity,
+        amount: Math.round((line.total / line.quantity) * 100),
+        metadata: {
+            options: line.options.map((option) => option.label),
+            supplements: line.supplements.map((supplement) => supplement.name)
+        }
+    }))
+});
+
+const isPlaceholderCheckoutEndpoint = (endpoint) => {
+    if (!endpoint) {
+        return true;
+    }
+
+    const normalized = endpoint.toLowerCase();
+    return normalized.includes('votre-backend.example.com')
+        || normalized.includes('example.com/create-checkout-session');
+};
+
+const getStripeFetchErrorMessage = (error) => {
+    if (error instanceof TypeError) {
+        return `Impossible de joindre le backend Stripe (${stripeCheckoutEndpoint}). Vérifiez l'URL, le HTTPS et le CORS.`;
+    }
+
+    return error.message || 'Erreur inconnue.';
+};
+
+const redirectToStripeCheckout = async (orderLines) => {
+    if (!stripePublishableKey || !stripeCheckoutEndpoint) {
+        window.alert('Configuration Stripe incomplète. Vérifiez publishableKey et checkoutEndpoint dans stripe-config.js.');
+        return;
+    }
+
+    if (isPlaceholderCheckoutEndpoint(stripeCheckoutEndpoint)) {
+        window.alert(
+            'Le checkoutEndpoint est encore un placeholder. Remplacez-le dans stripe-config.js par votre vraie URL backend.'
+        );
+        return;
+    }
+
+    if (!stripeClient) {
+        window.alert('Stripe.js est indisponible. Vérifiez votre connexion internet et rechargez la page.');
+        return;
+    }
+
+    const response = await fetch(stripeCheckoutEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(buildStripeCheckoutPayload(orderLines))
+    });
+
+    if (!response.ok) {
+        throw new Error(`Erreur backend Stripe (${response.status})`);
+    }
+
+    const data = await response.json();
+    if (!data.sessionId) {
+        throw new Error('Réponse backend invalide: sessionId manquant.');
+    }
+
+    const result = await stripeClient.redirectToCheckout({ sessionId: data.sessionId });
+    if (result.error) {
+        throw new Error(result.error.message);
+    }
 };
 
 const setupPaymentFlow = () => {
@@ -854,23 +934,19 @@ const setupPaymentFlow = () => {
         takeawayModal.style.display = 'block';
     });
 
-    document.getElementById('redirectToPspBtn').addEventListener('click', () => {
+    document.getElementById('redirectToPspBtn').addEventListener('click', async () => {
         if (cart.length === 0) {
             return;
         }
 
-        const pspUrl = 'https://example-psp-checkout.com/redirect';
         pendingOrder = cart.map((line) => ({ ...line }));
-        window.open(pspUrl, '_blank');
 
-        const accepted = window.confirm('Simulation PSP : cliquez sur OK si le paiement est accepté, Annuler si refusé.');
-        if (!accepted) {
-            window.alert('Paiement refusé/annulé. Vous pouvez réessayer.');
+        try {
+            await redirectToStripeCheckout(pendingOrder);
+        } catch (error) {
             pendingOrder = null;
-            return;
+            window.alert(`Impossible de lancer Stripe Checkout: ${getStripeFetchErrorMessage(error)}`);
         }
-
-        handlePspAccepted();
     });
 };
 
