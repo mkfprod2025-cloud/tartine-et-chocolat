@@ -856,33 +856,10 @@ const buildStripeCheckoutPayload = (orderLines) => ({
     }))
 });
 
-const isPlaceholderCheckoutEndpoint = (endpoint) => {
-    if (!endpoint) {
-        return true;
-    }
-
-    const normalized = endpoint.toLowerCase();
-    return normalized.includes('votre-backend.example.com')
-        || normalized.includes('example.com/create-checkout-session');
-};
-
-const getStripeFetchErrorMessage = (error) => {
-    if (error instanceof TypeError) {
-        return `Impossible de joindre le backend Stripe (${stripeCheckoutEndpoint}). Vérifiez l'URL, le HTTPS et le CORS.`;
-    }
-
-    return error.message || 'Erreur inconnue.';
-};
-
 const redirectToStripeCheckout = async (orderLines) => {
     if (!stripePublishableKey || !stripeCheckoutEndpoint) {
-        window.alert('Configuration Stripe incomplète. Vérifiez publishableKey et checkoutEndpoint dans stripe-config.js.');
-        return;
-    }
-
-    if (isPlaceholderCheckoutEndpoint(stripeCheckoutEndpoint)) {
         window.alert(
-            'Le checkoutEndpoint est encore un placeholder. Remplacez-le dans stripe-config.js par votre vraie URL backend.'
+            'Configuration Stripe incomplète. Créez stripe-config.js depuis stripe-config.example.js et ajoutez checkoutEndpoint.'
         );
         return;
     }
@@ -945,7 +922,7 @@ const setupPaymentFlow = () => {
             await redirectToStripeCheckout(pendingOrder);
         } catch (error) {
             pendingOrder = null;
-            window.alert(`Impossible de lancer Stripe Checkout: ${getStripeFetchErrorMessage(error)}`);
+            window.alert(`Impossible de lancer Stripe Checkout: ${error.message}`);
         }
     });
 };

@@ -4,5 +4,5 @@ window.STRIPE_CONFIG = {
 
   // Endpoint backend qui crée la session Stripe Checkout.
   // A remplacer par votre URL backend réelle.
-  checkoutEndpoint: 'https://api.votre-domaine.com/create-checkout-session'
+  checkoutEndpoint: 'https://VOTRE-BACKEND.example.com/create-checkout-session'
 };
