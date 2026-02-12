@@ -145,7 +145,7 @@ cp stripe-config.example.js stripe-config.js
 
 Dans `stripe-config.js` :
 - `publishableKey` = votre clé publique Stripe (`pk_test_...`) ;
-- `checkoutEndpoint` = endpoint backend qui crée la session Checkout.
+- `checkoutEndpoint` = endpoint backend qui crée la session Checkout (recommandé: `/api/stripe/create-checkout-session` sur le même domaine).
 
 > `stripe-config.js` est ignoré par Git via `.gitignore`, donc il ne sera pas publié sur GitHub.
 
@@ -174,5 +174,7 @@ Ensuite le navigateur redirige automatiquement vers Stripe Checkout.
 Ce projet inclut une Function Netlify qui crée la session Checkout à l'URL :
 
 - `/api/stripe/create-checkout-session`
+
+Si vous obtenez une erreur `405`, l'URL du `checkoutEndpoint` est souvent incorrecte (mauvais chemin ou mauvais domaine).
 
 Configurez la variable d'environnement `STRIPE_SECRET_KEY` dans Netlify (Site settings → Environment variables).

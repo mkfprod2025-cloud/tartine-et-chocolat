@@ -348,7 +348,7 @@ let pendingOrder = null;
 
 const defaultStripeConfig = {
     publishableKey: 'pk_test_51SzwI8BlEafWibXy9c428knIP3WL59qZYFdIb0Pe7kmFyO4r3oKjnD8JithDoq96DG2K1IAZz3H9V08i1wDMD6wt00yzgEL4Fj',
-    checkoutEndpoint: 'https://698df729bcbf81373c6a9a5f--tartineetchocolatbackend.netlify.app/create-checkout-session'
+    checkoutEndpoint: '/api/stripe/create-checkout-session'
 };
 
 const stripeConfig = {
@@ -918,7 +918,20 @@ const redirectToStripeCheckout = async (orderLines) => {
     });
 
     if (!response.ok) {
-        throw new Error(`Erreur backend Stripe (${response.status})`);
+        let backendMessage = '';
+
+        try {
+            const errorData = await response.json();
+            backendMessage = errorData?.error || '';
+        } catch {
+            // ignore non-JSON error body
+        }
+
+        const endpointHint = response.status === 405
+            ? ' Vérifiez que checkoutEndpoint pointe vers /api/stripe/create-checkout-session.'
+            : '';
+
+        throw new Error(`Erreur backend Stripe (${response.status})${backendMessage ? `: ${backendMessage}` : ''}${endpointHint}`);
     }
 
     const data = await response.json();
