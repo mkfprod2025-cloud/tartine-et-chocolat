@@ -1,0 +1,5 @@
+# Secrets / config locale Stripe
+stripe-config.js
+.env
+.env.*
+!.env.example
