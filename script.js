@@ -896,6 +896,35 @@ const buildStripeCheckoutPayload = (orderLines) => ({
     }))
 });
 
+const normalizeEndpointUrl = (endpoint) => {
+    if (!endpoint || typeof endpoint !== 'string') {
+        return null;
+    }
+
+    const trimmedEndpoint = endpoint.trim();
+    if (!trimmedEndpoint) {
+        return null;
+    }
+
+    return trimmedEndpoint;
+};
+
+const getCheckoutEndpointCandidates = () => {
+    const configuredEndpoint = normalizeEndpointUrl(stripeCheckoutEndpoint);
+    const fallbackEndpoint = '/.netlify/functions/create-checkout-session';
+    const candidates = [];
+
+    if (configuredEndpoint) {
+        candidates.push(configuredEndpoint);
+    }
+
+    if (configuredEndpoint !== fallbackEndpoint) {
+        candidates.push(fallbackEndpoint);
+    }
+
+    return candidates;
+};
+
 const redirectToStripeCheckout = async (orderLines) => {
     if (!stripePublishableKey || !stripeCheckoutEndpoint) {
         window.alert(
@@ -909,13 +938,33 @@ const redirectToStripeCheckout = async (orderLines) => {
         return;
     }
 
-    const response = await fetch(stripeCheckoutEndpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(buildStripeCheckoutPayload(orderLines))
-    });
+    const payload = JSON.stringify(buildStripeCheckoutPayload(orderLines));
+    const endpointCandidates = getCheckoutEndpointCandidates();
+    let response = null;
+    let responseEndpoint = null;
+
+    for (const endpoint of endpointCandidates) {
+        response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: payload
+        });
+
+        responseEndpoint = endpoint;
+
+        if (response.ok) {
+            break;
+        }
+
+        const shouldTryFallback = endpoint !== endpointCandidates[endpointCandidates.length - 1]
+            && (response.status === 404 || response.status === 405);
+
+        if (!shouldTryFallback) {
+            break;
+        }
+    }
 
     if (!response.ok) {
         let backendMessage = '';
@@ -931,7 +980,11 @@ const redirectToStripeCheckout = async (orderLines) => {
             ? ' Vérifiez que checkoutEndpoint pointe vers /api/stripe/create-checkout-session.'
             : '';
 
-        throw new Error(`Erreur backend Stripe (${response.status})${backendMessage ? `: ${backendMessage}` : ''}${endpointHint}`);
+        const fallbackHint = responseEndpoint === '/.netlify/functions/create-checkout-session'
+            ? ' Le fallback Netlify (/.netlify/functions/create-checkout-session) a aussi échoué.'
+            : '';
+
+        throw new Error(`Erreur backend Stripe (${response.status})${backendMessage ? `: ${backendMessage}` : ''}${endpointHint}${fallbackHint}`);
     }
 
     const data = await response.json();
