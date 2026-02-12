@@ -346,7 +346,16 @@ let currentProductId = null;
 let cart = [];
 let pendingOrder = null;
 
-const stripeConfig = window.STRIPE_CONFIG || {};
+const defaultStripeConfig = {
+    publishableKey: 'pk_test_51SzwI8BlEafWibXy9c428knIP3WL59qZYFdIb0Pe7kmFyO4r3oKjnD8JithDoq96DG2K1IAZz3H9V08i1wDMD6wt00yzgEL4Fj',
+    checkoutEndpoint: 'https://698df729bcbf81373c6a9a5f--tartineetchocolatbackend.netlify.app/create-checkout-session'
+};
+
+const stripeConfig = {
+    ...defaultStripeConfig,
+    ...(window.STRIPE_CONFIG || {})
+};
+
 const stripePublishableKey = stripeConfig.publishableKey || null;
 const stripeCheckoutEndpoint = stripeConfig.checkoutEndpoint || null;
 const stripeClient = stripePublishableKey && window.Stripe
