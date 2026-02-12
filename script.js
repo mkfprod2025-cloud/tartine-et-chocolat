@@ -344,6 +344,7 @@ const supplementsCatalog = {
 const whatsappNumber = "+33664624506";
 let currentProductId = null;
 let cart = [];
+let pendingOrder = null;
 
 const parsePrice = (priceText) => {
     const matches = priceText.match(/\d+(?:[.,]\d+)?/g);
@@ -547,14 +548,14 @@ const renderCart = () => {
     const cartItems = document.getElementById('cartItems');
     const emptyState = document.getElementById('cartEmptyState');
     const totalNode = document.getElementById('cartTotal');
-    const sendButton = document.getElementById('sendWhatsAppBtn');
+    const checkoutButton = document.getElementById('checkoutBtn');
 
     cartItems.innerHTML = '';
 
     if (cart.length === 0) {
         emptyState.style.display = 'block';
         totalNode.textContent = 'Total : 0,00€';
-        sendButton.disabled = true;
+        checkoutButton.disabled = true;
         return;
     }
 
@@ -584,7 +585,7 @@ const renderCart = () => {
 
     const total = cart.reduce((sum, line) => sum + line.total, 0);
     totalNode.textContent = `Total : ${formatPrice(total)}`;
-    sendButton.disabled = false;
+    checkoutButton.disabled = false;
 
     document.querySelectorAll('.remove-cart-item').forEach((button) => {
         button.addEventListener('click', () => {
@@ -596,7 +597,7 @@ const renderCart = () => {
 };
 
 const closeAllModals = () => {
-    ['productModal', 'orderModal', 'takeawayModal'].forEach((id) => {
+    ['productModal', 'orderModal', 'takeawayModal', 'paymentModal'].forEach((id) => {
         const node = document.getElementById(id);
         if (node) {
             node.style.display = 'none';
@@ -719,7 +720,7 @@ const setupAddToCart = () => {
     });
 };
 
-const generateInvoicePdf = () => {
+const generateInvoicePdf = (orderLines = cart) => {
     if (!window.jspdf || !window.jspdf.jsPDF) {
         return;
     }
@@ -735,7 +736,7 @@ const generateInvoicePdf = () => {
     doc.text(`Date: ${new Date().toLocaleString('fr-FR')}`, 14, y);
     y += 8;
 
-    cart.forEach((line) => {
+    orderLines.forEach((line) => {
         doc.text(`${line.quantity} x ${line.title} - ${formatPrice(line.total)}`, 14, y);
         y += 6;
         if (line.options.length > 0) {
@@ -752,7 +753,7 @@ const generateInvoicePdf = () => {
         }
     });
 
-    const total = cart.reduce((sum, line) => sum + line.total, 0);
+    const total = orderLines.reduce((sum, line) => sum + line.total, 0);
     y += 4;
     doc.setFontSize(12);
     doc.text(`Total TTC: ${formatPrice(total)}`, 14, y);
@@ -775,32 +776,101 @@ const generateInvoicePdf = () => {
     doc.save(`facture-tartine-et-chocolat-${Date.now()}.pdf`);
 };
 
-const setupWhatsAppSend = () => {
-    document.getElementById('sendWhatsAppBtn').addEventListener('click', () => {
+const buildOrderContent = (orderLines) => orderLines.map((line) => {
+    const supplements = line.supplements.length > 0
+        ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
+        : '';
+    const options = line.options.length > 0
+        ? ` | options: ${line.options.map((o) => o.label).join(', ')}`
+        : '';
+    return `- ${line.quantity} x ${line.title}${supplements}${options} = ${formatPrice(line.total)}`;
+}).join('\n');
+
+const openPaymentSummary = () => {
+    const paymentSummary = document.getElementById('paymentSummary');
+    const total = cart.reduce((sum, line) => sum + line.total, 0);
+    const rows = cart.map((line) => {
+        const details = [
+            line.options.length > 0 ? `Choix: ${line.options.map((o) => o.label).join(', ')}` : '',
+            line.supplements.length > 0 ? `Suppléments: ${line.supplements.map((s) => s.name).join(', ')}` : ''
+        ].filter(Boolean).join(' · ');
+
+        return `
+            <div class="payment-line">
+                <div>
+                    <strong>${line.quantity} x ${line.title}</strong>
+                    ${details ? `<p>${details}</p>` : ''}
+                </div>
+                <span>${formatPrice(line.total)}</span>
+            </div>
+        `;
+    }).join('');
+
+    paymentSummary.innerHTML = `
+        <div class="payment-summary-box">
+            ${rows}
+            <div class="payment-total">Total à payer : ${formatPrice(total)}</div>
+            <p class="payment-note">Après confirmation PSP : facture téléchargée + confirmation client + commande WhatsApp société.</p>
+        </div>
+    `;
+};
+
+const handlePspAccepted = () => {
+    if (!pendingOrder || pendingOrder.length === 0) {
+        return;
+    }
+
+    const total = pendingOrder.reduce((sum, line) => sum + line.total, 0);
+    const content = buildOrderContent(pendingOrder);
+
+    generateInvoicePdf(pendingOrder);
+    window.alert('Paiement accepté par le PSP. Votre facture est téléchargée.');
+
+    const message = `Bonjour Tartine et Chocolat,%0ACommande payée et validée (emporté) :%0A${content}%0A%0ATotal payé : ${formatPrice(total)}%0AMerci !`;
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+
+    cart = [];
+    pendingOrder = null;
+    closeAllModals();
+    renderCart();
+};
+
+const setupPaymentFlow = () => {
+    const takeawayModal = document.getElementById('takeawayModal');
+    const paymentModal = document.getElementById('paymentModal');
+
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
         if (cart.length === 0) {
             return;
         }
 
-        const accepted = window.confirm('Confirmer la commande ? Une facture PDF sera téléchargée.');
-        if (!accepted) {
+        openPaymentSummary();
+        takeawayModal.style.display = 'none';
+        paymentModal.style.display = 'block';
+    });
+
+    document.getElementById('cancelPaymentBtn').addEventListener('click', () => {
+        paymentModal.style.display = 'none';
+        takeawayModal.style.display = 'block';
+    });
+
+    document.getElementById('redirectToPspBtn').addEventListener('click', () => {
+        if (cart.length === 0) {
             return;
         }
 
-        const total = cart.reduce((sum, line) => sum + line.total, 0);
-        const content = cart.map((line) => {
-            const supplements = line.supplements.length > 0
-                ? ` | suppléments: ${line.supplements.map((s) => s.name).join(', ')}`
-                : '';
-            const options = line.options.length > 0
-                ? ` | options: ${line.options.map((o) => o.label).join(', ')}`
-                : '';
-            return `- ${line.quantity} x ${line.title}${supplements}${options} = ${formatPrice(line.total)}`;
-        }).join('\n');
+        const pspUrl = 'https://example-psp-checkout.com/redirect';
+        pendingOrder = cart.map((line) => ({ ...line }));
+        window.open(pspUrl, '_blank');
 
-        generateInvoicePdf();
+        const accepted = window.confirm('Simulation PSP : cliquez sur OK si le paiement est accepté, Annuler si refusé.');
+        if (!accepted) {
+            window.alert('Paiement refusé/annulé. Vous pouvez réessayer.');
+            pendingOrder = null;
+            return;
+        }
 
-        const message = `Bonjour Tartine et Chocolat,%0AJe souhaite commander à emporter :%0A${content}%0A%0ATotal estimé : ${formatPrice(total)}%0AMerci !`;
-        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        handlePspAccepted();
     });
 };
 
@@ -860,5 +930,5 @@ setupProductCards();
 setupOrderFlow();
 setupQuantityControls();
 setupAddToCart();
-setupWhatsAppSend();
+setupPaymentFlow();
 setupCardAnimation();
