@@ -1,4 +1,4 @@
-
+const productsData = {
  delice1: {
         title: "Crumble Pomme et Cannelle",
         description: "Crumble pommes cannelle, dessert à emporter au goût réconfortant. Pommes fondantes parfumées à la cannelle, recouvertes d’un crumble croustillant et doré.(pomme,cannelle,farine de blé, beurre, sucre.)",
