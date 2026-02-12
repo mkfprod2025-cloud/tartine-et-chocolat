@@ -262,7 +262,7 @@
                 <div class="order-option" id="takeawayOption">
                     <div class="option-icon">📦</div>
                     <h3>À Emporter</h3>
-                    <p>Panier local + envoi WhatsApp</p>
+                    <p>Panier local + paiement PSP + confirmation WhatsApp</p>
                 </div>
                 <div class="order-option" id="deliveryOption">
                     <div class="option-icon">🚴</div>
@@ -284,7 +284,20 @@
             <div id="cartEmptyState" class="empty-cart">Votre panier est vide.</div>
             <div id="cartItems" class="cart-items"></div>
             <div id="cartTotal" class="cart-total">Total : 0,00€</div>
-            <button id="sendWhatsAppBtn" class="order-button whatsapp-button" disabled>Envoyer la commande sur WhatsApp</button>
+            <button id="checkoutBtn" class="order-button whatsapp-button" disabled>Valider le panier et payer</button>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content takeaway-modal">
+            <span class="close">&times;</span>
+            <h2>Paiement panier emporté</h2>
+            <p class="payment-intro">Vérifiez votre synthèse puis continuez vers le PSP sécurisé.</p>
+            <div id="paymentSummary" class="payment-summary"></div>
+            <div class="payment-actions">
+                <button id="redirectToPspBtn" class="order-button">Payer sur le PSP</button>
+                <button id="cancelPaymentBtn" class="order-button secondary-order-button">Retour au panier</button>
+            </div>
         </div>
     </div>
 
