@@ -149,7 +149,7 @@ Dans `stripe-config.js` :
 
 > `stripe-config.js` est ignoré par Git via `.gitignore`, donc il ne sera pas publié sur GitHub.
 
-### 2) Clé secrète Stripe
+### 2) Clé secrète Stripe (backend)
 
 Ne jamais mettre la clé secrète (`sk_test_...`) dans le front (`index.html`, `script.js`) ni dans GitHub.
 
@@ -168,3 +168,11 @@ Le front envoie un `POST` JSON vers `checkoutEndpoint` et attend la réponse :
 ```
 
 Ensuite le navigateur redirige automatiquement vers Stripe Checkout.
+
+### 4) Netlify Functions (recommandé)
+
+Ce projet inclut une Function Netlify qui crée la session Checkout à l'URL :
+
+- `/api/stripe/create-checkout-session`
+
+Configurez la variable d'environnement `STRIPE_SECRET_KEY` dans Netlify (Site settings → Environment variables).
