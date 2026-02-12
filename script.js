@@ -1,5 +1,5 @@
-e de la baronne 0640 Cannesconst productsData = {
-    delice1: {
+
+ delice1: {
         title: "Crumble Pomme et Cannelle",
         description: "Crumble pommes cannelle, dessert à emporter au goût réconfortant. Pommes fondantes parfumées à la cannelle, recouvertes d’un crumble croustillant et doré.(pomme,cannelle,farine de blé, beurre, sucre.)",
         price: "10€",
@@ -341,7 +341,7 @@ const supplementsCatalog = {
         { name: "lait vegetal coco", price: 1 }
     ]
 };
-const whatsappNumber = "33123456789";
+const whatsappNumber = "+33664624506";
 let currentProductId = null;
 let cart = [];
 
