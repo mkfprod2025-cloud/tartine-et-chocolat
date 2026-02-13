@@ -277,7 +277,7 @@ const productOptionsCatalog = {
            {name: "coffee ou latte(froid) x2"},
         {name: "thé glacéx2"},
         {name: "jus de fruit x2"}, ]
-   } 
+   } ,
     boisson5Ingredients: {
         label: "canettes et bouteille d'eau",
         type: "multi",
