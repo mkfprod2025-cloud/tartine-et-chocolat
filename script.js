@@ -83,8 +83,8 @@ const productsData = {
         title: "canettes et bouteille d'eau",
         description: "Nous connaissons l’attrait indéniable pour les boissons sucrées et pétillantes. Sans prétendre au naturel ni à la vertu, nous proposons ces sodas en canette pour ceux qui assument le plaisir simple, frais et immédiat. À emporter, à ouvrir, à savourer. ",
         price: "4€",
-        image: "assets/canecouv.jpg",
-        media_type: "image",
+        image: "assets/canevid.jpg",
+        media_type: "video",
         productType: "boissons"
     },
     decouverte1: {
