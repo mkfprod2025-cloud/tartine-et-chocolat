@@ -80,10 +80,10 @@ const productsData = {
         productType: "boissons"
     },
     boisson5: {
-        title: "Boisson 5",
-        description: "",
-        price: "",
-        image: "assets/logoTc.jpg",
+        title: "canettes et bouteille d'eau",
+        description: "Nous connaissons l’attrait indéniable pour les boissons sucrées et pétillantes. Sans prétendre au naturel ni à la vertu, nous proposons ces sodas en canette pour ceux qui assument le plaisir simple, frais et immédiat. À emporter, à ouvrir, à savourer. ",
+        price: "4€",
+        image: "assets/canecouv.jpg",
         media_type: "image",
         productType: "boissons"
     },
@@ -97,7 +97,7 @@ const productsData = {
     },
     decouverte2: {
         title: "La soupe de saison",
-        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saisons mijôté avec beaucoup d'amour et d'épices",
+        description: "une soupe réchauffante d'hivers pour les mornes soirées de pluie et de froid des legumes de saisons ses croutons et son fromage rapé, mijôté avec beaucoup d'amour et d'épices",
         price: "10.50€",
         image: "assets/soupvid.mp4",
         media_type: "video",
@@ -278,6 +278,18 @@ const productOptionsCatalog = {
         {name: "thé glacéx2"},
         {name: "jus de fruit x2"}, ]
    } 
+    boisson5Ingredients: {
+        label: "canettes et bouteille d'eau",
+        type: "multi",
+        max: 4,
+        choices: [
+          { name: "coca cola" },
+          { name: "coca cola zero" },
+          { name: "nestea" },
+            { name: "eau mineral" },
+            { name: "eau mineral gazeuse" },
+        ]
+    } ,
 };
 const categoryLabels = {
     sales: "Suppléments salés",
@@ -309,7 +321,7 @@ const optionsByProduct = {
     boisson2: ['boisson2Ingredients',],
     boisson3: ['boisson3Ingredients'],
     boisson4: ['boisson4Ingredients'],
-    boisson5: [],
+    boisson5: ['boisson5Ingredients'],
     formule1: ['formule1ingredients','formule1ingredients2','formule1ingredients3'],
     formule2: ['formule2ingredients1','formule2ingredients2'],
     formule3: ['formule3ingredients1','formule3ingredients2','formule3ingredients3'],
