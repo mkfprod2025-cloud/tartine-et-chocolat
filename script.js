@@ -281,7 +281,7 @@ const productOptionsCatalog = {
     boisson5Ingredients: {
         label: "canettes et bouteille d'eau",
         type: "multi",
-        max: 4,
+        max: 1,
         choices: [
           { name: "coca cola" },
           { name: "coca cola zero" },
