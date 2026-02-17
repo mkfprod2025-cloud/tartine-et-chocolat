@@ -95,23 +95,38 @@ const buildCheckoutParams = (payload: CheckoutPayload, baseUrl: string) => {
 };
 
 export default async (req: Request, context: Context) => {
+  const origin = req.headers.get("origin");
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": origin || "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    Vary: "Origin"
+  };
+
+  if (req.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
   if (req.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+    return new Response("Method Not Allowed", { status: 405, headers: corsHeaders });
   }
 
   const stripeSecretKey = Netlify.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey) {
-    return new Response("Stripe secret key not configured.", { status: 500 });
+    return new Response("Stripe secret key not configured.", {
+      status: 500,
+      headers: corsHeaders
+    });
   }
 
   const payload = (await parseJson(req)) as CheckoutPayload | null;
   if (!payload) {
-    return new Response("Invalid JSON payload.", { status: 400 });
+    return new Response("Invalid JSON payload.", { status: 400, headers: corsHeaders });
   }
 
   const { params, orderLinesCount } = buildCheckoutParams(payload, getBaseUrl(req));
   if (orderLinesCount === 0) {
-    return new Response("No order lines provided.", { status: 400 });
+    return new Response("No order lines provided.", { status: 400, headers: corsHeaders });
   }
 
   const stripeResponse = await fetch("https://api.stripe.com/v1/checkout/sessions", {
@@ -128,13 +143,19 @@ export default async (req: Request, context: Context) => {
     const message = stripeData?.error?.message || "Stripe error.";
     return new Response(JSON.stringify({ error: message }), {
       status: stripeResponse.status,
-      headers: { "Content-Type": "application/json" }
+      headers: {
+        "Content-Type": "application/json",
+        ...corsHeaders
+      }
     });
   }
 
   return new Response(JSON.stringify({ sessionId: stripeData.id }), {
     status: 200,
-    headers: { "Content-Type": "application/json" }
+    headers: {
+      "Content-Type": "application/json",
+      ...corsHeaders
+    }
   });
 };
 

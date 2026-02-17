@@ -5,5 +5,6 @@ window.STRIPE_CONFIG = {
   // URL de votre backend qui crée une Session Checkout.
   // Exemple en local Netlify: 'http://localhost:8888/api/stripe/create-checkout-session'
   // Exemple en prod (même domaine): '/api/stripe/create-checkout-session'
+  // Exemple en prod (domaine Netlify): 'https://tartineetchocolatbackend.netlify.app/api/stripe/create-checkout-session'
   checkoutEndpoint: '/api/stripe/create-checkout-session'
 };
