@@ -175,6 +175,10 @@ Ce projet inclut une Function Netlify qui crée la session Checkout à l'URL :
 
 - `/api/stripe/create-checkout-session`
 
+Le repository contient aussi un `netlify.toml` avec une redirection explicite vers la Function (`/.netlify/functions/create-checkout-session`) pour garantir le même endpoint en local et en production.
+
 Si vous obtenez une erreur `405`, l'URL du `checkoutEndpoint` est souvent incorrecte (mauvais chemin ou mauvais domaine).
+
+Si votre front et votre backend ne sont pas sur le même domaine, la Function répond également aux requêtes `OPTIONS` (CORS preflight) pour autoriser le `POST` JSON vers Stripe Checkout.
 
 Configurez la variable d'environnement `STRIPE_SECRET_KEY` dans Netlify (Site settings → Environment variables).
