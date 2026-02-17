@@ -148,6 +148,8 @@ Dans `stripe-config.js` :
 - `checkoutEndpoint` = endpoint backend qui crée la session Checkout (recommandé: `/api/stripe/create-checkout-session` sur le même domaine).
 
 > `stripe-config.js` est ignoré par Git via `.gitignore`, donc il ne sera pas publié sur GitHub.
+>
+> Ce n'est pas un bug: ce fichier sert uniquement à votre configuration locale sensible. Si le fichier est absent en production, le front utilise ses valeurs par défaut Stripe (clé publique de test + endpoint Netlify de checkout).
 
 ### 2) Clé secrète Stripe (backend)
 
@@ -168,6 +170,11 @@ Le front envoie un `POST` JSON vers `checkoutEndpoint` et attend la réponse :
 ```
 
 Ensuite le navigateur redirige automatiquement vers Stripe Checkout.
+
+En cas de route introuvable (`404`) ou méthode non autorisée (`405`) sur l'endpoint configuré, le front retente automatiquement avec :
+
+- `/api/stripe/create-checkout-session`
+- `/.netlify/functions/create-checkout-session`
 
 ### 4) Netlify Functions (recommandé)
 

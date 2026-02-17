@@ -370,6 +370,11 @@ const stripeConfig = {
 
 const stripePublishableKey = stripeConfig.publishableKey || null;
 const stripeCheckoutEndpoint = stripeConfig.checkoutEndpoint || null;
+const stripeCheckoutEndpointCandidates = Array.from(new Set([
+    stripeCheckoutEndpoint,
+    '/api/stripe/create-checkout-session',
+    '/.netlify/functions/create-checkout-session'
+].filter(Boolean)));
 const stripeClient = stripePublishableKey && window.Stripe
     ? window.Stripe(stripePublishableKey)
     : null;
@@ -909,7 +914,7 @@ const buildStripeCheckoutPayload = (orderLines) => ({
 });
 
 const redirectToStripeCheckout = async (orderLines) => {
-    if (!stripePublishableKey || !stripeCheckoutEndpoint) {
+    if (!stripePublishableKey || stripeCheckoutEndpointCandidates.length === 0) {
         window.alert(
             'Configuration Stripe incomplète. Créez stripe-config.js depuis stripe-config.example.js et ajoutez checkoutEndpoint.'
         );
@@ -921,13 +926,35 @@ const redirectToStripeCheckout = async (orderLines) => {
         return;
     }
 
-    const response = await fetch(stripeCheckoutEndpoint, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(buildStripeCheckoutPayload(orderLines))
-    });
+    const requestBody = JSON.stringify(buildStripeCheckoutPayload(orderLines));
+    let response = null;
+    let lastError = null;
+
+    for (const endpoint of stripeCheckoutEndpointCandidates) {
+        try {
+            response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: requestBody
+            });
+
+            if (response.ok) {
+                break;
+            }
+
+            if (response.status !== 404 && response.status !== 405) {
+                break;
+            }
+        } catch (error) {
+            lastError = error;
+        }
+    }
+
+    if (!response) {
+        throw new Error(`Impossible de contacter le backend Stripe.${lastError?.message ? ` ${lastError.message}` : ''}`);
+    }
 
     if (!response.ok) {
         let backendMessage = '';
